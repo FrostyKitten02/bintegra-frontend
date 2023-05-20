@@ -16,7 +16,7 @@ export default function AppRouter() {
             errorElement: <PageNotFoundPage />,
             children: [
                 {
-                    path: "/homepage",
+                    path: "/",
                     element: <HomePage />,
                 },
                 {
