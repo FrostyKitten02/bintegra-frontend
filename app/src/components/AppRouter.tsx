@@ -2,6 +2,10 @@ import {createBrowserRouter, createHashRouter, RouterProvider} from "react-route
 import TemplatePage from "../template/TemplatePage";
 import PageNotFoundPage from "../pages/PageNotFoundPage";
 import HomePage from "../pages/HomePage";
+import NarocninePage from "../pages/NarocninePage";
+import OmrezjePage from "../pages/OmrezjePage";
+import WifiPage from "../pages/WifiPage";
+import TvPage from "../pages/TvPage";
 
 
 export default function AppRouter() {
@@ -12,8 +16,23 @@ export default function AppRouter() {
             errorElement: <PageNotFoundPage />,
             children: [
                 {
-                    path: "/",
+                    path: "/homepage",
                     element: <HomePage />,
+                },
+                {
+                    path: "/narocnine",
+                    element: <NarocninePage />,
+                },
+                {
+                    path: "/omrezje",
+                    element: <OmrezjePage />,
+                },{
+                    path: "/tvpaketi",
+                    element: <TvPage />,
+                },
+                {
+                    path: "/wifi",
+                    element: <WifiPage />,
                 }
             ]
         }
