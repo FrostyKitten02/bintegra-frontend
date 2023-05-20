@@ -5,7 +5,7 @@ import HomePage from "../pages/HomePage";
 import MobilePlansPage from "../pages/MobilePlansPage";
 import InternetPlansPage from "../pages/InternetPlansPage";
 import MobileInternetPlans from "../pages/MobileInternetPlans";
-import TelevisonPlansPage from "../pages/TelevisonPlansPage";
+import TelevisionPlansPage from "../pages/TelevisionPlansPage";
 import Paths from "../Paths";
 
 
@@ -30,7 +30,7 @@ export default function AppRouter() {
                 },
                 {
                     path: Paths.TV_PLANS,
-                    element: <TelevisonPlansPage />,
+                    element: <TelevisionPlansPage />,
                 },
                 {
                     path: Paths.MOBILE_INTERNET_PLANS,
