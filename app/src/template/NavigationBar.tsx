@@ -5,7 +5,7 @@ const NavItem = ({name, path}:{name: string, path: string}) => {
   const navigate = useNavigate();
 
   return (
-      <a className="block mt-4 lg:inline-block text-xl lg:mt-0 text-white hover:text-gray-400 hover:text-white mr-4 hover:cursor-pointer"
+      <a className="block mt-4 lg:inline-block text-xl lg:mt-0 text-white hover:text-gray-400 hover:text-gray-400 mr-4 hover:cursor-pointer"
            aria-current="page"
            onClick={()=>{navigate(path)}}
         >
