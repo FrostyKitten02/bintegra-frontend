@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom";
+import Paths from "../Paths";
 
 const NavItem = ({name, path}:{name: string, path: string}) => {
   const navigate = useNavigate();
@@ -20,12 +21,12 @@ export default function NavigationBar() {
             <div className="flex items-center flex-shrink-0 text-white mr-6 hover:cursor-pointer">
                 <a
                     className="font-semibold text-xl tracking-tight hover:text-gray-400"
-                    onClick={()=>{navigate("/")}}
+                    onClick={()=>{navigate(Paths.HOME)}}
                 >Samopostrežni portal</a>
             </div>
             <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                 <div className="text-sm lg:flex-grow">
-                    <NavItem name="Naročnine" path="/narocnine"/>
+                    <NavItem name="Mobilini paketi" path={Paths.MOBILE_PLANS}/>
                 </div>
             </div>
         </nav>
