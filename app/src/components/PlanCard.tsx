@@ -1,3 +1,6 @@
+import {v4 as uuid} from "uuid";
+
+
 
 export type PriceInterval = "mesec" | "leto";
 const Feature = ({name, disabled}:{name: string, disabled?: boolean})=>{
@@ -29,7 +32,7 @@ export default function PlanCard({features, name, price, priceInterval}:{feature
 
                     <ul role="list" className="space-y-5 my-7">
                         {features.map((feature, index)=>{
-                            return <Feature name={feature} />
+                            return <Feature name={feature} key={uuid()}/>
                         })}
                     </ul>
                 </div>
