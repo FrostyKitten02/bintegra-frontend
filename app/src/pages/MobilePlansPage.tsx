@@ -8,7 +8,7 @@ const includedFeatures = [
   'Official member t-shirt',
 ]
 
-export default function NarocninePage(){
+export default function MobilePlansPage(){
     return (
         <> 
              {/* Ponudba */}
