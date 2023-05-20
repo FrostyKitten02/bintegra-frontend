@@ -8,7 +8,7 @@ export default function TemplatePage() {
     return (
         <div className="flex flex-col">
             <NavigationBar />
-            <UserNavBar />
+            {/*<UserNavBar />*/}
             <Outlet />
             <AppFooter />
         </ div>
