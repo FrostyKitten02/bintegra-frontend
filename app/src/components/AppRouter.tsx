@@ -9,8 +9,8 @@ import TelevisionPlansPage from "../pages/TelevisionPlansPage";
 import Paths from "../Paths";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import UserProfile from "../pages/Profile/UserProfilePage";
-import UserProfileMobileOverviewPage from "../pages/Profile/UserProfileMobileOverviewPage";
+import UserProfile from "../template/UserProfilePageTemplate";
+import UserProfileMobileOverviewPage from "../pages/UserProfileMobileOverviewPage";
 
 
 export default function AppRouter() {

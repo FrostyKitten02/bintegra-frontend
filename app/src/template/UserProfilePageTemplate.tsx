@@ -1,7 +1,7 @@
 import {Outlet} from "react-router-dom";
 
 
-export default function UserProfilePage() {
+export default function UserProfilePageTemplate() {
 
 
     return(
