@@ -1,4 +1,3 @@
-
 import Paths from "../Paths";
 import {useNavigate} from "react-router-dom";
 import UserDropdown from "./UserDropdown";

@@ -16,6 +16,7 @@ const NavItem = ({name, path}:{name: string, path: string}) => {
 
 export default function NavigationBar() {
     const navigate = useNavigate();
+
     return(
         <nav className="flex items-center sticky top-0 justify-center flex-wrap bg-gray-900 z-40">
             <div className="w-full block lg:flex lg:items-center mx-12 lg:w-auto">
@@ -24,6 +25,9 @@ export default function NavigationBar() {
                     <NavItem name={"Mobilni internet"} path={Paths.MOBILE_INTERNET_PLANS}/>
                     <NavItem name={"Internet"} path={Paths.INTERNET_PLANS} />
                     <NavItem name={"Televizija"} path={Paths.TV_PLANS} />
+                    <NavItem name={"Login"} path={Paths.LOGIN} />
+                    <NavItem name={"Register"} path={Paths.REGISTER} />
+                    <NavItem name={"Profile"} path={Paths.USER_PROFILE} />
                 </div>
             </div>
         </nav>
