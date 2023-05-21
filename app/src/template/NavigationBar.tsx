@@ -1,5 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import Paths from "../Paths";
+import {Button} from "flowbite-react";
 
 const NavItem = ({name, path}:{name: string, path: string}) => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const NavItem = ({name, path}:{name: string, path: string}) => {
 
 export default function NavigationBar() {
     const navigate = useNavigate();
+
     return(
         <nav className="flex items-center justify-between flex-wrap bg-gray-900 p-6">
             <div className="flex items-center flex-grow text-white mr-6 hover:cursor-pointer">
@@ -30,6 +32,9 @@ export default function NavigationBar() {
                     <NavItem name={"Mobilni internet"} path={Paths.MOBILE_INTERNET_PLANS} />
                     <NavItem name={"Internet"} path={Paths.INTERNET_PLANS} />
                     <NavItem name={"Televizija"} path={Paths.TV_PLANS} />
+                    <NavItem name={"Login"} path={Paths.LOGIN} />
+                    <NavItem name={"Register"} path={Paths.REGISTER} />
+                    <NavItem name={"Profile"} path={Paths.USER_PROFILE} />
                 </div>
             </div>
         </nav>
