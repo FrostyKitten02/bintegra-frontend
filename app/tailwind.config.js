@@ -9,7 +9,11 @@ module.exports = {
           '400' : '400px',
           '300' : '300px',
       },
-      extend: {},
+      extend: {
+          screens: {
+              '2xs': '400px',
+          }
+      },
   },
   plugins: [
       require('flowbite/plugin')

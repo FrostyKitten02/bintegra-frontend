@@ -13,26 +13,26 @@ export default function LoginPage() {
     const handleChange = (event: ChangeEvent<HTMLInputElement>) =>{
         const value = event.target.value;
         const atribute = event.target.name;
-
         setUser(prevState => ({...prevState, [atribute]: value}));
     }
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) =>{
         event.preventDefault();
-
-
+        //TODO login the user!!!!
     }
 
     return(
         <div className="mb-32 text-gray-800 grid justify-items-center pt-12">
             <h2 className="text-3xl font-bold text-center mb-12">Prijava v samopostrežni portal</h2>
-            <div className="w-full max-w-sm sm:min-w-300 md:min-w-400 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+            <div className="w-full max-w-[350px] sm:max-w-[450px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     <h5 className="text-xl font-medium text-gray-900">Prijava</h5>
                     <div>
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
                         <input type="email"
                                name="email"
+                               value={user?.email??""}
+                               onChange={handleChange}
                                id="email"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                placeholder="E-mail naslov" required />
@@ -42,6 +42,8 @@ export default function LoginPage() {
                         <input type="password"
                                name="password"
                                id="password"
+                               value={user?.password??""}
+                               onChange={handleChange}
                                placeholder="••••••••"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                required />
