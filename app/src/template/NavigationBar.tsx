@@ -5,7 +5,7 @@ const NavItem = ({name, path}:{name: string, path: string}) => {
   const navigate = useNavigate();
 
   return (
-      <a className="block mt-4 lg:inline-block text-xl lg:mt-0 text-white hover:text-gray-400 hover:text-gray-400 mr-4 hover:cursor-pointer"
+      <a className="hover:bg-white py-4 px-4 transition ease-in-out hover:scale-110 duration-200 block lg:inline-block text-xl text-white hover:text-gray-900 hover:cursor-pointer"
            aria-current="page"
            onClick={()=>{navigate(path)}}
         >
@@ -17,17 +17,11 @@ const NavItem = ({name, path}:{name: string, path: string}) => {
 export default function NavigationBar() {
     const navigate = useNavigate();
     return(
-        <nav className="flex items-center justify-between flex-wrap bg-gray-900 p-6">
-            <div className="flex items-center flex-grow text-white mr-6 hover:cursor-pointer">
-                <a
-                    className="font-semibold text-xl tracking-tight hover:text-gray-400"
-                    onClick={()=>{navigate(Paths.HOME)}}
-                >Samopostrežni portal</a>
-            </div>
-            <div className="w-full block lg:flex lg:items-center lg:w-auto">
+        <nav className="flex items-center sticky top-0 justify-center flex-wrap bg-gray-900 z-40">
+            <div className="w-full block lg:flex lg:items-center mx-12 lg:w-auto">
                 <div className="text-sm lg:flex-grow">
-                    <NavItem name="Mobilini paketi" path={Paths.MOBILE_PLANS}/>
-                    <NavItem name={"Mobilni internet"} path={Paths.MOBILE_INTERNET_PLANS} />
+                    <NavItem name={"Mobilina telefonija"} path={Paths.MOBILE_PLANS}/>
+                    <NavItem name={"Mobilni internet"} path={Paths.MOBILE_INTERNET_PLANS}/>
                     <NavItem name={"Internet"} path={Paths.INTERNET_PLANS} />
                     <NavItem name={"Televizija"} path={Paths.TV_PLANS} />
                 </div>

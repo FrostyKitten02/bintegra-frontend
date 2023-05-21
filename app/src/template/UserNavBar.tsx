@@ -1,48 +1,23 @@
-import {UserCircleIcon} from "@heroicons/react/24/outline";
-import {Avatar, Dropdown} from "flowbite-react";
 
-
-  /*  <UserCircleIcon className="h-6 w-6 text-gray-500"/>
-
-   */
+import Paths from "../Paths";
+import {useNavigate} from "react-router-dom";
+import UserDropdown from "./UserDropdown";
 
 
 export default function UserNavBar() {
+    const navigate = useNavigate();
     return (
-        <nav className="flex items-center justify-between flex-wrap bg-white px-4 py-4">
-            <div className="flex items-center pb-6 flex-grow bg-white text-black">
+        <nav className="flex px-10 items-center justify-between flex-wrap bg-white py-2 lg:px-36">
+            <div className="flex items-center flex-grow bg-white text-black">
+                <a
+                    className="transition ease-in-out hover:scale-105 duration-200 font-semibold text-xl tracking-tight hover:cursor-pointer"
+                    onClick={()=>{navigate(Paths.HOME)}}
+                >Samopostrežni portal</a>
             </div>
-            <div className="block flex-shrink-0 lg:flex lg:items-center sm:flex sm:items-center">
-                <div className="text-sm lg:flex-grow">
-                    <Dropdown
-                        label={<UserCircleIcon className="h-9 w-9 text-gray-500"/>}
-                        arrowIcon={false}
-                        inline={true}
-                    >
-                        <Dropdown.Header>
-                            <span className="block text-sm">
-                                Bonnie Green
-                            </span>
-                            <span className="block truncate text-sm font-medium">
-                                name@flowbite.com
-                            </span>
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                            Dashboard
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                            Settings
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                            Earnings
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item>
-                            Sign out
-                        </Dropdown.Item>
-                    </Dropdown>
+            <div className="block hidden sm:block flex-shrink-0 justify-center lg:flex lg:items-center">
+                <div className="flex text-sm">
+                    <UserDropdown />
                 </div>
-
             </div>
         </nav>
 
