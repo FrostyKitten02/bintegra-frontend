@@ -27,6 +27,7 @@ export default function NavigationBar() {
             <div className="w-full block lg:flex lg:items-center lg:w-auto">
                 <div className="text-sm lg:flex-grow">
                     <NavItem name="Mobilini paketi" path={Paths.MOBILE_PLANS}/>
+                    <NavItem name={"Mobilni internet"} path={Paths.MOBILE_INTERNET_PLANS} />
                     <NavItem name={"Internet"} path={Paths.INTERNET_PLANS} />
                     <NavItem name={"Televizija"} path={Paths.TV_PLANS} />
                 </div>
