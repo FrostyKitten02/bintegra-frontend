@@ -1,5 +1,7 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import InputWithLabel from "../components/InputWithLabel";
+import {useNavigate} from "react-router-dom";
+import Paths from "../Paths";
 
 
 export interface User {
@@ -11,6 +13,8 @@ export interface User {
 
 
 export default function LoginPage() {
+    const navigate = useNavigate();
+
     const [user, setUser] = useState<User>({});
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) =>{
@@ -67,7 +71,7 @@ export default function LoginPage() {
                             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Prijavi se
                     </button>
-                    <div className="text-sm font-medium text-gray-500">Še nimate računa? <a className="text-blue-700 hover:underline hover:cursor-pointer">ustvari račun</a>
+                    <div className="text-sm font-medium text-gray-500">Še nimate računa? <a className="text-blue-700 hover:underline hover:cursor-pointer" onClick={()=>{navigate(Paths.REGISTER)}}>ustvari račun</a>
                     </div>
                 </form>
             </div>
