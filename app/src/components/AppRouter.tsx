@@ -9,7 +9,8 @@ import TelevisionPlansPage from "../pages/TelevisionPlansPage";
 import Paths from "../Paths";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import UserProfile from "../pages/UserProfilePage";
+import UserProfile from "../pages/Profile/UserProfilePage";
+import UserProfileMobileOverviewPage from "../pages/Profile/UserProfileMobileOverviewPage";
 
 
 export default function AppRouter() {
@@ -34,6 +35,16 @@ export default function AppRouter() {
                 {
                     path: Paths.USER_PROFILE,
                     element: <UserProfile />,
+                    children: [
+                        {
+                            path: Paths.USER_PROFILE,
+                            element: <div>user profile main page</div>,
+                        },
+                        {
+                            path: Paths.USER_PROFILE_MOBILE,
+                            element: <UserProfileMobileOverviewPage />,
+                        }
+                    ]
                 },
                 {
                     path: Paths.MOBILE_PLANS,
