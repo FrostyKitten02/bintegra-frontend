@@ -4,11 +4,13 @@ import {ChangeEvent, FormEvent, useState} from "react";
 export interface User {
     email?: string;
     password?: string;
+    repeatPassword?: string;
+    terms?: boolean;
 }
 
 
 export default function LoginPage() {
-    const [user, setUser] = useState<User>();
+    const [user, setUser] = useState<User>({});
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) =>{
         const value = event.target.value;
@@ -19,6 +21,7 @@ export default function LoginPage() {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) =>{
         event.preventDefault();
         //TODO login the user!!!!
+        setUser({});
     }
 
     return(
