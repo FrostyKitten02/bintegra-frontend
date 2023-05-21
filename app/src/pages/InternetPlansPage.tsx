@@ -7,17 +7,17 @@ export default function InternetPlansPage(){
             <h2 className="text-3xl font-bold text-center mb-12">Izberite paket</h2>
             <div className="grid lg:grid-cols-3 gap-6 lg:gap-x-12">
                 <PlanCard
-                    features={["Hitrosti do 100 mbps do uporabnika", "Hitrosti do 20 mbs od uporabnika"]}
+                    features={["Hitrosti do 100 mbps do uporabnika", "Hitrosti do 20 mbps od uporabnika"]}
                     name={"Osnovni paket"}
                     price={19.99}
                     priceInterval="mesec"/>
                 <PlanCard
-                    features={["Hitrosti do 350 mbps do uporabnika", "Hitrosti do 80 mbs od uporabnika"]}
+                    features={["Hitrosti do 350 mbps do uporabnika", "Hitrosti do 80 mbps od uporabnika"]}
                     name={"Srednji paket"}
                     price={29.99}
                     priceInterval="mesec"/>
                 <PlanCard
-                    features={["Hitrosti do 1 gbps do uporabnika", "Hitrosti do 200 mbs od uporabnika"]}
+                    features={["Hitrosti do 1 gbps do uporabnika", "Hitrosti do 200 mbps od uporabnika"]}
                     name={"Preminum paket"}
                     price={49.99}
                     priceInterval="mesec"/>
