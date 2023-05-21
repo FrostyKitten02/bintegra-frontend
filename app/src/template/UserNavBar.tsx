@@ -1,10 +1,7 @@
 import {UserCircleIcon} from "@heroicons/react/24/outline";
-import {Avatar, Dropdown} from "flowbite-react";
+import {Dropdown} from "flowbite-react";
 
 
-  /*  <UserCircleIcon className="h-6 w-6 text-gray-500"/>
-
-   */
 
 
 export default function UserNavBar() {

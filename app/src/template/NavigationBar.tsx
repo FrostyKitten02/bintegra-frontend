@@ -1,6 +1,5 @@
 import {useNavigate} from "react-router-dom";
 import Paths from "../Paths";
-import {Button} from "flowbite-react";
 
 const NavItem = ({name, path}:{name: string, path: string}) => {
   const navigate = useNavigate();

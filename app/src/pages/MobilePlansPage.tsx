@@ -1,6 +1,5 @@
 import PlanCard from "../components/PlanCard";
 
-
 export default function MobilePlansPage() {
     return (
         <div className="mb-32 text-gray-800 grid justify-center pt-12">

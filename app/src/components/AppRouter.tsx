@@ -1,4 +1,4 @@
-import {createBrowserRouter, createHashRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import TemplatePage from "../template/TemplatePage";
 import PageNotFoundPage from "../pages/PageNotFoundPage";
 import HomePage from "../pages/HomePage";
