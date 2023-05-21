@@ -1,10 +1,11 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import {User} from "./LoginPage";
-import TextInputWithLabel from "../components/TextInputWithLabel";
+import InputWithLabel, {errorType} from "../components/InputWithLabel";
 
 
 export default function RegisterPage() {
     const [user, setUser] = useState<User>({});
+    const [passwordMissMatch, setPasswordMissmatch] = useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) =>{
         const value = event.target.value;
@@ -18,6 +19,7 @@ export default function RegisterPage() {
         if (user.password !== user.repeatPassword) {
             //TODO show error;
             console.log("Passwords don't match");
+            setPasswordMissmatch(true);
             setUser(prevState => ({...prevState, password: "", repeatPassword: ""}));
             return;
         }
@@ -33,7 +35,7 @@ export default function RegisterPage() {
                 className="w-full max-w-[350px] sm:max-w-[450px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     <h5 className="text-xl font-medium text-gray-900">Registracija</h5>
-                    <TextInputWithLabel
+                    <InputWithLabel
                         handleChange={handleChange}
                         value={user.email??""}
                         label="E-mail"
@@ -43,23 +45,27 @@ export default function RegisterPage() {
                         required
                     />
 
-                    <TextInputWithLabel
+                    <InputWithLabel
                         handleChange={handleChange}
                         value={user.password??""}
                         label="Geslo"
                         name="password"
                         type="password"
                         placeholder="••••••••"
+                        event={passwordMissMatch?errorType:undefined}
+                        message={"Gesli se ne ujemata!"}
                         required
                     />
 
-                    <TextInputWithLabel
+                    <InputWithLabel
                         handleChange={handleChange}
                         value={user.repeatPassword??""}
                         label="Geslo"
                         name="repeatPassword"
                         type="password"
                         placeholder="••••••••"
+                        event={passwordMissMatch?errorType:undefined}
+                        message={"Gesli se ne ujemata!"}
                         required
                     />
 

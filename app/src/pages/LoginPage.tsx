@@ -1,4 +1,5 @@
 import {ChangeEvent, FormEvent, useState} from "react";
+import InputWithLabel from "../components/InputWithLabel";
 
 
 export interface User {
@@ -30,27 +31,27 @@ export default function LoginPage() {
             <div className="w-full max-w-[350px] sm:max-w-[450px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     <h5 className="text-xl font-medium text-gray-900">Prijava</h5>
-                    <div>
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
-                        <input type="email"
-                               name="email"
-                               value={user?.email??""}
-                               onChange={handleChange}
-                               id="email"
-                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                               placeholder="E-mail naslov" required />
-                    </div>
-                    <div>
-                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">Geslo</label>
-                        <input type="password"
-                               name="password"
-                               id="password"
-                               value={user?.password??""}
-                               onChange={handleChange}
-                               placeholder="••••••••"
-                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                               required />
-                    </div>
+
+                    <InputWithLabel
+                        handleChange={handleChange}
+                        value={user.email??""}
+                        label="E-mail"
+                        name="email"
+                        type="email"
+                        placeholder="E-mail naslov"
+                        required
+                    />
+
+                    <InputWithLabel
+                        handleChange={handleChange}
+                        value={user.password??""}
+                        label="Geslo"
+                        name="password"
+                        type="password"
+                        placeholder="••••••••"
+                        required
+                    />
+
                     <div className="flex items-start">
                         <div className="flex items-start">
                             <div className="flex items-center h-5">
