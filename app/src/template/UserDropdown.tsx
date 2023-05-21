@@ -1,7 +1,4 @@
 import {UserCircleIcon} from "@heroicons/react/24/outline";
-import {Menu, Transition} from "@headlessui/react";
-import {Fragment, useState} from "react";
-import {ChevronDownIcon} from "@heroicons/react/20/solid";
 import {Dropdown} from "flowbite-react";
 
 /*<UserCircleIcon className="transition ease-in-out hover:scale-110 duration-300 h-8 w-8 text-gray-500"/> */
