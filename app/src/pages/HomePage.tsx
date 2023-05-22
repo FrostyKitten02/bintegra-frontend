@@ -1,4 +1,6 @@
 import { CheckIcon } from '@heroicons/react/20/solid'
+import React from "react";
+import PlanCard from "../components/PlanCard";
 
 const includedFeatures = [
     'Private forum access',
@@ -9,18 +11,62 @@ const includedFeatures = [
 export default function HomePage() {
     return (
         <>
-
-  
-    {/* Nav */}   
+    {/* Nav */}
 <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Simple no-tricks pricing</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Distinctio et nulla eum soluta et neque labore quibusdam. Saepe et quasi iusto modi velit ut non voluptas
-            in. Explicabo id ut laborum.
-          </p>
+        {/* image*/}
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div
+              className="relative overflow-hidden bg-cover bg-no-repeat flex items-center justify-center"
+              style={{
+                backgroundPosition: '60%',
+                backgroundImage: "url('https://www.cultofmac.com/wp-content/uploads/2018/10/iPhone-XR-ad.jpg')",
+                height: '550px',
+              }}
+          >
+            <div className="mx-auto max-w-2xl sm:text-center text-white">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Vstopite v svet thenologije </h2>
+            </div>
+          </div>
         </div>
+        <br/>
+
+        {/*cards?*/}
+        <div className="flex flex-wrap justify-center mb-32 text-gray-800">
+          <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-col items-center block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+              <div className="relative overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed transition duration-300 ease-in-out hover:opacity-100">
+                <svg className="w-16 h-16 mx-auto mt-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                </svg>
+              </div>
+              <div className="p-6">
+                <p className="mb-4 text-base font-bold text-gray-800">Aktivirajte naročniški portal</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+              <div className="relative overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed transition duration-300 ease-in-out hover:opacity-100">
+                <svg className="w-16 h-16 mx-auto mt-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                </svg>
+              </div>
+              <div className="p-6">
+                <p className="mb-4 text-base font-bold text-gray-800">5G mobilno omrežje </p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+              <div className="relative overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed transition duration-300 ease-in-out hover:opacity-100">
+                <svg className="w-16 h-16 mx-auto mt-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />
+                </svg>
+              </div>
+              <div className="p-6">
+                <p className="mb-4 text-base font-bold text-gray-800">Televizijski paketi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
           <div className="p-8 sm:p-10 lg:flex-auto">
             <h3 className="text-2xl font-bold tracking-tight text-gray-900">Lifetime membership</h3>
