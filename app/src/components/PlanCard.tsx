@@ -23,7 +23,6 @@ export default function PlanCard({features, name, price, priceInterval}:{feature
             <div className="relative h-full">
                 <div className="mb-20">
                     <h5 className="mb-4 text-xl font-medium text-gray-900">{name}</h5>
-
                     <div className="flex items-baseline text-black">
                         <span className="text-5xl font-extrabold tracking-tight">{price}</span>
                         <span className="text-3xl font-semibold">€</span>
