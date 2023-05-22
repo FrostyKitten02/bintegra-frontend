@@ -11,7 +11,6 @@ export default function HomePage() {
 
     return (
         <>
-    {/* Nav */}
 <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* slideshow*/}
@@ -21,10 +20,10 @@ export default function HomePage() {
               <img className="slideshow-image" src="https://telemach.me/wp-content/uploads/2020/12/NY-kampanja_800x450-2.jpg" alt="Slide 2" />
             </div>
             <div className="slideshow-slide">
-              <img className="slideshow-image" src="https://sloveniatimes.com/wp-content/uploads/2020/12/5G-smartphones.jpg" alt="Slide 1" />
+              <img className="slideshow-image" src="https://telemach.si/upload/legacy/news/2021/05/XIAOMI-DNEVI-novicka_800x450-1_1147x604.jpg" alt="Slide 1" />
             </div>
             <div className="slideshow-slide">
-              <img className="slideshow-image" src="https://siol.net/media/img/72/30/21a0675e349680d39205-telemach-se-ponasa-z-najhitrejsim-fiksnim-omrezjem-v-sloveniji.jpeg" alt="Slide 3" />
+              <img className="slideshow-image" src="https://telemach.si/upload/ookla_big_20220601_154255_1147x604.jpg" alt="Slide 3" />
             </div>
           </div>
         </div>
