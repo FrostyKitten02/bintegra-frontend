@@ -18,13 +18,13 @@ export default function HomePage() {
         <div className="slideshow">
           <div className="slideshow-container">
             <div className="slideshow-slide">
-              <img className="slideshow-image" src="https://d39raawggeifpx.cloudfront.net/styles/16_9_desktop/s3/articleimages/bneCompanies-slovenia-TELEMACH-5G_800x450px.jpg" alt="Slide 2" />
+              <img className="slideshow-image" src="https://telemach.me/wp-content/uploads/2020/12/NY-kampanja_800x450-2.jpg" alt="Slide 2" />
             </div>
             <div className="slideshow-slide">
-              <img className="slideshow-image" src="https://media.idownloadblog.com/wp-content/uploads/2018/10/iPhone-XR-Ad-001.jpg" alt="Slide 1" />
+              <img className="slideshow-image" src="https://sloveniatimes.com/wp-content/uploads/2020/12/5G-smartphones.jpg" alt="Slide 1" />
             </div>
             <div className="slideshow-slide">
-              <img className="slideshow-image" src="https://mloomnpztiey.i.optimole.com/w:1920/h:1080/q:mauto/f:avif/https://effektagency.com/wp-content/uploads/2018/09/telemach1-1.jpg" alt="Slide 3" />
+              <img className="slideshow-image" src="https://siol.net/media/img/72/30/21a0675e349680d39205-telemach-se-ponasa-z-najhitrejsim-fiksnim-omrezjem-v-sloveniji.jpeg" alt="Slide 3" />
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
+        {/*nnek content*/}
         <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
           <div className="p-8 sm:p-10 lg:flex-auto">
             <h3 className="text-2xl font-bold tracking-tight text-gray-900">Lifetime membership</h3>
