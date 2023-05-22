@@ -5,7 +5,7 @@ const NavItem = ({name, path}:{name: string, path: string}) => {
   const navigate = useNavigate();
 
   return (
-      <a className="hover:bg-white py-4 px-4 transition ease-in-out hover:scale-110 duration-200 block lg:inline-block text-xl text-white hover:text-gray-900 hover:cursor-pointer"
+      <a className="hover:bg-white mx-2 py-4 px-4 transition ease-in-out hover:scale-110 duration-500 block lg:inline-block text-xl text-white hover:text-gray-900 hover:cursor-pointer"
            aria-current="page"
            onClick={()=>{navigate(path)}}
         >
@@ -25,9 +25,9 @@ export default function NavigationBar() {
                     <NavItem name={"Mobilni internet"} path={Paths.MOBILE_INTERNET_PLANS}/>
                     <NavItem name={"Internet"} path={Paths.INTERNET_PLANS} />
                     <NavItem name={"Televizija"} path={Paths.TV_PLANS} />
-                    <NavItem name={"Login"} path={Paths.LOGIN} />
+                    {/*<NavItem name={"Login"} path={Paths.LOGIN} />
                     <NavItem name={"Register"} path={Paths.REGISTER} />
-                    <NavItem name={"Profile"} path={Paths.USER_PROFILE} />
+                    <NavItem name={"Profile"} path={Paths.USER_PROFILE} /> */}
                 </div>
             </div>
         </nav>
