@@ -20,7 +20,7 @@ export default function UserNavBar() {
             </div>
             <div className="block sm:hidden w-full pt-2">
                 <div className="">
-                    dropdown za telefon
+                    dropdown za telefon pozicioniran desno kot na
                 </div>
             </div>
         </nav>
