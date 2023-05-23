@@ -1,4 +1,4 @@
-import { CheckIcon } from '@heroicons/react/20/solid'
+
 import React from "react";
 
 const includedFeatures = [
@@ -81,6 +81,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+  {/*quick display of our services*/}
 </div>
    </>);
 }
