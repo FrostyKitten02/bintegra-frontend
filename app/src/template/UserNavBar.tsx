@@ -18,6 +18,11 @@ export default function UserNavBar() {
                     <UserDropdown />
                 </div>
             </div>
+            <div className="block sm:hidden w-full pt-2">
+                <div className="">
+                    dropdown za telefon
+                </div>
+            </div>
         </nav>
 
     )
