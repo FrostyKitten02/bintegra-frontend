@@ -70,11 +70,13 @@ export default function HomePage() {
 
         {/*about us*/}
         <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
-          <div className="p-8 sm:p-10 lg:flex-auto">
-            <h3 className="text-2xl font-bold tracking-tight text-gray-900">Lifetime membership</h3>
+          <div className="p-8 sm:p-10 lg:flex-auto text-center">
+            <h2 className="text-2xl font-serif tracking-tight text-gray-900 font-bold">Za Vas ustvarjamo proprostejši dostop do digitalnih in spletnih storitev</h2>
             <p className="mt-6 text-base leading-7 text-gray-600 font-serif">
-              Lorem ipsum dolor sit amet consect etur adipisicing elit. Itaque amet indis perferendis blanditiis
-              repellendus etur quidem assumenda.
+              Samopostrežni portal je najnaprednejši slovenski ponudnik najsodobnejših IKT-storitev in rešitev.
+              <br/>
+              Strmimo k temu, da olajšamo dostop do digitalnih storitev naše poslovalnice, ter lažje in hitrejše komuniciranje s strankami.
+              Skrbimo, da uporabniku olajšamo dostop do njegovih in spletnih naročnin, ki jih naš portal ponuja.
             </p>
           </div>
         </div>
