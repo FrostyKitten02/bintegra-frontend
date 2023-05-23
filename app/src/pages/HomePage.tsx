@@ -1,5 +1,6 @@
 
 import React, {useEffect, useRef} from "react";
+import PicCard from "../components/PicCard";
 
 const includedFeatures = [
     'Private forum access',
@@ -82,6 +83,36 @@ export default function HomePage() {
         </div>
       </div>
   {/*quick display of our services*/}
+
+  <div className="mt-8 grid gap-4 mx-auto max-w-7xl px-6 lg:px-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="sm:w-full md:w-full lg:w-full">
+      <PicCard
+          image="https://www.devicemagic.com/wp-content/uploads/2020/10/person_using_smartphone-2.jpg"
+          section="5G MOBILNO OMREŽJE"
+          description="Izboljšan prenos kakršnih koli vsebin po vsem svetu"
+      />
+    </div>
+    <div className="sm:w-full md:w-full lg:w-full">
+      <PicCard
+          image="https://img.freepik.com/premium-photo/happy-hindu-guy-gambling-online-using-laptop_116547-19124.jpg"
+          section="NAROČNIŠKI PORTAL"
+          description="Prenovljen uporabniški portal za pregled vsebine"
+      />
+    </div>
+    <div className="sm:w-full md:w-full lg:w-full">
+      <PicCard
+          image="https://www.gostudy.rs/wp-content/uploads/2023/03/Sta-je-Internet_1-min.jpg"
+          section="FIKSNI INTERNET"
+          description="Nova ponudba in ugodne cene"
+      />
+    </div>
+  </div>
+
+
+
+
+
+
 </div>
    </>);
 }
