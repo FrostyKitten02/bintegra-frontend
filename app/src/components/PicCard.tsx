@@ -1,4 +1,4 @@
-import {PriceInterval} from "./PlanCard";
+
 
 export default function PicCard({ image, section, description }: { image: string; section: string; description: string }) {
     return (
