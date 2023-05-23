@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 const includedFeatures = [
     'Private forum access',
@@ -11,7 +11,7 @@ export default function HomePage() {
 
     return (
         <>
-<div className="bg-white py-24 sm:py-32">
+<div className="bg-white py-24 sm:py-32 fade-in">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* slideshow*/}
         <div className="slideshow">
@@ -69,7 +69,7 @@ export default function HomePage() {
         </div>
 
         {/*about us*/}
-        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none  ">
           <div className="p-8 sm:p-10 lg:flex-auto text-center">
             <h2 className="text-2xl font-serif tracking-tight text-gray-900 font-bold">Za Vas ustvarjamo proprostejši dostop do digitalnih in spletnih storitev</h2>
             <p className="mt-6 text-base leading-7 text-gray-600 font-serif">
