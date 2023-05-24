@@ -11,4 +11,7 @@
     .registration-second {
         clip-path: polygon(100% 100%, 5% 100%, 100% 5%);
     }
+    .test:-webkit-autofill, .test:-webkit-autofill:hover, .test:-webkit-autofill:focus, .test:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
 }

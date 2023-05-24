@@ -10,14 +10,14 @@ type TextInputType = {
     readonly messageClass?: string
 }
 
-const inputClassDefault = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5";
-const inputClassError = "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500";
-const inputClassSuccess = "bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5";
+const inputClassDefault = "test block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 peer";
+const inputClassSuccess = "test block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 peer";
+const inputClassError = "test block py-2.5 px-0 w-full text-sm text-red-600 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 peer";
 
 
-const labelClassDefault = "block mb-2 text-sm font-medium text-gray-900";
-const labelClassError = "block mb-2 text-sm font-medium text-red-700 dark:text-red-500";
-const labelClassSuccess = "block mb-2 text-sm font-medium text-green-700";
+const labelClassDefault = "z-50 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6";
+const labelClassSuccess = "z-50 absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6";
+const labelClassError = "z-50 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6";
 
 const messageClassError = "mt-2 text-sm text-red-600 font-medium"
 const messageClassSuccess = "mt-2 text-sm text-green-600 font-medium"
@@ -54,10 +54,10 @@ export default function InputWithLabel(
         required,
         event,
         message,
-    }:{
+    }: {
         // inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
         handleChange: (event: ChangeEvent<HTMLInputElement>) => void,
-        value: string,
+        value?: string,
         label: string,
         name: string,
         type: HTMLInputTypeAttribute,
@@ -69,18 +69,23 @@ export default function InputWithLabel(
 
 
     return (
-        <div>
-            <label htmlFor={name} className={event?.labelClass??defaultType.labelClass}>{label}</label>
+        <div className="relative z-0">
             <input
-                type={type}
+                type= {type}
                 name={name}
+                id={name}
+                placeholder=" "
                 value={value}
                 onChange={handleChange}
                 className={event?.inputClass??defaultType.inputClass}
-                placeholder={placeholder}
                 required={required}
             />
-            {message != undefined && event != undefined?<p className={event.messageClass}>{message}</p>:null}
+            <label
+                htmlFor={name}
+                className={event?.labelClass??defaultType.labelClass}>
+                {label}
+            </label>
+            {/*message != undefined && event != undefined?<p className={event.messageClass}>{message}</p>:null*/}
         </div>
     )
 }

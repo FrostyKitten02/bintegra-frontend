@@ -33,19 +33,19 @@ export default function RegisterPage() {
             <h2 className="text-3xl font-mono font-bold text-center mb-12">
                 Registracija v samopostrežni portal
             </h2>
-            <div className="flex w-full justify-center">
+            <div className="flex justify-center">
                 <div className="group md:w-[500px]">
-                    <div className="z-95 hidden md:block md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] rounded registration-first bg-gray-900 absolute w-[470px] h-[524px]"></div>
+                    <div className="z-95 hidden md:block md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] rounded registration-first bg-gray-900 absolute w-[470px] h-[505px]"></div>
                     <div
-                        className="z-60 hidden md:block rounded md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] registration-second bg-green-500 absolute w-[468px] h-[524px] ml-6 mt-6"></div>
+                        className="z-60 hidden md:block rounded md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] registration-second bg-green-500 absolute w-[470px] h-[505px] ml-6 mt-6"></div>
                     <div
-                        className="z-58 mt-5 ml-5 relative w-full max-w-[350px] sm:max-w-[450px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+                        className="z-58 sm:mt-5 sm:ml-5 relative w-full max-w-[350px] sm:max-w-[450px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
                         <form className="space-y-6"
                               onSubmit={handleSubmit}>
                             <h5 className="text-xl font-mono font-medium text-gray-900">
                                 Registracija
                             </h5>
-                            <hr/>
+                            <hr className="pb-6"/>
                             <InputWithLabel
                                 handleChange={handleChange}
                                 value={user.email ?? ""}
@@ -71,7 +71,7 @@ export default function RegisterPage() {
                             <InputWithLabel
                                 handleChange={handleChange}
                                 value={user.repeatPassword ?? ""}
-                                label="Geslo"
+                                label="Ponovno geslo"
                                 name="repeatPassword"
                                 type="password"
                                 placeholder="••••••••"
@@ -79,20 +79,20 @@ export default function RegisterPage() {
                                 message={"Gesli se ne ujemata!"}
                                 required
                             />
-                            <div className="flex items-start">
+                            <div className="flex items-start pt-10">
                                 <div className="flex items-start">
                                     <div className="flex items-center h-5">
                                         <input id="remember"
                                                type="checkbox"
                                                value=""
-                                               className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 hover:cursor-pointer"
+                                               className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-[0%] hover:cursor-pointer"
                                                required/>
                                     </div>
                                     <label htmlFor="remember"
-                                           className="ml-2 text-sm font-medium text-gray-900">
+                                           className="ml-3 text-sm font-medium text-gray-900">
                                         Strinjam se s
                                         <a className="ml-auto text-sm text-blue-700 hover:underline hover:cursor-pointer">
-                                            { " pogoji poslovanja"}
+                                            {" pogoji poslovanja."}
                                         </a>
                                     </label>
                                 </div>
