@@ -19,7 +19,7 @@ export default function UserDropdown() {
                 <span className="block truncate text-sm font-medium">bonnie@flowbite.com</span>
             </Dropdown.Header>
             <Dropdown.Item>
-                <Link to={Paths.USER_PROFILE}>User Profile</Link>
+                <Link to={Paths.USER_PROFILE_BASE_PATH}>User Profile</Link>
             </Dropdown.Item>
             <Dropdown.Item>
                 <Link to={Paths.REGISTER}>Register</Link>
