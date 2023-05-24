@@ -3,3 +3,9 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+@layer utilities {
+    .registration_prvi {
+        clip-path: polygon(100% 0, 0 100%, 0 40%, 40% 0);
+    }
+}
