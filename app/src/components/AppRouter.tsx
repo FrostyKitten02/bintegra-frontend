@@ -10,7 +10,10 @@ import Paths from "../Paths";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import UserProfile from "../template/UserProfilePageTemplate";
-import UserProfileMobileOverviewPage from "../pages/UserProfileMobileOverviewPage";
+import UserProfileMobileOverviewPage from "../pages/profile/UserProfileMobileOverviewPage";
+import UserProfileDefaultPage from "../pages/profile/UserProfileDefaultPage";
+import UserProfileInternetOverviewPage from "../pages/profile/UserProfileInternetOverviewPage";
+import UserProfileTvOverviewPage from "../pages/profile/UserProfileTvOverviewPage";
 
 
 export default function AppRouter() {
@@ -33,16 +36,24 @@ export default function AppRouter() {
                     element: <RegisterPage />,
                 },
                 {
-                    path: Paths.USER_PROFILE,
+                    path: Paths.USER_PROFILE_BASE_PATH,
                     element: <UserProfile />,
                     children: [
                         {
-                            path: Paths.USER_PROFILE,
-                            element: <div>user profile main page</div>,
+                            path: Paths.USER_PROFILE_BASE_PATH,
+                            element: <UserProfileDefaultPage />,
                         },
                         {
                             path: Paths.USER_PROFILE_MOBILE,
                             element: <UserProfileMobileOverviewPage />,
+                        },
+                        {
+                            path: Paths.USER_PROFILE_INTERNET,
+                            element: <UserProfileInternetOverviewPage />,
+                        },
+                        {
+                            path: Paths.USER_PROFILE_TV,
+                            element: <UserProfileTvOverviewPage />,
                         }
                     ]
                 },

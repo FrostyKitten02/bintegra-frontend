@@ -15,7 +15,6 @@ const NavItem = ({name, path}:{name: string, path: string}) => {
 }
 
 export default function NavigationBar() {
-    const navigate = useNavigate();
 
     return(
         <nav className="flex items-center sticky top-0 justify-center flex-wrap bg-gray-900 z-40">
@@ -27,7 +26,7 @@ export default function NavigationBar() {
                     <NavItem name={"Televizija"} path={Paths.TV_PLANS} />
                     <NavItem name={"Login"} path={Paths.LOGIN} />
                     <NavItem name={"Register"} path={Paths.REGISTER} />
-                    <NavItem name={"Profile"} path={Paths.USER_PROFILE} />
+                    <NavItem name={"Profile"} path={Paths.USER_PROFILE_BASE_PATH} />
                 </div>
             </div>
         </nav>
