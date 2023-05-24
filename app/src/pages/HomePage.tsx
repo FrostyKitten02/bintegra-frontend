@@ -1,12 +1,6 @@
 import PicCard from "../components/PicCard";
 
 
-const includedFeatures = [
-    'Private forum access',
-    'Member resources',
-    'Entry to annual conference',
-    'Official member t-shirt',
-  ]
 export default function HomePage() {
 
     return (
@@ -102,7 +96,7 @@ export default function HomePage() {
       <PicCard
           image="https://www.gostudy.rs/wp-content/uploads/2023/03/Sta-je-Internet_1-min.jpg"
           section="FIKSNI INTERNET"
-          description="Nova ponudba in ugodne cene"
+          description="Nova ponudba in ugodne cene za vse uporabnike"
       />
     </div>
   </div>
