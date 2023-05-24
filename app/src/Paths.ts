@@ -19,7 +19,6 @@ export default class Paths {
     public static readonly USER_PROFILE_MOBILE = Paths.USER_PROFILE_BASE_PATH + "/mobilne-storitve";
     public static readonly USER_PROFILE_INTERNET = Paths.USER_PROFILE_BASE_PATH + "/internet";
     public static readonly USER_PROFILE_TV = Paths.USER_PROFILE_BASE_PATH + "/televizija";
-
 }
 
 
