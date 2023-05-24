@@ -1,6 +1,7 @@
 import Paths from "../Paths";
 import {useNavigate} from "react-router-dom";
 import UserDropdown from "./UserDropdown";
+import MobileUserDropdown from "./MobileUserDropdown";
 
 
 export default function UserNavBar() {
@@ -20,7 +21,7 @@ export default function UserNavBar() {
             </div>
             <div className="block sm:hidden w-full pt-2">
                 <div className="">
-                    dropdown za telefon
+                   <MobileUserDropdown />
                 </div>
             </div>
         </nav>
