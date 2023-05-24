@@ -5,7 +5,10 @@
 @import "tailwindcss/utilities";
 
 @layer utilities {
-    .registration_prvi {
-        clip-path: polygon(100% 0, 0 100%, 0 40%, 40% 0);
+    .registration-first {
+        clip-path: polygon(0 0, 0 95%, 95% 0);
+    }
+    .registration-second {
+        clip-path: polygon(100% 100%, 5% 100%, 100% 5%);
     }
 }
