@@ -22,7 +22,7 @@ export default function FancyPlanCard ({features, name, price, priceInterval}:{f
             </div>
             <div className="absolute bg-sage-green z-19 sm:group-hover:scale-110 ease-in-out duration-700 polygon-diagonal-second h-80 w-80 sm:h-96 sm:w-96">
             </div>
-            <div className="transition min-w-[360px] min-h-[400px] sm:hover:scale-105 duration-1000 z-20 mt-4 ml-4 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+            <div className="transition max-w-[300px] max-h-auto md:min-w-[350px] md:min-h-auto sm:hover:scale-105 duration-1000 z-20 mt-4 ml-4 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
                 <div className="relative h-full">
                     <div className="mb-20">
                         <h5 className="mb-4 text-xl font-mono font-bold text-gray-900">{name}</h5>
