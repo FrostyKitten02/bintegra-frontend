@@ -15,7 +15,7 @@ export default function UserDropdown() {
             </>
         }>
             <Dropdown.Header>
-                <span className="block text-sm">Bonnie Green</span>
+                <span className="block text-sm">user</span>
                 <span className="block truncate text-sm font-medium">bonnie@flowbite.com</span>
             </Dropdown.Header>
             <Dropdown.Item>
