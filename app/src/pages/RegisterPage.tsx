@@ -35,9 +35,8 @@ export default function RegisterPage() {
             </h2>
             <div className="flex justify-center">
                 <div className="group md:w-[500px]">
-                    <div className="z-95 hidden md:block md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] rounded registration-first bg-gray-900 absolute w-[470px] h-[505px]"></div>
-                    <div
-                        className="z-60 hidden md:block rounded md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] registration-second bg-green-500 absolute w-[470px] h-[505px] ml-6 mt-6"></div>
+                    <div className="z-59 hidden md:block md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] rounded registration-first bg-gray-900 absolute w-[470px] h-[505px]"></div>
+                    <div className="z-60 hidden md:block rounded md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] registration-second bg-green-500 absolute w-[470px] h-[505px] ml-6 mt-6"></div>
                     <div
                         className="z-58 sm:mt-5 sm:ml-5 relative w-full max-w-[350px] sm:max-w-[450px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
                         <form className="space-y-6"
