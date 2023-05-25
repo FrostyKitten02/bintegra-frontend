@@ -14,6 +14,10 @@ module.exports = {
               '2xs': '400px',
           }
       },
+      colors: {
+          "sage-green": "#7dcfb6",
+          "dark-sage-green": "#3e665a"
+      },
   },
   plugins: [
       require('flowbite/plugin')

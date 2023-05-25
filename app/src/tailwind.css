@@ -14,4 +14,10 @@
     .test:-webkit-autofill, .test:-webkit-autofill:hover, .test:-webkit-autofill:focus, .test:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
     }
+    .polygon-diagonal {
+        clip-path: polygon(100% 0, 0 100%, 0 40%, 40% 0);
+    }
+    .polygon-diagonal-second {
+        clip-path: polygon(94% 0, 0 94%, 0 60%, 60% 0);
+    }
 }
