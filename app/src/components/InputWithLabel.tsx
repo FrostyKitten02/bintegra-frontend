@@ -54,6 +54,7 @@ export default function InputWithLabel(
         required,
         event,
         message,
+        disabled,
     }:{
         // inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
         handleChange: (event: ChangeEvent<HTMLInputElement>) => void,
@@ -65,6 +66,7 @@ export default function InputWithLabel(
         required?: boolean,
         event?: TextInputType
         message?: string
+        disabled?: boolean
     }) {
 
 
@@ -79,6 +81,7 @@ export default function InputWithLabel(
                 className={event?.inputClass??defaultType.inputClass}
                 placeholder={placeholder}
                 required={required}
+                disabled={disabled}
             />
             {message != undefined && event != undefined?<p className={event.messageClass}>{message}</p>:null}
         </div>
