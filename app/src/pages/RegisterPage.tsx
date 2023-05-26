@@ -30,7 +30,7 @@ export default function RegisterPage() {
 
     return (
         <div className="mb-32 text-gray-800 grid justify-items-center pt-12">
-            <h2 className="text-3xl font-mono font-bold text-center mb-12">
+            <h2 className="text-3xl  font-bold text-center mb-12">
                 Registracija v samopostrežni portal
             </h2>
             <div className="flex justify-center">
@@ -41,7 +41,7 @@ export default function RegisterPage() {
                         className="z-58 sm:mt-5 sm:ml-5 relative w-full max-w-[350px] sm:max-w-[450px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
                         <form className="space-y-6"
                               onSubmit={handleSubmit}>
-                            <h5 className="text-xl font-mono font-medium text-gray-900">
+                            <h5 className="text-xl  font-medium text-gray-900">
                                 Registracija
                             </h5>
                             <hr className="pb-6"/>
