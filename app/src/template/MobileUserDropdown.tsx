@@ -6,7 +6,7 @@ import Paths from "../Paths";
 const UserDropdownItem = ({ name, path }: { name:string, path:string }) => {
     const navigation = useNavigate();
     return(
-        <li className = "text-right py-2 font-mono border-t border-t-gray-300">
+        <li className = "text-right py-2  border-t border-t-gray-300">
             <a className = " "
                onClick={ () => navigation(path) }>
                 {name}

@@ -33,7 +33,7 @@ export default function HomePage() {
               </svg>
             </div>
             <div className="p-6">
-              <p className="mb-4 text-base font-bold font-mono text-800">Aktivirajte naročniški portal</p>
+              <p className="mb-4 text-base font-bold  text-800">Aktivirajte naročniški portal</p>
             </div>
           </div>
           <div>
@@ -45,7 +45,7 @@ export default function HomePage() {
               </svg>
             </div>
             <div className="p-6">
-              <p className="mb-4 text-base font-bold font-mono text-800">5G omrežje vsepovsod po svetu</p>
+              <p className="mb-4 text-base font-bold  text-800">5G omrežje vsepovsod po svetu</p>
             </div>
           </div>
           <div>
@@ -57,7 +57,7 @@ export default function HomePage() {
               </svg>
             </div>
             <div className="p-6">
-              <p className="mb-4 text-base font-bold font-mono text-800">Televizijski paketi</p>
+              <p className="mb-4 text-base font-bold  text-800">Televizijski paketi</p>
             </div>
           </div>
         </div>
@@ -65,8 +65,8 @@ export default function HomePage() {
         {/*about us*/}
         <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none  ">
           <div className="p-8 sm:p-10 lg:flex-auto text-center">
-            <h2 className="text-2xl font-mono tracking-tight text-gray-900 font-bold">Za Vas ustvarjamo proprostejši dostop do digitalnih in spletnih storitev</h2>
-            <p className="mt-6 text-base leading-7 text-gray-600 font-mono">
+            <h2 className="text-2xl  tracking-tight text-gray-900 font-bold">Za Vas ustvarjamo proprostejši dostop do digitalnih in spletnih storitev</h2>
+            <p className="mt-6 text-base leading-7 text-gray-600 ">
               Samopostrežni portal je najnaprednejši slovenski ponudnik najsodobnejših IKT-storitev in rešitev.
               <br/>
               Strmimo k temu, da olajšamo dostop do digitalnih storitev naše poslovalnice, ter lažje in hitrejše komuniciranje s strankami.
