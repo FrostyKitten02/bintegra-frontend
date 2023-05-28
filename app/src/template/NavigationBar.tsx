@@ -8,7 +8,7 @@ const NavItem = ({name, path}: { name: string, path: string}) => {
     const navigate = useNavigate();
 
     return (
-        <a className="hover:bg-white mx-2 py-4 px-4 transition ease-in-out hover:scale-110 duration-500 block lg:inline-block text-xl text-white hover:text-gray-900 hover:cursor-pointer"
+        <a className=" py-3 px-4 mx-2 border-b-2 border-white hover:border-b-2 hover:border-gray-900 transition ease-in-out hover:scale-110 duration-500 block lg:inline-block text-xl hover:text-gray-900 hover:cursor-pointer"
            aria-current="page"
            onClick={() => {
                navigate(path)
@@ -23,8 +23,8 @@ export default function NavigationBar() {
     const [toggleMenuState, setToggleMenuState] = useState<boolean>(false);
 
     return (
-        <nav className="flex items-center sticky top-0 justify-center flex-wrap bg-gray-900 z-40">
-            <button onClick={()=>{setToggleMenuState(prev=>!prev)}} className="text-white block lg:hidden w-full">
+        <nav className="flex items-center sticky top-0 justify-center flex-wrap bg-gray-50 z-40">
+            <button onClick={()=>{setToggleMenuState(prev=>!prev)}} className="text-gray-900 block lg:hidden w-full">
                 <Bars3Icon className="text-white h-10 ml-10 my-2"/>
             </button>
 
@@ -36,6 +36,7 @@ export default function NavigationBar() {
                     <NavItem name={"Televizija"} path={Paths.TV_PLANS}/>
                 </div>
             </div>
+            <hr />
         </nav>
     )
 }
