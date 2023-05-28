@@ -18,10 +18,36 @@
         clip-path: polygon(100% 0, 0 100%, 0 40%, 40% 0);
     }
     .polygon-diagonal-second {
-        clip-path: polygon(94% 0, 0 94%, 0 60%, 60% 0);
+        clip-path: polygon(90% 0, 0 90%, 0 60%, 60% 0);
+    }
+    .nav-background {
+        clip-path: polygon(0 85%, 89% 85%, 91% 50%, 100% 50%, 100% 100%, 0 100%);
+
+    }
+    .nav-second-bg {
+        clip-path: polygon(77% 0, 76% 20%, 9% 20%, 7% 47%, 0 47%, 0 0);
+    }
+    .nav-green-bg {
+        clip-path: polygon(83% 0, 81% 37%, 34% 39%, 34% 0);
+
+    }
+    .temp-nav {
+        clip-path: polygon(83% 0, 81% 22%, 0 22%, 0 0);
+
+    }
+    .nav-a {
+        clip-path: polygon(0 0, 9% 0, 5% 100%, 0 100%);
+
+    }
+    .title-a {
+        font-family: "Book Antiqua";
+        font-weight: bold;
+        letter-spacing: 2px;
+
     }
 }
 
 #root {
-    font-family: "Arial";
+    font-family: "Bahnschrift Light";
+    letter-spacing: 1px;
 }

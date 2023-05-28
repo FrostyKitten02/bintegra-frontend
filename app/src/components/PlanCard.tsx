@@ -15,7 +15,7 @@ const Feature = ({name, disabled}:{name: string, disabled?: boolean})=>{
         </li>
     )
 };
-export default function FancyPlanCard ({features, name, price, priceInterval}:{features: string[], name: string, price: number, priceInterval: PriceInterval}) {
+export default function PlanCard ({features, name, price, priceInterval}:{features: string[], name: string, price: number, priceInterval: PriceInterval}) {
     return(
         <div className="w-full flex max-w-sm group">
             <div className="sm:group-hover:scale-[120%] ease-in-out absolute duration-700 bg-gray-900 z-19 polygon-diagonal h-60 w-60 md:h-80 md:w-80">
@@ -25,7 +25,7 @@ export default function FancyPlanCard ({features, name, price, priceInterval}:{f
             <div className="transition w-[300px] max-h-auto md:w-[350px] md:min-h-auto sm:hover:scale-105 duration-1000 z-20 m-4 p-4 bg-white border border-gray-300 rounded-lg shadow sm:p-8">
                 <div className="relative h-full">
                     <div className="mb-20">
-                        <h5 className="mb-4 text-xl  font-bold text-gray-900">{name}</h5>
+                        <h5 className="mb-4 text-xl font-bold text-gray-900">{name}</h5>
                         <hr className="pb-4 gray-400 border-gray-300" />
                         <div className="flex  items-baseline text-black">
                             <span className="text-5xl pr-1 font-extrabold tracking-tight">{price}</span>
