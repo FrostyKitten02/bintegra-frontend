@@ -77,7 +77,7 @@ export default function InputWithLabel(
                 name={name}
                 id={name}
                 placeholder=" "
-                value={value}
+                value={value??""}
                 onChange={handleChange}
                 className={event?.inputClass??defaultType.inputClass}
                 required={required}
