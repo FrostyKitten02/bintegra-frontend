@@ -8,8 +8,8 @@ export default function PicCard({ image, section, description }: { image: string
                     <img className="w-full rounded-lg" src={image} alt="Card Image" />
                 </div>
                 <div>
-                    <p className="mb-2 text-base font-bold text-800 font-mono">{section}</p>
-                    <p className="text-base text-gray-600 font-mono">{description}</p>
+                    <p className="mb-2 text-base font-bold text-800 ">{section}</p>
+                    <p className="text-base text-gray-600 ">{description}</p>
                 </div>
             </div>
         </div>
