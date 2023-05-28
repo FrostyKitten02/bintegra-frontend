@@ -1,19 +1,10 @@
 import InputWithLabel from "../../components/InputWithLabel";
 import {useState} from "react";
-import {keys} from "ts-transformer-keys";
-
-interface User {
-    firstname?: string,
-    lastname?: string,
-    email?: string,
-    password?: string,
-    newPassword?: string,
-}
-
+import {User} from "../../model/interfaces";
 
 export default function UserProfileDefaultPage() {
-    const [editing, setEditing] = useState<boolean>(false)
-    const [user, setUser] = useState<User>()
+    const [editing, setEditing] = useState<boolean>(false);
+    const [user, setUser] = useState<User>({});
 
     const handleStartEditiButtonClick = () => {
         setEditing(prevState => !prevState);
@@ -24,10 +15,9 @@ export default function UserProfileDefaultPage() {
         setEditing(prevState => !prevState);
     }
 
-
     return(
-        <div>
-            <div>
+        <div className="pt-20">
+            <div className="space-y-6 w-[300px]">
                 <h1>Vaši podatki</h1>
                 <InputWithLabel handleChange={()=>{}} value="Alen" label="Ime" name="firstname" type="text" placeholder={""} disabled={!editing} />
                 <InputWithLabel handleChange={()=>{}} value="Fridau" label="Priimek" name="lastname" type="text" placeholder={""} disabled={!editing} />

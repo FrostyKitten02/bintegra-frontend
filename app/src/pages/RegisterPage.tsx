@@ -1,6 +1,6 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import {User} from "./LoginPage";
 import InputWithLabel, {errorType} from "../components/InputWithLabel";
+import {User} from "../model/interfaces";
 
 
 export default function RegisterPage() {

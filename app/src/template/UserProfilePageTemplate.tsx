@@ -12,7 +12,7 @@ export default function UserProfilePageTemplate() {
                 <UserProfileSideNavigation />
             </div>
             {/*main content*/}
-            <div>
+            <div className="flex justify-center w-full">
                 <Outlet />
             </div>
         </div>

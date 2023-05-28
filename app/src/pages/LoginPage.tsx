@@ -1,26 +1,16 @@
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useRef, useState} from "react";
 import InputWithLabel from "../components/InputWithLabel";
 import {useNavigate} from "react-router-dom";
 import Paths from "../Paths";
-
-
-export interface User {
-    email?: string;
-    password?: string;
-    repeatPassword?: string;
-    terms?: boolean;
-}
+import {User} from "../model/interfaces";
+import FormHandler from "../Util/FormHandler";
 
 
 export default function LoginPage() {
     const navigate = useNavigate();
-
     const [user, setUser] = useState<User>({});
-
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        const atribute = event.target.name;
-        setUser(prevState => ({...prevState, [atribute]: value}));
+        setUser(prevState => (FormHandler.handleInputChange(event, prevState)));
     }
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -73,7 +63,7 @@ export default function LoginPage() {
                                                type="checkbox"
                                                value=""
                                                className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-[0%] hover:cursor-pointer"
-                                               required/>
+                                        />
                                     </div>
                                     <label
                                         htmlFor="remember"

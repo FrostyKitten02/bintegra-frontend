@@ -1,40 +1,32 @@
-import {ChangeEvent, Dispatch, FormEvent, HTMLInputTypeAttribute, SetStateAction} from "react";
+import {ChangeEvent, HTMLInputTypeAttribute} from "react";
 
 
-export class FormHandler<T> {
-    private state: [T, Dispatch<SetStateAction<T>>];
+export default class FormHandler {
 
-    constructor(state: [T, Dispatch<SetStateAction<T>>]) {
-        this.state = state;
-    }
-
-
-    public handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    public static handleInputChange<T>(event: ChangeEvent<HTMLInputElement>, obj: T): T {
         const value = event.target.value;
         const name = event.target.name;
         const type: HTMLInputTypeAttribute = event.target.type;
-
-
+        return this.setAtribute<T>(name, value, type, obj);
     }
 
-    public handleSubmit(event: FormEvent<HTMLFormElement>) {
-
-    }
-
-    private setAtribute(key: string, value: string, type: HTMLInputTypeAttribute) {
+    private static setAtribute<T>(key: string, value: string, type: HTMLInputTypeAttribute, obj: T): T {
         const stringTypes = ["email", "password", "text"];
-        const numberTypes = ["number"]
+        const numberTypes = ["number"];
 
         if (stringTypes.includes(type)) {
-            //TODO: try parsing!!!!
-
+            return {...obj, [key]: value};
         } else if (numberTypes.includes(type)) {
+            try {
+                if (!Number.isNaN(value)) {
+                    return {...obj, [key]: Number.parseFloat(value)};
+                }
+            } catch (e) {
 
+            }
         }
-
-
+        return obj;
     }
-
 }
 
 
