@@ -14,15 +14,9 @@ export default function UserDropdown() {
             arrowIcon={false}
             trigger="hover"
             label={
-                <>
-                    <UserCircleIcon
-                        className="transition ease-in-out hover:scale-110 duration-300 h-8 w-8 text-white"/>
-                    <span
-                        className="text-white px-2">
-                        Račun
-                    </span>
-                </>
-            }>
+                    <UserCircleIcon className="transition ease-in-out hover:scale-110 duration-300 h-8 w-8 text-white"/>
+            }
+        >
             <Dropdown.Header>
                 <span className="block p-1 text-sm">Uporabnisko ime</span>
             </Dropdown.Header>
