@@ -43,7 +43,11 @@
         font-family: "Book Antiqua";
         font-weight: bold;
         letter-spacing: 2px;
-
+    }
+    .glass-background {
+        background: rgba(209, 213, 219, 0.17);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
     }
     .button-default {
         @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:cursor-not-allowed disabled:hover:bg-gray-700 disabled:bg-gray-700
