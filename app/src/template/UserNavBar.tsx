@@ -7,11 +7,9 @@ import MobileUserDropdown from "./MobileUserDropdown";
 export default function UserNavBar() {
     const navigate = useNavigate();
     return (
-        <div className="relative bg-gray-900">
-            <div className="absolute w-full h-full">
-            </div>
+        <div className="relative bg-gray-900 px-5">
             <div className="relative z-50 w-full h-full">
-                <nav className="flex px-10 items-center justify-between flex-wrap bg-transparent lg:px-36">
+                <nav className="flex items-center justify-between flex-wrap bg-transparent">
                     <div className="flex items-center flex-grow bg-transparent text-white">
                         <a
                             className="transition ease-in-out hover:scale-105 duration-200 title-a font-semibold text-xl tracking-tight hover:cursor-pointer"
@@ -32,7 +30,6 @@ export default function UserNavBar() {
                     </div>
                 </nav>
             </div>
-            <hr />
         </div>
     )
 }
