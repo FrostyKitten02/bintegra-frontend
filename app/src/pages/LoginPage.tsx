@@ -1,6 +1,6 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import InputWithLabel from "../components/InputWithLabel";
-import {useNavigate} from "react-router-dom";
+import InputWithLabel, {errorType} from "../components/InputWithLabel";
+import {Link, useNavigate} from "react-router-dom";
 import Paths from "../Paths";
 
 
@@ -29,77 +29,81 @@ export default function LoginPage() {
         setUser({});
     }
 
+
     return (
-        <div className="mb-32 text-gray-800 grid justify-items-center pt-12">
-            <h2 className="text-3xl font-bold text-center mb-12">Prijava v samopostrežni portal</h2>
-            <div className="flex justify-center">
-                <div className="group md:w-[500px]">
-                    <div
-                        className="z-59 hidden md:block md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] rounded registration-first bg-gray-900 absolute w-[470px] h-[505px]"></div>
-                    <div
-                        className="z-59 hidden md:block rounded md:group-hover:transition md:group-hover:duration-700 duration-700 md:group-hover:scale-[103%] registration-second bg-green-500 absolute w-[468px] h-[505px] ml-6 mt-6"></div>
-                    <div
-                        className="z-58 sm:mt-5 sm:ml-5 relative w-full max-w-[350px] sm:max-w-[450px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
-                        <form className="space-y-6"
-                              onSubmit={handleSubmit}>
-                            <h5 className="text-xl font-medium text-gray-900">
-                                Prijava
-                            </h5>
-                            <hr className="pb-5"/>
-                            <InputWithLabel
-                                handleChange={handleChange}
-                                value={user.email ?? ""}
-                                label="E-mail"
-                                name="email"
-                                type="email"
-                                placeholder="E-mail naslov"
-                                required
-                            />
+        <div className="mb-32 grid grid-cols-6 pt-12">
+            <div className="flex self-center justify-center lg:justify-end pr-5 col-span-6 lg:col-span-3">
+                <img
+                    className=" w-[60%] md:w-[40%] lg:w-[60%]"
+                    alt=""
+                    src="/pictures/login_img.avif"
+                />
+            </div>
+            <div className="flex m-8 md:m-0 justify-center lg:justify-start group col-span-6 lg:col-span-3">
+                <div
+                    className="z-58 sm:mt-5 sm:ml-5 relative w-full max-w-[350px] sm:max-w-[450px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+                    <form className="space-y-6"
+                          onSubmit={handleSubmit}>
+                        <h5 className="title-a text-2xl uppercase text-gray-900">
+                            Prijava
+                        </h5>
+                        <hr className="pb-5"/>
+                        <InputWithLabel
+                            handleChange={handleChange}
+                            value={user.email ?? ""}
+                            label="E-mail"
+                            name="email"
+                            type="email"
+                            placeholder="E-mail naslov"
+                            required
+                        />
 
-                            <InputWithLabel
-                                handleChange={handleChange}
-                                value={user.password ?? ""}
-                                label="Geslo"
-                                name="password"
-                                type="password"
-                                placeholder="••••••••"
-                                required
-                            />
+                        <InputWithLabel
+                            handleChange={handleChange}
+                            value={user.password ?? ""}
+                            label="Geslo"
+                            name="password"
+                            type="password"
+                            placeholder="••••••••"
+                            required
+                        />
 
-                            <div className="flex items-start pt-16">
-                                <div className="flex items-start">
-                                    <div className="flex items-center h-5">
-                                        <input id="remember"
-                                               type="checkbox"
-                                               value=""
-                                               className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-[0%] hover:cursor-pointer"
-                                               required/>
-                                    </div>
-                                    <label
-                                        htmlFor="remember"
-                                        className="ml-3 text-sm font-medium text-gray-900">
-                                        Zapomni si me
-                                    </label>
+                        <div className="flex items-start pt-16">
+                            <div className="flex items-start">
+                                <div className="flex items-center h-5">
+                                    <input id="remember"
+                                           type="checkbox"
+                                           value=""
+                                           className="w-4 h-4 checked:bg-sage-green border border-gray-300 rounded bg-gray-50 focus:ring-[0%] hover:cursor-pointer"
+                                           required/>
                                 </div>
-                                <a className="ml-auto text-sm text-blue-700 hover:underline hover:cursor-pointer">Pozabljeno
-                                    geslo?</a>
+                                <label
+                                    htmlFor="remember"
+                                    className="ml-3 text-sm font-medium text-gray-900">
+                                    Zapomni si me
+                                </label>
                             </div>
-                            <button type="submit"
-                                    className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                Prijavi se
-                            </button>
-                            <div className="text-sm font-medium text-gray-500">
-                                Še nimate računa?
-                                <a
-                                    className="text-blue-700 hover:underline hover:cursor-pointer pl-2"
-                                    onClick={() => {
-                                        navigate(Paths.REGISTER)
-                                    }}>
-                                    Ustvari račun.
-                                </a>
-                            </div>
-                        </form>
-                    </div>
+                            <a className="ml-auto text-sm text-sage-green hover:underline hover:cursor-pointer">
+                                Pozabljeno geslo?
+                            </a>
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full text-white bg-sage-green hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                            Potrdi prijavo
+                        </button>
+                        <div className="text-sm font-medium text-gray-500">
+                            Še nimate računa?
+                            <Link
+                                className="text-sage-green hover:underline hover:cursor-pointer pl-2"
+                                onClick={() => {
+                                    window.scroll(0, 0)
+                                }}
+                                to={Paths.REGISTER}>
+                                Ustvari račun.
+                            </Link>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
