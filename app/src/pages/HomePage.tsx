@@ -7,13 +7,14 @@ export default function HomePage() {
     return (
         <div className="bg-white py-6 sm:py-12 md:mx-20">
             <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="">
+                <div className="flex justify-center">
                     <img
                         alt=""
-                        className="h-64 md:h-96"
-                        src="https://img.freepik.com/free-vector/curiosity-concept-illustration_114360-10847.jpg?w=1380&t=st=1685294354~exp=1685294954~hmac=4f91baf8915476907f23b5d95b81877570e3a7993203c6c86a8bd283de28ba5d"/>
+                        className="h-56 md:h-72 lg:h-96"
+                        src="/pictures/home_page_first.avif"
+                    />
                 </div>
-                <div className="self-center pt-10 lg:pt-0 px-10 md:px-0 md:mr-[200px]">
+                <div className="pt-10 self-center lg:pt-0 px-10 md:px-28 md:mr-[200px]">
                     <span className="inline text-3xl md:w-20 title-a md:text-5xl pr-4">
                         SAMOPOSTREŽNI PORTAL
                     </span>
@@ -100,7 +101,7 @@ export default function HomePage() {
                     <img
                         className="w-[90%] md:w-[50%] lg:w-[100%]"
                         alt=""
-                        src="https://img.freepik.com/free-vector/files-sent-concept-illustration_114360-3629.jpg?w=826&t=st=1685303070~exp=1685303670~hmac=a8ae3a8a48fdcf9cd203b32d2b69eee8bc76260b471ad852b39d395c3815f3b9"
+                        src="/pictures/home_page_second.avif"
                     />
                 </div>
             </div>

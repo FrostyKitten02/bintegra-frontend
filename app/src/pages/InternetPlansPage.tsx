@@ -16,7 +16,7 @@ export default function InternetPlansPage() {
                 <img
                     className="w-[70%] sm:w-[50%] md:w-[30%]"
                     alt=""
-                    src="https://img.freepik.com/free-vector/connected-world-concept-illustration_114360-3621.jpg?w=826&t=st=1685352073~exp=1685352673~hmac=609f683fde9e45ffafa37c4cda6a3ebebe408cc976351c74ee99bab4d53697d0"
+                    src="/pictures/internet_img.avif"
                 />
             </div>
             <div className="flex justify-center">

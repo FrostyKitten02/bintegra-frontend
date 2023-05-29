@@ -34,7 +34,7 @@ export default function RegisterPage() {
                 <img
                     className=" w-[60%] md:w-[40%] lg:w-[60%]"
                     alt=""
-                    src="https://img.freepik.com/free-vector/placeholder-concept-illustration_114360-4847.jpg?w=826&t=st=1685362617~exp=1685363217~hmac=302f6e12480e23c32a1e1a7eca1128c759be607e21a38cb07335e0efae889c71"
+                    src="/pictures/register_img.avif"
                 />
             </div>
             <div className="flex m-8 md:m-0 justify-center lg:justify-start group col-span-6 lg:col-span-3">

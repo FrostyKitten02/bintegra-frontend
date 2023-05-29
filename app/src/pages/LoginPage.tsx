@@ -36,7 +36,7 @@ export default function LoginPage() {
                 <img
                     className=" w-[60%] md:w-[40%] lg:w-[60%]"
                     alt=""
-                    src="https://img.freepik.com/free-vector/computer-login-concept-illustration_114360-7892.jpg?w=826&t=st=1685364849~exp=1685365449~hmac=7f4eff68c23671fdf3e57f046e7ae97901b0f57231605fd3fcb6789810278365"
+                    src="/pictures/login_img.avif"
                 />
             </div>
             <div className="flex m-8 md:m-0 justify-center lg:justify-start group col-span-6 lg:col-span-3">

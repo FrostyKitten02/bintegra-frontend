@@ -15,7 +15,7 @@ export default function TelevisionPlansPage(){
                 <img
                     className="w-[70%] sm:w-[50%] md:w-[30%]"
                     alt=""
-                    src="https://img.freepik.com/free-vector/home-cinema-concept-illustration_114360-4910.jpg?w=1380&t=st=1685352218~exp=1685352818~hmac=7145bec330a9d349e26feb28100837028d197a22ee9da6380b15f577a0f3e4d0"
+                    src="/pictures/television_img.avif"
                 />
             </div>
             <div className="flex justify-center">

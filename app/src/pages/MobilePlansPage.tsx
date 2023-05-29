@@ -15,7 +15,7 @@ export default function MobilePlansPage() {
                 <img
                     className="w-[70%] sm:w-[50%] md:w-[30%]"
                     alt=""
-                    src="https://img.freepik.com/free-vector/feed-concept-illustration_114360-4275.jpg?w=826&t=st=1685351183~exp=1685351783~hmac=ac6006f156214cdf3a9ca1f903fdaaf40d5cf838fc02d3e9e19131f09445fea2"
+                    src="/pictures/mobile_img.avif"
                 />
             </div>
             <div className="flex justify-center">

@@ -45,7 +45,7 @@
         letter-spacing: 2px;
     }
     .glass-background {
-        background: rgba(255, 255, 255, 0.17);
+        background: rgba(209, 213, 219, 0.17);
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
     }
