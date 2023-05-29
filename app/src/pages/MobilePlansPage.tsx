@@ -6,7 +6,7 @@ export default function MobilePlansPage() {
             <h2 className="text-3xl font-bold text-center mb-12">
                 Izberite paket
             </h2>
-            <div className="grid mx-12 relative md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-x-16">
+            <div className="grid mx-12 relative grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-x-16">
                 <PlanCard
                     features={["10 GB prenosa podatkov v Sloveniji", "Neomejeni SMS-i", "Neomejene klici v Sloveniji"]}
                     name={"Osnovni paket"}

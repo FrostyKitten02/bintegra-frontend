@@ -6,7 +6,7 @@ import {useState} from "react";
 
 const NavItem = ({name, path}: { name: string, path: string}) => {
     const navigate = useNavigate();
-
+    //onClick={() => window.scroll(0,0)}
     return (
         <a className=" py-3 px-4 mx-2 border-b-2 border-white hover:border-b-2 hover:border-gray-900 transition ease-in-out hover:scale-110 duration-500 block lg:inline-block text-xl hover:text-gray-900 hover:cursor-pointer"
            aria-current="page"
@@ -36,7 +36,6 @@ export default function NavigationBar() {
                     <NavItem name={"Televizija"} path={Paths.TV_PLANS}/>
                 </div>
             </div>
-            <hr />
         </nav>
     )
 }

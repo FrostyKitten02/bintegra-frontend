@@ -4,7 +4,7 @@ export default function TelevisionPlansPage(){
     return  (
         <div className="mb-32 text-gray-800 grid justify-center pt-12">
             <h2 className="text-3xl font-bold text-center mb-12">Izberite paket</h2>
-            <div className="grid lg:grid-cols-3 gap-6 lg:gap-x-12">
+            <div className="grid mx-12 relative grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-x-16">
                 <PlanCard
                     features={["150+ TV programov", "Ogled nazaj do 7 dni"]}
                     name={"Osnovni paket"}
