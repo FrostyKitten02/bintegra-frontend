@@ -11,6 +11,7 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import UserProfile from "../template/UserProfilePageTemplate";
 import UserProfileMobileOverviewPage from "../pages/UserProfileMobileOverviewPage";
+import SignOutPage from "../pages/SignOutPage";
 
 
 export default function AppRouter() {
@@ -61,6 +62,10 @@ export default function AppRouter() {
                 {
                     path: Paths.MOBILE_INTERNET_PLANS,
                     element: <MobileInternetPlans />,
+                },
+                {
+                    path: Paths.SIGN_OUT,
+                    element: <SignOutPage />,
                 },
             ]
         }

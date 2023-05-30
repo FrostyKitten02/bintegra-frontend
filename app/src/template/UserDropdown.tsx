@@ -35,7 +35,7 @@ export default function UserDropdown() {
             </Dropdown.Item>
             <Dropdown.Divider/>
             <Dropdown.Item>
-                <Link className="w-full p-1 h-full" to={Paths.HOME}>Sign out</Link>
+                <Link className="w-full p-1 h-full" to={Paths.SIGN_OUT}>Sign out</Link>
             </Dropdown.Item>
         </Dropdown>
     )
