@@ -2,7 +2,7 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import InputWithLabel, {errorType} from "../components/InputWithLabel";
 import {Link, useNavigate} from "react-router-dom";
 import Paths from "../Paths";
-
+import login_img from "../pictures/login_img.jpg";
 
 export interface User {
     email?: string;
@@ -36,7 +36,7 @@ export default function LoginPage() {
                 <img
                     className=" w-[60%] md:w-[40%] lg:w-[60%]"
                     alt=""
-                    src="/pictures/login_img.avif"
+                    src={login_img}
                 />
             </div>
             <div className="flex m-8 md:m-0 justify-center lg:justify-start group col-span-6 lg:col-span-3">

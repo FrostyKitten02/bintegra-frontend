@@ -1,5 +1,5 @@
 import PlanCard from "../components/PlanCard";
-
+import internet_img from "../pictures/internet_img.jpg";
 
 export default function InternetPlansPage() {
     return (
@@ -16,7 +16,7 @@ export default function InternetPlansPage() {
                 <img
                     className="w-[70%] sm:w-[50%] md:w-[30%]"
                     alt=""
-                    src="/pictures/internet_img.avif"
+                    src={internet_img}
                 />
             </div>
             <div className="flex justify-center">
