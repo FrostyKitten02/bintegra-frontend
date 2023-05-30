@@ -14,9 +14,11 @@ export default class Paths {
 
 
 
+
     public static readonly USER_BASE_PATH = Paths.HOME + "/uporabnik";
     public static readonly USER_PROFILE = Paths.USER_BASE_PATH + "/profil";
     public static readonly USER_PROFILE_MOBILE = Paths.USER_PROFILE + "/mobilni";
+    public static readonly POGOSTA_VPRASANJA = Paths.HOME + "/vprasanja";
 
 }
 

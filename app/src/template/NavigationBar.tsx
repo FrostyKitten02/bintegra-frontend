@@ -28,13 +28,13 @@ export default function NavigationBar() {
                 <Bars3Icon className="text-gray-900 h-10 ml-10 my-2"/>
             </button>
             <div className="hidden lg:block">
-                <NavItem name={"Pogosta vprašanja"} path={Paths.HOME}/>
+                <NavItem name={"Pogosta vprašanja"} path={Paths.POGOSTA_VPRASANJA}/>
             </div>
             <div
                 className={`${!toggleMenuState ? "hidden" : "block"} w-full lg:flex lg:items-center m-0 sm:mx-12 lg:w-auto`}>
                 <div className="text-sm lg:flex-grow sm:w-full text-center sm:text-left">
                     <div className="inline block lg:hidden">
-                        <NavItem name={"Pogosta vprašanja"} path={Paths.HOME}/>
+                        <NavItem name={"Pogosta vprašanja"} path={Paths.POGOSTA_VPRASANJA}/>
                     </div>
                     <NavItem name={"Mobilina telefonija"} path={Paths.MOBILE_PLANS}/>
                     {/* <NavItem name={"Mobilni internet"} path={Paths.MOBILE_INTERNET_PLANS}/> */}

@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import Paths from "../Paths";
 
 
+
 export default function HomePage() {
 
     return (
@@ -105,30 +106,6 @@ export default function HomePage() {
                     />
                 </div>
             </div>
-            {/*
-                <div className="grid grid-cols-6 gap-14">
-                    <div className="col-span-2">
-                        <PicCard
-                            image="https://www.devicemagic.com/wp-content/uploads/2020/10/person_using_smartphone-2.jpg"
-                            section="5G MOBILNO OMREŽJE"
-                            description="Izboljšan prenos kakršnih koli vsebin po vsem svetu"
-                        />
-                    </div>
-                    <div className="col-span-2">
-                        <PicCard
-                            image="https://img.freepik.com/premium-photo/happy-hindu-guy-gambling-online-using-laptop_116547-19124.jpg"
-                            section="NAROČNIŠKI PORTAL"
-                            description="Prenovljen uporabniški portal za pregled vsebine"
-                        />
-                    </div>
-                    <div className="col-span-2">
-                        <PicCard
-                            image="https://www.gostudy.rs/wp-content/uploads/2023/03/Sta-je-Internet_1-min.jpg"
-                            section="FIKSNI INTERNET"
-                            description="Nova ponudba in ugodne cene za vse uporabnike"
-                        />
-                    </div>
-                </div>
-                */}
+
         </div>);
 }
