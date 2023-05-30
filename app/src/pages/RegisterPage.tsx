@@ -1,7 +1,7 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import {User} from "./LoginPage";
 import InputWithLabel, {errorType} from "../components/InputWithLabel";
-
+import register_img from "../pictures/register_img.jpg";
 
 export default function RegisterPage() {
     const [user, setUser] = useState<User>({});
@@ -34,7 +34,7 @@ export default function RegisterPage() {
                 <img
                     className=" w-[60%] md:w-[40%] lg:w-[60%]"
                     alt=""
-                    src="/pictures/register_img.avif"
+                    src={register_img}
                 />
             </div>
             <div className="flex m-8 md:m-0 justify-center lg:justify-start group col-span-6 lg:col-span-3">
