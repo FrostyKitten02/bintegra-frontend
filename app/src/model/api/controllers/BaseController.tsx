@@ -1,6 +1,8 @@
 import {AxiosRequestConfig} from "axios";
 
-
+//you should never create an instance of this class, it is used as a base class for other controllers
+//should be used as an abstract class
+//TODO maybe use abstract class insted of this!!
 export class BaseController<REQ> {
     // protected auth: string;
     private static readonly BASE_URL = "http://localhost:8080/o/sp/api/";

@@ -13,7 +13,7 @@ export class OffersController extends BaseController<OfferResponseDto> {
 
     public getActiveOffersByType(type: string): Promise<AxiosResponse<OfferResponseDto>> {
         const endpointUrl = "/active";
-        return axios.get<OfferResponseDto, AxiosResponse<OfferResponseDto>, OfferRequestDto>(this.getControllerFullUrl(endpointUrl,[type]), this.axiosConfig);
+        return axios.get<OfferResponseDto, AxiosResponse<OfferResponseDto, any>, OfferRequestDto>(this.getControllerFullUrl(endpointUrl,[type]), this.axiosConfig);
     }
 
 

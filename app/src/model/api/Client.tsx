@@ -1,5 +1,3 @@
-import {OffersController} from "./controllers/OffersController";
-
 
 export class Client {
     private readonly authKey: string;

@@ -16,12 +16,18 @@ const Feature = ({name, disabled}: { name: string, disabled?: boolean }) => {
         </li>
     )
 };
-export default function PlanCard({
-                                     features,
-                                     name,
-                                     price,
-                                     priceInterval
-                                 }: { features: string[], name: string, price: number, priceInterval: PriceInterval }) {
+export default function PlanCard(
+    {
+        features,
+        name,
+        price,
+        priceInterval
+    }: {
+        features: string[],
+        name: string,
+        price: number,
+        priceInterval: PriceInterval
+    }) {
     return (
         <div className="w-full flex max-w-sm group">
             <div
