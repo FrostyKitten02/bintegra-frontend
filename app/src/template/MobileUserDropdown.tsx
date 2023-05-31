@@ -44,7 +44,7 @@ export default function MobileUserDropdown() {
                         <UserDropdownItem name="Profil" path={Paths.USER_PROFILE} />
                         <UserDropdownItem name="Registracija" path={Paths.REGISTER} />
                         <UserDropdownItem name="Prijava" path={Paths.LOGIN} />
-                        <UserDropdownItem name={"Izpis"} path={Paths.HOME} />
+                        <UserDropdownItem name={"Izpis"} path={Paths.SIGN_OUT} />
 
                     </ul>
                 </div>
