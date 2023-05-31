@@ -9,6 +9,7 @@ import TelevisionPlansPage from "../pages/TelevisionPlansPage";
 import Paths from "../Paths";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import FrequentQuestions from "../pages/FrequentQuestionsPage";
 
 import SignOutPage from "../pages/SignOutPage";
 
@@ -18,7 +19,6 @@ import UserPortalDefaultPage from "../pages/profile/UserPortalDefaultPage";
 import UserPortalProfile from "../pages/profile/UserPortalProfile";
 import UserPortalTvOverviewPage from "../pages/profile/UserPortalTvOverviewPage";
 import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOverview";
-
 
 
 export default function AppRouter() {
@@ -83,6 +83,9 @@ export default function AppRouter() {
                     element: <MobileInternetPlans />,
                 },
                 {
+                    path: Paths.POGOSTA_VPRASANJA,
+                    element: <FrequentQuestions />,
+                }
                     path: Paths.SIGN_OUT,
                     element: <SignOutPage />,
                 },
