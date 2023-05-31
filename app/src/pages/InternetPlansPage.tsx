@@ -13,7 +13,6 @@ export default function InternetPlansPage() {
         new OffersController("authKey")
             .getActiveOffersByType("internet")
             .then((response) => {
-                console.log(response.data.offersWithPackageOffers);
                 setInternetOffers(response.data.offersWithPackageOffers??[]);
                 });
     }
@@ -22,11 +21,7 @@ export default function InternetPlansPage() {
         fetchInternetPlans();
     }
 
-    useEffect(() => {
-        console.log("useEffect");
-        console.log(internetOffers);
 
-    }, [internetOffers]);
 
 
     return (
