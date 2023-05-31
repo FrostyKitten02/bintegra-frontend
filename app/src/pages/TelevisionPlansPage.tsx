@@ -1,4 +1,5 @@
 import PlanCard from "../components/PlanCard";
+import television_img from "../pictures/television_img.jpg";
 
 export default function TelevisionPlansPage(){
     return  (
@@ -15,7 +16,7 @@ export default function TelevisionPlansPage(){
                 <img
                     className="w-[70%] sm:w-[50%] md:w-[30%]"
                     alt=""
-                    src="/pictures/television_img.avif"
+                    src={television_img}
                 />
             </div>
             <div className="flex justify-center">

@@ -41,10 +41,10 @@ export default function MobileUserDropdown() {
             <div className={`${!dropdownState ? "hidden" : "block"}`}>
                 <div>
                     <ul>
-                        <UserDropdownItem name="Profil" path={Paths.USER_PROFILE} />
+                        <UserDropdownItem name="Moj portal" path={Paths.USER_PORTAL_BASE_PATH} />
                         <UserDropdownItem name="Registracija" path={Paths.REGISTER} />
                         <UserDropdownItem name="Prijava" path={Paths.LOGIN} />
-                        <UserDropdownItem name={"Izpis"} path={Paths.HOME} />
+                        <UserDropdownItem name={"Izpis"} path={Paths.SIGN_OUT} />
 
                     </ul>
                 </div>
