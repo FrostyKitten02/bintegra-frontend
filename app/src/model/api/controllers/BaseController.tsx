@@ -37,7 +37,7 @@ export class BaseController<REQ> {
                 extraPath += "/" + pathParams[i];
             }
         }
-        console.log(endpointUrl);
+
         return BaseController.BASE_URL + this.CONTROLLER_URL + endpointUrl + extraPath;
     }
 

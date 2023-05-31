@@ -1,7 +1,8 @@
 import PlanCard from "../components/PlanCard";
 import internet_img from "../pictures/internet_img.jpg";
 import {OffersController} from "../model/api/controllers/OffersController";
-import {useEffect, useState} from "react";
+import {v4 as uuid} from "uuid";
+import {useState} from "react";
 import {OffersWithPackageOffersDto} from "../model/ResponseDtos";
 
 export default function InternetPlansPage() {
@@ -47,6 +48,7 @@ export default function InternetPlansPage() {
                         //TODO: display better data, price may not be correct, also show discount price!!!
                         internetOffers.map((offer) => {
                             return <PlanCard
+                                key={uuid()}
                                 features={["Hitrosti do " + offer?.downloadSpeed + " mbps do uporabnika", "Hitrosti do " + offer?.uploadSpeed + " mbps od uporabnika"]}
                                 name={offer?.title??"N/A"}
                                 price={offer?.packageOffers[0]?.basePrice??0}
