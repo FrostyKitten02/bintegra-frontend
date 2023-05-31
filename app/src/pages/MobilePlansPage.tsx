@@ -1,4 +1,5 @@
 import PlanCard from "../components/PlanCard";
+import mobile_img from "../pictures/mobile_img.jpg";
 
 export default function MobilePlansPage() {
     return (
@@ -15,7 +16,7 @@ export default function MobilePlansPage() {
                 <img
                     className="w-[70%] sm:w-[50%] md:w-[30%]"
                     alt=""
-                    src="/pictures/mobile_img.avif"
+                    src={mobile_img}
                 />
             </div>
             <div className="flex justify-center">

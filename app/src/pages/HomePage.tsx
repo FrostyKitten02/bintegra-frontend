@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import Paths from "../Paths";
-
+import home_page_first from "../pictures/home_page_first.jpg"
+import home_page_second from "../pictures/home_page_second.jpg"
 
 export default function HomePage() {
 
@@ -11,7 +12,7 @@ export default function HomePage() {
                     <img
                         alt=""
                         className="h-56 md:h-72 lg:h-96"
-                        src="/pictures/home_page_first.avif"
+                        src={home_page_first}
                     />
                 </div>
                 <div className="pt-10 self-center lg:pt-0 px-10 md:px-28 md:mr-[200px]">
@@ -101,7 +102,7 @@ export default function HomePage() {
                     <img
                         className="w-[90%] md:w-[50%] lg:w-[100%]"
                         alt=""
-                        src="/pictures/home_page_second.avif"
+                        src={home_page_second}
                     />
                 </div>
             </div>
