@@ -2,7 +2,7 @@
 
 
 
-export default function UserProfileMobileOverviewPage() {
+export default function UserPortalMobileOverviewPage() {
 
 
     return(

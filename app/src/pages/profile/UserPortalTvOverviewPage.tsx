@@ -2,7 +2,7 @@
 
 
 
-export default function UserProfileTvOverviewPage() {
+export default function UserPortalTvOverviewPage() {
 
     return(
         <>user tv overview page</>

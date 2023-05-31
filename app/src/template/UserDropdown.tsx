@@ -1,12 +1,13 @@
 import {UserCircleIcon} from "@heroicons/react/24/outline";
 import {Dropdown} from "flowbite-react";
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Paths from "../Paths";
 
 /*<UserCircleIcon className="transition ease-in-out hover:scale-110 duration-300 h-8 w-8 text-gray-500"/> */
 
 export default function UserDropdown() {
+    const navigate = useNavigate();
     return (
         <Dropdown
             color="white"
@@ -14,28 +15,43 @@ export default function UserDropdown() {
             arrowIcon={false}
             trigger="hover"
             label={
-                    <UserCircleIcon className="transition ease-in-out hover:scale-110 duration-300 h-8 w-8 text-white"/>
+                <UserCircleIcon className="transition ease-in-out hover:scale-110 duration-300 h-8 w-8 text-white"/>
             }
         >
             <Dropdown.Header>
-                <span className="block p-1 text-sm">Uporabnisko ime</span>
+                <span className="block p-1 text-sm">
+                    Uporabniško ime
+                </span>
             </Dropdown.Header>
-            <Dropdown.Item>
-                <Link className="w-full p-1 h-full" to={Paths.USER_PROFILE_BASE_PATH}>User Profile</Link>
+            <Dropdown.Item
+                onClick={() => navigate(Paths.USER_PORTAL_BASE_PATH)}
+            >
+                <span className="p-1">
+                    Moj portal
+                </span>
             </Dropdown.Item>
-            <Dropdown.Item>
-                <Link
-                    className="w-full p-1 h-full"
-                    to={Paths.REGISTER}>
-                    Register
-                </Link>
+            <Dropdown.Item
+                onClick={() => navigate(Paths.REGISTER)}
+            >
+                <span className="p-1">
+                    Registracija
+                </span>
             </Dropdown.Item>
-            <Dropdown.Item>
-                <Link className="w-full p-1 h-full" to={Paths.LOGIN}>Login</Link>
+            <Dropdown.Item
+                className=""
+                onClick={() => navigate(Paths.LOGIN)}
+            >
+                <span className="p-1">
+                    Prijava
+                </span>
             </Dropdown.Item>
             <Dropdown.Divider/>
-            <Dropdown.Item>
-                <Link className="w-full p-1 h-full" to={Paths.HOME}>Sign out</Link>
+            <Dropdown.Item
+             onClick={() => navigate("")}
+            >
+               <span className="p-1">
+                   Odjava
+               </span>
             </Dropdown.Item>
         </Dropdown>
     )

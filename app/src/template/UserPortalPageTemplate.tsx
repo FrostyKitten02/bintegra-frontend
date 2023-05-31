@@ -1,15 +1,15 @@
 import {Outlet} from "react-router-dom";
-import UserProfileSideNavigation from "../components/UserProfileSideNavigation";
+import UserPortalSideNavigation from "../components/UserPortalSideNavigation";
 
 
-export default function UserProfilePageTemplate() {
+export default function UserPortalPageTemplate() {
 
 
     return(
         <div className="flex">
             {/*sidebar za vsako storitev svoj tab*/}
             <div className="h-screen">
-                <UserProfileSideNavigation />
+                <UserPortalSideNavigation />
             </div>
             {/*main content*/}
             <div className="flex justify-center w-full">

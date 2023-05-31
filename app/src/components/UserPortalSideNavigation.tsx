@@ -19,10 +19,10 @@ function NavItem(
     const navigate = useNavigate();
 
     return (
-        <li className="hover:cursor-pointer">
+        <li className="hover:cursor-pointe">
             <a
                onClick={() => navigate(path)}
-               className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200">
+               className="flex items-center p-2 text-gray-900 rounded-lg duration-500 hover:bg-gray-200">
                 {icon}
                 <span className="flex-1 ml-3 whitespace-nowrap">{name}</span>
                 {notification ? <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">{notification}</span> : null}
@@ -40,7 +40,7 @@ const dashboardSvg = (
        </svg>
 );
 
-export default function UserProfileSideNavigation() {
+export default function UserPortalSideNavigation() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -59,10 +59,12 @@ export default function UserProfileSideNavigation() {
                    aria-label="Sidebar">
                 <div className="h-full px-3 py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
-                        <NavItem name="Domov" path={Paths.USER_PROFILE_BASE_PATH} icon={dashboardSvg}/>
-                        <NavItem name="Moje mobilne storitve" path={Paths.USER_PROFILE_MOBILE} icon={dashboardSvg}/>
-                        <NavItem name="Moj internet" path={Paths.USER_PROFILE_INTERNET} icon={dashboardSvg}/>
-                        <NavItem name="Moja televizija" path={Paths.USER_PROFILE_TV} icon={dashboardSvg}/>
+                        <NavItem name="Pregled" path={Paths.USER_PORTAL_BASE_PATH} icon={dashboardSvg}/>
+                        <NavItem name="Profil" path={Paths.USER_PORTAL_PROFILE} icon={dashboardSvg}/>
+                        <hr />
+                        <NavItem name="Moje mobilne storitve" path={Paths.USER_PORTAL_MOBILE} icon={dashboardSvg}/>
+                        <NavItem name="Moj internet" path={Paths.USER_PORTAL_INTERNET} icon={dashboardSvg}/>
+                        <NavItem name="Moja televizija" path={Paths.USER_PORTAL_TV} icon={dashboardSvg}/>
                     </ul>
                 </div>
             </aside>
