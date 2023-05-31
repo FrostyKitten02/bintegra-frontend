@@ -13,6 +13,12 @@ export default function FrequentQuestions(){
                     />
                 </div>
                 <div className="w-2/3">
+                    <div >
+                        <h5 className="title-a text-2xl uppercase text-gray-900">
+                            Pogosta vprašanja
+                        </h5>
+                        <br/>
+                    </div>
                 <QandAList/>
                 </div>
 

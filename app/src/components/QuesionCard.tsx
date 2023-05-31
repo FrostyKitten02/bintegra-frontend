@@ -1,170 +1,82 @@
-import {useState} from "react";
+import { useState } from "react";
 
 
-const QandAList = () => {
-    const [showAddQuestion, setShowAddQuestion] = useState(false);
-    const [newQuestion, setNewQuestion] = useState("");
-    const [questions, setQuestions] = useState([
-        { question: "Kako ne izgubit zivcev poleg tega", answer: "Nobody knows", showAnswerInput: false, newAnswer: "", isEditable: false },
-        { question: "kako upravljati uporabniski profil", answer: "nekak", showAnswerInput: false, newAnswer: "", isEditable: false },
-    ]);
+const QandA = ({ question, answer }:{question:string, answer: string}) => {
+    const [expanded, setExpanded] = useState(false);
 
-    const toggleAddQuestion = () => {
-        setShowAddQuestion(!showAddQuestion);
-        setNewQuestion("");
-    };
-
-    const handleInputChange = (e:any) => {
-        setNewQuestion(e.target.value);
-    };
-
-    const handlePostQuestion = () => {
-        if (newQuestion.trim() !== "") {
-            const newQuestionObj = { question: newQuestion, answer: "", showAnswerInput: false, newAnswer: "", isEditable: true };
-            setQuestions([...questions, newQuestionObj]);
-            setShowAddQuestion(false);
-            setNewQuestion("");
-        }
-    };
-
-    const handleAnswerQuestion = (index:any) => {
-        const updatedQuestions = [...questions];
-        updatedQuestions[index].showAnswerInput = true;
-        setQuestions(updatedQuestions);
-    };
-
-    const handleAnswerInputChange = (e:any, index:any) => {
-        const updatedQuestions = [...questions];
-        updatedQuestions[index].newAnswer = e.target.value;
-        setQuestions(updatedQuestions);
-    };
-
-    const handlePostAnswer = (index:any) => {
-        const updatedQuestions = [...questions];
-        updatedQuestions[index].answer = updatedQuestions[index].newAnswer;
-        updatedQuestions[index].showAnswerInput = false;
-        setQuestions(updatedQuestions);
-    };
-
-    const handleCancelAnswer = (index:any) => {
-        const updatedQuestions = [...questions];
-        updatedQuestions[index].showAnswerInput = false;
-        updatedQuestions[index].newAnswer = "";
-        setQuestions(updatedQuestions);
+    const toggleExpand = () => {
+        setExpanded(!expanded);
     };
 
     return (
-        <>
-            {questions.map((q, index) => (
-                <div key={index} className="mt-4">
-                    <div className="flex items-center">
-                        <button
-                            className="text-gray-500 mr-2 focus:outline-none"
-                            onClick={() => handleAnswerQuestion(index)}
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="w-4 h-4"
-                            >
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                            </svg>
-                        </button>
-                        <h3 className="text-xl font-bold">{q.question}</h3>
-                    </div>
-                    {q.showAnswerInput && (
-                        <div className="mt-4">
-              <textarea
-                  className="w-full p-2 border border-gray-300 rounded"
-                  placeholder="Enter your answer..."
-                  value={q.newAnswer}
-                  onChange={(e) => handleAnswerInputChange(e, index)}
-              ></textarea>
-                            <div className="mt-2 flex justify-end">
-                                <button
-                                    className="px-4 py-2 mr-2 text-white bg-blue-500 rounded"
-                                    onClick={() => handlePostAnswer(index)}
-                                >
-                                    Post
-                                </button>
-                                <button
-                                    className="px-4 py-2 text-white bg-red-500 rounded"
-                                    onClick={() => handleCancelAnswer(index)}
-                                >
-                                    Cancel
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                    {!q.showAnswerInput && q.answer && <p className="mt-2">{q.answer}</p>}
-                </div>
-            ))}
-
-            <div className="mt-4">
+        <div className="w-1/2 flex flex-col items-start justify-center">
                 <div className="flex items-center">
                     <button
                         className="text-gray-500 mr-2 focus:outline-none"
-                        onClick={toggleAddQuestion}
+                        onClick={toggleExpand}
                     >
-                        {showAddQuestion ? (
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="w-4 h-4"
-                            >
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+                        {expanded ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6"/>
                             </svg>
+
                         ) : (
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="w-4 h-4"
-                            >
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
                             </svg>
                         )}
                     </button>
-                    <h3 className="text-xl font-bold">ADD QUESTION</h3>
+                    <h3 className="text-xl font-bold">{question}</h3>
                 </div>
-                {showAddQuestion && (
+                {expanded && (
                     <div className="mt-4">
-            <textarea
-                className="w-full p-2 border border-gray-300 rounded"
-                placeholder="Enter your question..."
-                value={newQuestion}
-                onChange={handleInputChange}
-            ></textarea>
-                        <div className="mt-2 flex justify-end">
-                            <button
-                                className="px-4 py-2 mr-2 text-white bg-blue-500 rounded"
-                                onClick={handlePostQuestion}
-                            >
-                                Post
-                            </button>
-                            <button
-                                className="px-4 py-2 text-white bg-red-500 rounded"
-                                onClick={toggleAddQuestion}
-                            >
-                                Cancel
-                            </button>
-                        </div>
+                        <p>{answer}</p>
                     </div>
                 )}
             </div>
-        </>
+
     );
 };
 
+const QandAList = () => {
+    const questions = [
+        {
+            question: " Kako nastavim televizijsko storitev in dostopam do kanalov?",
+            answer: "Če želite nastaviti televizijsko storitev, priključite priloženi set-top box na televizor in kabelski priključek. " +
+                "Sledite navodilom na zaslonu, da poiščete kanale in dokončate začetno nastavitev. Po nastavitvi lahko po kanalih brskate s priloženim daljinskim upravljalnikom. "
+        },
+        {
+            question: " Ali lahko nadgradim hitrost interneta ali paket televizijskih kanalov?",
+            answer: "Da, lahko nadgradite paket hitrosti interneta ali televizijskih kanalov." +
+                " Preprosto se obrnite na našo službo za podporo strankam in pomagali vam bodo pri nadgradnji storitev v skladu z Vašimi željami.",
+        }, {
+            question: "Kako lahko odpravim težave z internetno povezavo?",
+            answer: " Če imate težave z internetno povezavo,se najprej prepričajte, da so vsi kabli in povezave varne." +
+                " Ponovno zaženite modem/usmerjevalnik in počakajte, da se ponovno poveže. Če se težava ne odpravi, se obrnite na našo službo za podporo strankam." +
+                " Naša tehnična ekipa vam lahko pomaga pri diagnosticiranju in reševanju morebitnih težav z internetno povezljivostjo.",
+        },
+        {
+            question: "Kakšen je vaš delovnik za podporo strankam?",
+            answer: "Naša podpora strankam je na voljo od 8.00- 15.00 med tednom, in od 8.00-13.00 v soboto, da Vam pomagamo pri vseh poizvedbah, tehničnih težavah ali vprašanjih, povezanih s storitvami."
 
+        },
+        // Add more questions here...
+    ];
 
+    return (
+        <div >
+
+            {questions.map((q, index) => (
+                <QandA
+                    key={index}
+                    question={q.question}
+                    answer={q.answer}
+                />
+            ))}
+        </div>
+    );
+};
 
 export default QandAList;
