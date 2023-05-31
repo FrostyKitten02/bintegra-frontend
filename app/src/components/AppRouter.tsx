@@ -85,10 +85,11 @@ export default function AppRouter() {
                 {
                     path: Paths.POGOSTA_VPRASANJA,
                     element: <FrequentQuestions />,
-                }
-                    path: Paths.SIGN_OUT,
-                    element: <SignOutPage />,
                 },
+                {
+                    path: Paths.SIGN_OUT,
+                    element: <SignOutPage />
+                }
             ]
         }
     ])
