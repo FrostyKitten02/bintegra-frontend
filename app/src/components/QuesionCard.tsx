@@ -1,7 +1,7 @@
-import { useState } from "react";
+import {useState} from "react";
 
 
-const QandA = ({ question, answer }:{question:string, answer: string}) => {
+const QandA = ({question, answer}: { question: string, answer: string }) => {
     const [expanded, setExpanded] = useState(false);
 
     const toggleExpand = () => {
@@ -9,33 +9,35 @@ const QandA = ({ question, answer }:{question:string, answer: string}) => {
     };
 
     return (
-        <div className="w-1/2 flex flex-col items-start justify-center">
-                <div className="flex items-center">
-                    <button
-                        className="text-gray-500 mr-2 focus:outline-none"
-                        onClick={toggleExpand}
-                    >
-                        {expanded ? (
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6"/>
-                            </svg>
+        <div className="w-full flex flex-col pb-2 items-start justify-center">
+            <div className="flex w-full">
+                <button
+                    className="text-gray-500 mr-4 focus:outline-none"
+                    onClick={toggleExpand}
+                >
+                    {expanded ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6"/>
+                        </svg>
 
-                        ) : (
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
-                            </svg>
-                        )}
-                    </button>
-                    <h3 className="text-xl font-bold">{question}</h3>
-                </div>
-                {expanded && (
-                    <div className="mt-4">
-                        <p>{answer}</p>
-                    </div>
-                )}
+                    ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+                        </svg>
+                    )}
+                </button>
+                <h3 className="text-xl font-bold w-full">
+                    {question}
+                </h3>
             </div>
+            {expanded && (
+                <div className="my-4 w-full pl-16">
+                    {answer}
+                </div>
+            )}
+        </div>
 
     );
 };
@@ -66,15 +68,19 @@ const QandAList = () => {
     ];
 
     return (
-        <div >
-
-            {questions.map((q, index) => (
-                <QandA
-                    key={index}
-                    question={q.question}
-                    answer={q.answer}
-                />
-            ))}
+        <div className="w-full">
+            <h5 className="title-a text-2xl uppercase pb-6 text-gray-900">
+                Pogosta vprašanja
+            </h5>
+            {
+                questions.map((q, index) => (
+                    <QandA
+                        key={index}
+                        question={q.question}
+                        answer={q.answer}
+                    />
+                ))
+            }
         </div>
     );
 };
