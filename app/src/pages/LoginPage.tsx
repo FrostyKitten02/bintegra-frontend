@@ -1,26 +1,17 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import InputWithLabel, {errorType} from "../components/InputWithLabel";
+import InputWithLabel from "../components/InputWithLabel";
 import {Link, useNavigate} from "react-router-dom";
 import Paths from "../Paths";
 import login_img from "../pictures/login_img.jpg";
-
-export interface User {
-    email?: string;
-    password?: string;
-    repeatPassword?: string;
-    terms?: boolean;
-}
+import {User} from "../model/interfaces";
+import FormHandler from "../Util/FormHandler";
 
 
 export default function LoginPage() {
     const navigate = useNavigate();
-
     const [user, setUser] = useState<User>({});
-
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        const atribute = event.target.name;
-        setUser(prevState => ({...prevState, [atribute]: value}));
+        setUser(prevState => (FormHandler.handleInputChange(event, prevState)));
     }
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

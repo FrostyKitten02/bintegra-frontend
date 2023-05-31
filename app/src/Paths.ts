@@ -15,9 +15,11 @@ export default class Paths {
 
 
     public static readonly USER_BASE_PATH = Paths.HOME + "/uporabnik";
-    public static readonly USER_PROFILE = Paths.USER_BASE_PATH + "/profil";
-    public static readonly USER_PROFILE_MOBILE = Paths.USER_PROFILE + "/mobilni";
-
+    public static readonly USER_PORTAL_BASE_PATH = Paths.USER_BASE_PATH + "/portal";
+    public static readonly USER_PORTAL_MOBILE = Paths.USER_PORTAL_BASE_PATH + "/mobilne-storitve";
+    public static readonly USER_PORTAL_PROFILE = Paths.USER_PORTAL_BASE_PATH + "/profil";
+    public static readonly USER_PORTAL_INTERNET = Paths.USER_PORTAL_BASE_PATH + "/internet";
+    public static readonly USER_PORTAL_TV = Paths.USER_PORTAL_BASE_PATH + "/televizija";
 }
 
 
