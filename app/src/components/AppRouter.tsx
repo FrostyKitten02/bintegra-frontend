@@ -9,9 +9,16 @@ import TelevisionPlansPage from "../pages/TelevisionPlansPage";
 import Paths from "../Paths";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import UserProfile from "../template/UserProfilePageTemplate";
-import UserProfileMobileOverviewPage from "../pages/UserProfileMobileOverviewPage";
+
 import SignOutPage from "../pages/SignOutPage";
+
+import UserProfile from "../template/UserPortalPageTemplate";
+import UserPortalMobileOverviewPage from "../pages/profile/UserPortalMobileOverviewPage";
+import UserPortalDefaultPage from "../pages/profile/UserPortalDefaultPage";
+import UserPortalProfile from "../pages/profile/UserPortalProfile";
+import UserPortalTvOverviewPage from "../pages/profile/UserPortalTvOverviewPage";
+import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOverview";
+
 
 
 export default function AppRouter() {
@@ -34,16 +41,28 @@ export default function AppRouter() {
                     element: <RegisterPage />,
                 },
                 {
-                    path: Paths.USER_PROFILE,
+                    path: Paths.USER_PORTAL_BASE_PATH,
                     element: <UserProfile />,
                     children: [
                         {
-                            path: Paths.USER_PROFILE,
-                            element: <div>user profile main page</div>,
+                            path: Paths.USER_PORTAL_BASE_PATH,
+                            element: <UserPortalDefaultPage />,
                         },
                         {
-                            path: Paths.USER_PROFILE_MOBILE,
-                            element: <UserProfileMobileOverviewPage />,
+                            path: Paths.USER_PORTAL_PROFILE,
+                            element: <UserPortalProfile />
+                        },
+                        {
+                            path: Paths.USER_PORTAL_MOBILE,
+                            element: <UserPortalMobileOverviewPage />,
+                        },
+                        {
+                            path: Paths.USER_PORTAL_INTERNET,
+                            element: <UserPortalInternetOverview />,
+                        },
+                        {
+                            path: Paths.USER_PORTAL_TV,
+                            element: <UserPortalTvOverviewPage />,
                         }
                     ]
                 },
