@@ -47,7 +47,7 @@ export default function UserDropdown() {
             </Dropdown.Item>
             <Dropdown.Divider/>
             <Dropdown.Item
-             onClick={() => navigate("")}
+             onClick={() => navigate(Paths.SIGN_OUT)}
             >
                <span className="p-1">
                    Odjava

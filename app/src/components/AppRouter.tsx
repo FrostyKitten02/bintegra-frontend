@@ -9,12 +9,16 @@ import TelevisionPlansPage from "../pages/TelevisionPlansPage";
 import Paths from "../Paths";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+
+import SignOutPage from "../pages/SignOutPage";
+
 import UserProfile from "../template/UserPortalPageTemplate";
 import UserPortalMobileOverviewPage from "../pages/profile/UserPortalMobileOverviewPage";
 import UserPortalDefaultPage from "../pages/profile/UserPortalDefaultPage";
 import UserPortalProfile from "../pages/profile/UserPortalProfile";
 import UserPortalTvOverviewPage from "../pages/profile/UserPortalTvOverviewPage";
 import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOverview";
+
 
 
 export default function AppRouter() {
@@ -77,6 +81,10 @@ export default function AppRouter() {
                 {
                     path: Paths.MOBILE_INTERNET_PLANS,
                     element: <MobileInternetPlans />,
+                },
+                {
+                    path: Paths.SIGN_OUT,
+                    element: <SignOutPage />,
                 },
             ]
         }

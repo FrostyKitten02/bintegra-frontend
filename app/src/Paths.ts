@@ -15,6 +15,8 @@ export default class Paths {
 
 
     public static readonly USER_BASE_PATH = Paths.HOME + "/uporabnik";
+    public static readonly SIGN_OUT = Paths.HOME + "/odjava";
+  
     public static readonly USER_PORTAL_BASE_PATH = Paths.USER_BASE_PATH + "/portal";
     public static readonly USER_PORTAL_MOBILE = Paths.USER_PORTAL_BASE_PATH + "/mobilne-storitve";
     public static readonly USER_PORTAL_PROFILE = Paths.USER_PORTAL_BASE_PATH + "/profil";
