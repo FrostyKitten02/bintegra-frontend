@@ -16,7 +16,7 @@ export default function HomePage() {
                         src={home_page_first}
                     />
                 </div>
-                <div className="pt-10 self-center lg:pt-0 px-10 md:px-28 md:mr-[200px]">
+                <div className="pt-10 self-center lg:pt-0 px-10 md:px-28 md:mr-[200px] lg:mr-0">
                     <span className="inline text-3xl md:w-20 title-a md:text-5xl pr-4">
                         SAMOPOSTREŽNI PORTAL
                     </span>
@@ -31,7 +31,7 @@ export default function HomePage() {
                     onClick={() => window.scroll(0, 0)}
                     to={Paths.REGISTER}>
                     <div className="transition p-4 hover:scale-105 duration-500">
-                        <div className="border rounded-[10px] bg-gray-100 col-span-1 border-4-gray-900 text-center">
+                        <div className="border rounded-[10px] bg-gray-100 col-span-1 border-4-gray-900 text-center shadow-md">
                             <div
                                 className="relative overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed transition duration-300 ease-in-out hover:opacity-100">
                                 <svg className="w-16 h-16 mx-auto mt-6 text-600" fill="none" viewBox="0 0 24 24"
@@ -48,7 +48,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                     onClick={() => window.scroll(0, 0)}
-                    className="rounded-[10px] transition hover:scale-105 duration-500 border col-span-1 bg-gray-100 border-4-gray-900 flex justify-center flex-wrap text-center"
+                    className="rounded-[10px] transition hover:scale-105 duration-500 border col-span-1 shadow-md bg-gray-100 border-4-gray-900 flex justify-center flex-wrap text-center"
                     to={Paths.MOBILE_PLANS}>
                     <div
                         className="relative w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed transition duration-300 ease-in-out hover:opacity-100">
@@ -65,7 +65,7 @@ export default function HomePage() {
                 <Link to={Paths.TV_PLANS} onClick={() => window.scroll(0, 0)}>
                     <div className="p-4">
                         <div
-                            className="transition hover:scale-105 duration-500 rounded-[10px] border bg-gray-100 col-span-1 border-4-gray-900 text-center">
+                            className="transition hover:scale-105 duration-500 rounded-[10px] shadow-md border bg-gray-100 col-span-1 border-4-gray-900 text-center">
                             <div
                                 className="relative overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed transition duration-300 ease-in-out hover:opacity-100">
                                 <svg className="w-16 h-16 mx-auto mt-6 text-600" fill="none" viewBox="0 0 24 24"
