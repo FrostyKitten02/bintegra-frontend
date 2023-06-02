@@ -10,8 +10,9 @@ export default function UserDropdown() {
     const navigate = useNavigate();
     return (
         <Dropdown
+            inline
             color="white"
-            className="w-[250px]"
+            className="w-[250px] overflow-hidden"
             arrowIcon={false}
             trigger="hover"
             label={

@@ -1,4 +1,6 @@
 import {v4 as uuid} from "uuid";
+import {Link} from "react-router-dom";
+import Paths from "../Paths";
 
 
 export type PriceInterval = "mesec" | "leto";
@@ -17,11 +19,31 @@ const Feature = ({name, disabled}: { name: string, disabled?: boolean }) => {
     )
 };
 export default function PlanCard({
+                                     offerType,
+                                     offerId,
                                      features,
                                      name,
                                      price,
                                      priceInterval
-                                 }: { features: string[], name: string, price: number, priceInterval: PriceInterval }) {
+                                 }: { offerType?: string, offerId?: number, features: string[], name: string, price: number, priceInterval: PriceInterval }) {
+
+
+    console.log(offerId)
+    console.log(typeof offerId)
+    console.log(Paths.MOBILE_PLANS + "/" + offerId)
+
+    const setOfferPath = (): string => {
+        switch (offerType){
+            case "mobilni":
+                return Paths.MOBILE_PLANS;
+            case "internet":
+                return Paths.INTERNET_PLANS;
+            case "television":
+                return Paths.TV_PLANS;
+            default: return "pathERROR"
+        }
+    }
+
     return (
         <div className="w-full flex max-w-sm group">
             <div
@@ -52,11 +74,11 @@ export default function PlanCard({
                             })}
                         </ul>
                     </div>
-                    <button
-                        type="button"
+                    <Link
+                        to={`${setOfferPath()}/${offerId}`}
                         className="text-white bg-sage-green hover:bg-gray-900 ease-in-out duration-500 hover:transition font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center mb-0 mt-auto absolute bottom-0">
                         Naročite
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

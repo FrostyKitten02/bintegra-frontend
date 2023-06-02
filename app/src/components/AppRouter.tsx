@@ -9,8 +9,8 @@ import TelevisionPlansPage from "../pages/TelevisionPlansPage";
 import Paths from "../Paths";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import FrequentQuestions from "../pages/FrequentQuestionsPage";
 
+import FrequentQuestions from "../pages/FrequentQuestionsPage";
 import SignOutPage from "../pages/SignOutPage";
 
 import UserProfile from "../template/UserPortalPageTemplate";
@@ -19,6 +19,9 @@ import UserPortalDefaultPage from "../pages/profile/UserPortalDefaultPage";
 import UserPortalProfile from "../pages/profile/UserPortalProfile";
 import UserPortalTvOverviewPage from "../pages/profile/UserPortalTvOverviewPage";
 import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOverview";
+
+import {ChoosePlanPage} from "../pages/ChoosePlanPage";
+
 
 
 export default function AppRouter() {
@@ -47,6 +50,15 @@ export default function AppRouter() {
                         {
                             path: Paths.USER_PORTAL_BASE_PATH,
                             element: <UserPortalDefaultPage />,
+
+                        },
+                        {
+                            path: Paths.USER_PORTAL_PROFILE,
+                            element: <UserPortalProfile />
+                        },
+                        {
+                            path: Paths.USER_PORTAL_MOBILE,
+                            element: <UserPortalMobileOverviewPage />,
                         },
                         {
                             path: Paths.USER_PORTAL_PROFILE,
@@ -71,12 +83,24 @@ export default function AppRouter() {
                     element: <MobilePlansPage />,
                 },
                 {
+                    path: Paths.MOBILE_PLANS_OFFER,
+                    element: <ChoosePlanPage />
+                },
+                {
                     path: Paths.INTERNET_PLANS,
                     element: <InternetPlansPage />,
                 },
                 {
+                    path: Paths.INTERNET_PLANS_OFFER,
+                    element: <ChoosePlanPage />,
+                },
+                {
                     path: Paths.TV_PLANS,
                     element: <TelevisionPlansPage />,
+                },
+                {
+                    path: Paths.TV_PLANS_OFFER,
+                    element: <ChoosePlanPage />,
                 },
                 {
                     path: Paths.MOBILE_INTERNET_PLANS,
