@@ -19,17 +19,30 @@ const Feature = ({name, disabled}: { name: string, disabled?: boolean }) => {
     )
 };
 export default function PlanCard({
+                                     offerType,
                                      offerId,
                                      features,
                                      name,
                                      price,
                                      priceInterval
-                                 }: { offerId?: number, features: string[], name: string, price: number, priceInterval: PriceInterval }) {
+                                 }: { offerType?: string, offerId?: number, features: string[], name: string, price: number, priceInterval: PriceInterval }) {
 
 
     console.log(offerId)
     console.log(typeof offerId)
     console.log(Paths.MOBILE_PLANS + "/" + offerId)
+
+    const setOfferPath = (): string => {
+        switch (offerType){
+            case "mobilni":
+                return Paths.MOBILE_PLANS;
+            case "internet":
+                return Paths.INTERNET_PLANS;
+            case "television":
+                return Paths.TV_PLANS;
+            default: return "pathERROR"
+        }
+    }
 
     return (
         <div className="w-full flex max-w-sm group">
@@ -62,7 +75,7 @@ export default function PlanCard({
                         </ul>
                     </div>
                     <Link
-                        to={`${Paths.MOBILE_PLANS}/${offerId}`}
+                        to={`${setOfferPath()}/${offerId}`}
                         className="text-white bg-sage-green hover:bg-gray-900 ease-in-out duration-500 hover:transition font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center mb-0 mt-auto absolute bottom-0">
                         Naročite
                     </Link>

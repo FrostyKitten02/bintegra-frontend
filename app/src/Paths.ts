@@ -10,7 +10,9 @@ export default class Paths {
     public static readonly MOBILE_PLANS = Paths.PACKAGES_BASE_PATH + "/mobilni";
     public static readonly MOBILE_PLANS_OFFER = Paths.MOBILE_PLANS + "/:id";
     public static readonly INTERNET_PLANS = Paths.PACKAGES_BASE_PATH + "/internet";
+    public static readonly INTERNET_PLANS_OFFER = Paths.INTERNET_PLANS + "/:id";
     public static readonly TV_PLANS = Paths.PACKAGES_BASE_PATH + "/televizija";
+    public static readonly TV_PLANS_OFFER = Paths.TV_PLANS + "/:id";
     public static readonly MOBILE_INTERNET_PLANS = Paths.PACKAGES_BASE_PATH + "/mobilini-internet";
 
 

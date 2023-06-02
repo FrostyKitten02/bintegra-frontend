@@ -76,8 +76,16 @@ export default function AppRouter() {
                     element: <InternetPlansPage />,
                 },
                 {
+                    path: Paths.INTERNET_PLANS_OFFER,
+                    element: <ChoosePlanPage />,
+                },
+                {
                     path: Paths.TV_PLANS,
                     element: <TelevisionPlansPage />,
+                },
+                {
+                    path: Paths.TV_PLANS_OFFER,
+                    element: <ChoosePlanPage />,
                 },
                 {
                     path: Paths.MOBILE_INTERNET_PLANS,
