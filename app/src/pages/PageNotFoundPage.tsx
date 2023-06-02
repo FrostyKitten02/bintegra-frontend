@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import not_found from "../pictures/404_page_not_found.jpg";
 
 export default function PageNotFoundPage() {
     return (
@@ -7,7 +8,7 @@ export default function PageNotFoundPage() {
                 <div className="text-center">
                     <img
                         alt=""
-                        src="/pictures/404_page_not_found.avif"
+                        src={not_found}
                     />
                     <p className="mt-6 text-base leading-7 text-gray-600">Sorry, we couldn’t find the page you’re
                         looking for.</p>

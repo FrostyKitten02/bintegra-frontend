@@ -1,5 +1,7 @@
 import {Link} from "react-router-dom";
 import Paths from "../Paths";
+import home_page_first from "../pictures/home_page_first.jpg"
+import home_page_second from "../pictures/home_page_second.jpg"
 
 
 export default function HomePage() {
@@ -11,10 +13,10 @@ export default function HomePage() {
                     <img
                         alt=""
                         className="h-56 md:h-72 lg:h-96"
-                        src="/pictures/home_page_first.avif"
+                        src={home_page_first}
                     />
                 </div>
-                <div className="pt-10 self-center lg:pt-0 px-10 md:px-28 md:mr-[200px]">
+                <div className="pt-10 self-center lg:pt-0 px-10 md:px-28 md:mr-[200px] lg:mr-0">
                     <span className="inline text-3xl md:w-20 title-a md:text-5xl pr-4">
                         SAMOPOSTREŽNI PORTAL
                     </span>
@@ -29,7 +31,7 @@ export default function HomePage() {
                     onClick={() => window.scroll(0, 0)}
                     to={Paths.REGISTER}>
                     <div className="transition p-4 hover:scale-105 duration-500">
-                        <div className="border rounded-[10px] bg-gray-100 col-span-1 border-4-gray-900 text-center">
+                        <div className="border rounded-[10px] bg-gray-100 col-span-1 border-4-gray-900 text-center shadow-md">
                             <div
                                 className="relative overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed transition duration-300 ease-in-out hover:opacity-100">
                                 <svg className="w-16 h-16 mx-auto mt-6 text-600" fill="none" viewBox="0 0 24 24"
@@ -46,7 +48,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                     onClick={() => window.scroll(0, 0)}
-                    className="rounded-[10px] transition hover:scale-105 duration-500 border col-span-1 bg-gray-100 border-4-gray-900 flex justify-center flex-wrap text-center"
+                    className="rounded-[10px] transition hover:scale-105 duration-500 border col-span-1 shadow-md bg-gray-100 border-4-gray-900 flex justify-center flex-wrap text-center"
                     to={Paths.MOBILE_PLANS}>
                     <div
                         className="relative w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed transition duration-300 ease-in-out hover:opacity-100">
@@ -63,7 +65,7 @@ export default function HomePage() {
                 <Link to={Paths.TV_PLANS} onClick={() => window.scroll(0, 0)}>
                     <div className="p-4">
                         <div
-                            className="transition hover:scale-105 duration-500 rounded-[10px] border bg-gray-100 col-span-1 border-4-gray-900 text-center">
+                            className="transition hover:scale-105 duration-500 rounded-[10px] shadow-md border bg-gray-100 col-span-1 border-4-gray-900 text-center">
                             <div
                                 className="relative overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed transition duration-300 ease-in-out hover:opacity-100">
                                 <svg className="w-16 h-16 mx-auto mt-6 text-600" fill="none" viewBox="0 0 24 24"
@@ -101,34 +103,10 @@ export default function HomePage() {
                     <img
                         className="w-[90%] md:w-[50%] lg:w-[100%]"
                         alt=""
-                        src="/pictures/home_page_second.avif"
+                        src={home_page_second}
                     />
                 </div>
             </div>
-            {/*
-                <div className="grid grid-cols-6 gap-14">
-                    <div className="col-span-2">
-                        <PicCard
-                            image="https://www.devicemagic.com/wp-content/uploads/2020/10/person_using_smartphone-2.jpg"
-                            section="5G MOBILNO OMREŽJE"
-                            description="Izboljšan prenos kakršnih koli vsebin po vsem svetu"
-                        />
-                    </div>
-                    <div className="col-span-2">
-                        <PicCard
-                            image="https://img.freepik.com/premium-photo/happy-hindu-guy-gambling-online-using-laptop_116547-19124.jpg"
-                            section="NAROČNIŠKI PORTAL"
-                            description="Prenovljen uporabniški portal za pregled vsebine"
-                        />
-                    </div>
-                    <div className="col-span-2">
-                        <PicCard
-                            image="https://www.gostudy.rs/wp-content/uploads/2023/03/Sta-je-Internet_1-min.jpg"
-                            section="FIKSNI INTERNET"
-                            description="Nova ponudba in ugodne cene za vse uporabnike"
-                        />
-                    </div>
-                </div>
-                */}
+
         </div>);
 }

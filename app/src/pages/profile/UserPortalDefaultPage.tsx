@@ -1,6 +1,8 @@
 import {UserSubscriptionsDataTable} from "./UserSubscriptionsDataTable";
+
 import {UserPortalPieChart} from "./UserPortalPieChart";
 import {UserSubscriptionShowcard} from "./UserSubscriptionShowcard";
+
 
 export default function UserPortalDefaultPage() {
 
@@ -20,7 +22,6 @@ export default function UserPortalDefaultPage() {
                     {/*} <UserPortalPieChart naslov={"Cenovni mesečni pregled naročnin"} /> */}
                 </div>
                 <div className="col-span-6 md:col-span-5">
-
                 </div>
             </div>
         </div>
