@@ -1,6 +1,10 @@
 import {Button} from "flowbite-react";
+import {useParams} from "react-router-dom";
 
 export function ChoosePlanPage() {
+    const { id } = useParams();
+    console.log(id)
+
     return (
         <div>
             <div

@@ -15,6 +15,7 @@ import UserPortalDefaultPage from "../pages/profile/UserPortalDefaultPage";
 import UserPortalProfile from "../pages/profile/UserPortalProfile";
 import UserPortalTvOverviewPage from "../pages/profile/UserPortalTvOverviewPage";
 import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOverview";
+import {ChoosePlanPage} from "../pages/ChoosePlanPage";
 
 
 export default function AppRouter() {
@@ -65,6 +66,10 @@ export default function AppRouter() {
                 {
                     path: Paths.MOBILE_PLANS,
                     element: <MobilePlansPage />,
+                },
+                {
+                    path: Paths.MOBILE_PLANS_OFFER,
+                    element: <ChoosePlanPage />
                 },
                 {
                     path: Paths.INTERNET_PLANS,

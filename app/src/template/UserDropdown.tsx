@@ -10,8 +10,9 @@ export default function UserDropdown() {
     const navigate = useNavigate();
     return (
         <Dropdown
+            inline
             color="white"
-            className="w-[250px]"
+            className="w-[250px] overflow-hidden"
             arrowIcon={false}
             trigger="hover"
             label={
@@ -19,7 +20,7 @@ export default function UserDropdown() {
             }
         >
             <Dropdown.Header>
-                <span className="block p-1 text-sm">
+                <span className=" text-sm">
                     Uporabniško ime
                 </span>
             </Dropdown.Header>
