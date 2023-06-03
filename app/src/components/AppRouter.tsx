@@ -21,6 +21,7 @@ import UserPortalTvOverviewPage from "../pages/profile/UserPortalTvOverviewPage"
 import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOverview";
 
 import {ChoosePlanPage} from "../pages/ChoosePlanPage";
+import ConstultantPage from "../pages/ConsultantPage";
 
 
 
@@ -113,6 +114,10 @@ export default function AppRouter() {
                 {
                     path: Paths.SIGN_OUT,
                     element: <SignOutPage />
+                },
+                {
+                    path: Paths.ADMIN_PATH,
+                    element: <ConstultantPage />
                 }
             ]
         }

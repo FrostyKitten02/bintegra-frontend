@@ -25,6 +25,8 @@ export default class Paths {
     public static readonly USER_PORTAL_INTERNET = Paths.USER_PORTAL_BASE_PATH + "/internet";
     public static readonly USER_PORTAL_TV = Paths.USER_PORTAL_BASE_PATH + "/televizija";
 
+    public static readonly ADMIN_PATH = Paths.HOME + "/admin";
+
 }
 
 
