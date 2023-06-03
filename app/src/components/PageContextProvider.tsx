@@ -6,6 +6,7 @@ const SESSION_TOKEN_STORAGE: string = "SESSION";
 
 export interface IPageContext {
     login: (username: string, password: string) => Promise<boolean>,
+    logOut: () => void,
     api: Client,
     loggedIn: boolean,
     setCtx?: Dispatch<SetStateAction<IPageContext>>
@@ -32,6 +33,15 @@ function initContext(): IPageContext {
 
             return false;
         },
+        logOut: function() {
+            removeAuthFromSessionStorage();
+            if (this.setCtx === undefined) {
+                this.api = new Client();
+                this.loggedIn = false;
+                return;
+            }
+            this.setCtx(prevState => ({...prevState, api: new Client(), loggedIn: false}))
+        },
         loggedIn: false,
         api: new Client(),
     }
@@ -42,8 +52,12 @@ export const PageContext = createContext<IPageContext>(initContext());
 
 
 function saveUserAuthToSessionStorage(token: string) {
-    sessionStorage.removeItem(SESSION_TOKEN_STORAGE);
+    removeAuthFromSessionStorage();
     sessionStorage.setItem(SESSION_TOKEN_STORAGE, token);
+}
+
+function removeAuthFromSessionStorage() {
+    sessionStorage.removeItem(SESSION_TOKEN_STORAGE);
 }
 
 export default function PageContextProvider({children}:{children: ReactNode}) {

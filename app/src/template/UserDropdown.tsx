@@ -1,13 +1,15 @@
 import {UserCircleIcon} from "@heroicons/react/24/outline";
 import {Dropdown} from "flowbite-react";
-import React from "react";
+import React, {useContext} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import Paths from "../Paths";
+import {IPageContext, PageContext} from "../components/PageContextProvider";
 
 /*<UserCircleIcon className="transition ease-in-out hover:scale-110 duration-300 h-8 w-8 text-gray-500"/> */
 
 export default function UserDropdown() {
     const navigate = useNavigate();
+    const context = useContext<IPageContext>(PageContext);
     return (
         <Dropdown
             color="white"
@@ -47,7 +49,7 @@ export default function UserDropdown() {
             </Dropdown.Item>
             <Dropdown.Divider/>
             <Dropdown.Item
-             onClick={() => navigate("")}
+             onClick={() => {context.logOut();navigate("")}}
             >
                <span className="p-1">
                    Odjava
