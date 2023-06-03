@@ -68,13 +68,14 @@ export default function PlanCard({
                             <span className="ml-1 text-xl text-gray-400">/{priceInterval}</span>
                         </div>
 
-                        <ul role="list" className="space-y-5 my-7">
+                        <ul className="space-y-5 my-7">
                             {features.map((feature, index) => {
                                 return <Feature name={feature} key={uuid()}/>
                             })}
                         </ul>
                     </div>
                     <Link
+                        onClick={() => window.scroll(0, 0)}
                         to={`${setOfferPath()}/${offerId}`}
                         className="text-white bg-sage-green hover:bg-gray-900 ease-in-out duration-500 hover:transition font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center mb-0 mt-auto absolute bottom-0">
                         Naročite
