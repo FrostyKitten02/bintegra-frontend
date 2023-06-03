@@ -4,13 +4,16 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppRouter from "./components/AppRouter";
 import './tailwind.css'
+import PageContextProvider, {PageContext} from "./components/PageContextProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-      <AppRouter />
+      <PageContextProvider>
+          <AppRouter />
+      </PageContextProvider>
   </React.StrictMode>
 );
 

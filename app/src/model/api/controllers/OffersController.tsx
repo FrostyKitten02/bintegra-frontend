@@ -5,10 +5,9 @@ import {BaseController} from "./BaseController";
 
 
 export class OffersController extends BaseController<OfferResponseDto> {
-    private static readonly CONTROLLER_URL = "offer";
 
-    constructor(auth: string) {
-        super(auth, OffersController.CONTROLLER_URL);
+    constructor(auth?: string) {
+        super(auth, "offer");
     }
 
     public getActiveOffersByType(type: string): Promise<AxiosResponse<OfferResponseDto>> {

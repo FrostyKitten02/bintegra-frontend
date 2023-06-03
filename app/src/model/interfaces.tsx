@@ -8,3 +8,9 @@ export interface User {
     newPassword?: string,
     terms?: boolean;
 }
+
+
+export interface UserDto {
+    id?: number,
+    email?: string,
+}

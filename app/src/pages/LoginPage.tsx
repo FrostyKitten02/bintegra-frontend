@@ -1,14 +1,16 @@
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useContext, useState} from "react";
 import InputWithLabel from "../components/InputWithLabel";
 import {Link, useNavigate} from "react-router-dom";
 import Paths from "../Paths";
 import login_img from "../pictures/login_img.jpg";
 import {User} from "../model/interfaces";
 import FormHandler from "../Util/FormHandler";
+import {IPageContext, PageContext} from "../components/PageContextProvider";
 
 
 export default function LoginPage() {
     const navigate = useNavigate();
+    const context = useContext<IPageContext>(PageContext);
     const [user, setUser] = useState<User>({});
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setUser(prevState => (FormHandler.handleInputChange(event, prevState)));
@@ -16,6 +18,8 @@ export default function LoginPage() {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        context.login(user.email ?? "", user.password ?? "");
+
         //TODO login the user!!!!
         setUser({});
     }

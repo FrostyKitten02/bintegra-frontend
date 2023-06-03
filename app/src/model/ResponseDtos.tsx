@@ -1,3 +1,4 @@
+import {UserDto} from "./interfaces";
 
 export interface OfferDto {
     id?: number,
@@ -43,4 +44,10 @@ export interface OffersWithPackageOffersDto extends OfferDto {
 export interface OfferResponseDto {
     offer?: OfferDto;
     offersWithPackageOffers?: OffersWithPackageOffersDto[];
+}
+
+
+export interface UserResponseDto {
+    success?: boolean;
+    user?: UserDto;
 }
