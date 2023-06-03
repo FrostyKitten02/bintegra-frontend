@@ -21,29 +21,21 @@ export interface OfferDto {
     //internet fields!!
     downloadSpeed?: number,
     uploadSpeed?: number,
-}
+
+    //durations
+    fullDurationMonths?: number,
+    discountDurationMonths?: number,
 
 
-export interface PackageOfferDto {
-    id?: number,
-
-    offerId?: number,
-    fullDuration?: number,
-    discountDuration?: number,
-    discountPrice?: number,
+    //pricing
     basePrice?: number,
-    active?: boolean
-    offer?: OfferDto;
+    discountPrice?: number,
 
 }
-export interface OffersWithPackageOffersDto extends OfferDto {
-    packageOffers: PackageOfferDto[];
-}
-
 
 export interface OfferResponseDto {
     offer?: OfferDto;
-    offersWithPackageOffers?: OffersWithPackageOffersDto[];
+    offers?: OfferDto[];
 }
 
 
