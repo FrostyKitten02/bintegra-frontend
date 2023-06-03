@@ -3,22 +3,22 @@ import internet_img from "../pictures/internet_img.jpg";
 import {OffersController} from "../model/api/controllers/OffersController";
 import {v4 as uuid} from "uuid";
 import {useState} from "react";
-import {OffersWithPackageOffersDto} from "../model/ResponseDtos";
+import {OfferDto} from "../model/ResponseDtos";
 
 export default function InternetPlansPage() {
-
-    const [internetOffers, setInternetOffers] = useState<OffersWithPackageOffersDto[]>([]);
-
+    const [internetOffers, setInternetOffers] = useState<OfferDto[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     const fetchInternetPlans = () => {
         new OffersController("authKey")
-            .getActiveOffersByType("internet")
+            .getActiveOffersByType("INTERNET")
             .then((response) => {
-                setInternetOffers(response.data.offersWithPackageOffers??[]);
-                });
+                setInternetOffers(response.data.offers??[]);
+                setLoading(false);
+            });
     }
 
-    if (internetOffers.length === 0) {
+    if (internetOffers.length === 0 && loading) {
         fetchInternetPlans();
     }
 
@@ -51,7 +51,7 @@ export default function InternetPlansPage() {
                                 key={uuid()}
                                 features={["Hitrosti do " + offer?.downloadSpeed + " mbps do uporabnika", "Hitrosti do " + offer?.uploadSpeed + " mbps od uporabnika"]}
                                 name={offer?.title??"N/A"}
-                                price={offer?.packageOffers[0]?.basePrice??0}
+                                price={offer?.basePrice??0}
                                 priceInterval="mesec"/>
                         })
                     }
