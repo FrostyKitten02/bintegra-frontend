@@ -22,6 +22,7 @@ import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOve
 
 import {ChoosePlanPage} from "../pages/ChoosePlanPage";
 import ConstultantPage from "../pages/ConsultantPage";
+import UserLookupPage from "../pages/UserLookupPage";
 
 
 
@@ -118,6 +119,10 @@ export default function AppRouter() {
                 {
                     path: Paths.ADMIN_PATH,
                     element: <ConstultantPage />
+                },
+                {
+                    path: Paths.SELECTED_USER_PATH,
+                    element: <UserLookupPage />
                 }
             ]
         }
