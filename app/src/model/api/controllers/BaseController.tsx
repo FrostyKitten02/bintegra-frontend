@@ -47,7 +47,7 @@ export class BaseController<REQ> {
 
     }
 
-    protected getControllerFullUrl(endpointUrl: string, pathParams?: string[]): string {
+    protected getControllerFullUrl(endpointUrl?: string, pathParams?: string[]): string {
         let extraPath = "";
 
         if (pathParams !== undefined) {
@@ -56,7 +56,7 @@ export class BaseController<REQ> {
             }
         }
 
-        return BaseController.BASE_URL + this.CONTROLLER_URL + endpointUrl + extraPath;
+        return BaseController.BASE_URL + this.CONTROLLER_URL + endpointUrl??"" + extraPath;
     }
 
 }
