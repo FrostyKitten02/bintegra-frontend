@@ -12,8 +12,9 @@ export default function UserDropdown() {
     const context = useContext<IPageContext>(PageContext);
     return (
         <Dropdown
+            inline
             color="white"
-            className="w-[250px]"
+            className="w-[250px] overflow-hidden"
             arrowIcon={false}
             trigger="hover"
             label={
@@ -49,7 +50,7 @@ export default function UserDropdown() {
             </Dropdown.Item>
             <Dropdown.Divider/>
             <Dropdown.Item
-             onClick={() => {context.logOut();navigate("")}}
+             onClick={() => {context.logOut();navigate(Paths.SIGN_OUT)}}
             >
                <span className="p-1">
                    Odjava

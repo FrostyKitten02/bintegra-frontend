@@ -8,7 +8,7 @@ export default function UserPortalPageTemplate() {
     return(
         <div className="flex">
             {/*sidebar za vsako storitev svoj tab*/}
-            <div className="h-screen">
+            <div className="h-screen hidden md:block">
                 <UserPortalSideNavigation />
             </div>
             {/*main content*/}

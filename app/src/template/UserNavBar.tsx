@@ -6,7 +6,7 @@ import MobileUserDropdown from "./MobileUserDropdown";
 
 export default function UserNavBar() {
     return (
-        <div className="relative bg-gray-900 px-5">
+        <div className="relative bg-gray-900 px-5 ">
             <div className="relative z-50 w-full h-full">
                 <nav className="flex items-center flex-row justify-between flex-wrap bg-transparent">
                     <div className="hidden sm:block flex-grow bg-transparent text-white">
@@ -18,7 +18,7 @@ export default function UserNavBar() {
                         </Link>
                     </div>
                     <div className="block hidden sm:block flex-shrink-0 justify-center lg:flex lg:items-center">
-                        <div className="flex text-sm">
+                        <div className="p-1 flex text-sm">
                             <UserDropdown />
                         </div>
                     </div>

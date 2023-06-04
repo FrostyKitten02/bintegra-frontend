@@ -3,7 +3,7 @@ import {Table} from "flowbite-react";
 export function UserSubscriptionsDataTable() {
 
     return (
-        <div className="">
+        <div className="hidden lg:block">
             <Table>
                 <Table.Head className="title-a bg-white text-gray-900">
                     <Table.HeadCell className="bg-white border-gray-300 hover:bg-gray-100 border-b w-[200px]">

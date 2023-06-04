@@ -1,4 +1,6 @@
 import {v4 as uuid} from "uuid";
+import {Link} from "react-router-dom";
+import Paths from "../Paths";
 
 
 export type PriceInterval = "mesec" | "leto";
@@ -16,18 +18,32 @@ const Feature = ({name, disabled}: { name: string, disabled?: boolean }) => {
         </li>
     )
 };
-export default function PlanCard(
-    {
-        features,
-        name,
-        price,
-        priceInterval
-    }: {
-        features: string[],
-        name: string,
-        price: number,
-        priceInterval: PriceInterval
-    }) {
+export default function PlanCard({
+                                     offerType,
+                                     offerId,
+                                     features,
+                                     name,
+                                     price,
+                                     priceInterval
+                                 }: { offerType?: string, offerId?: number, features: string[], name: string, price: number, priceInterval: PriceInterval }) {
+
+
+    console.log(offerId)
+    console.log(typeof offerId)
+    console.log(Paths.MOBILE_PLANS + "/" + offerId)
+
+    const setOfferPath = (): string => {
+        switch (offerType){
+            case "mobilni":
+                return Paths.MOBILE_PLANS;
+            case "internet":
+                return Paths.INTERNET_PLANS;
+            case "television":
+                return Paths.TV_PLANS;
+            default: return "pathERROR"
+        }
+    }
+
     return (
         <div className="w-full flex max-w-sm group">
             <div
@@ -52,17 +68,18 @@ export default function PlanCard(
                             <span className="ml-1 text-xl text-gray-400">/{priceInterval}</span>
                         </div>
 
-                        <ul role="list" className="space-y-5 my-7">
+                        <ul className="space-y-5 my-7">
                             {features.map((feature, index) => {
                                 return <Feature name={feature} key={uuid()}/>
                             })}
                         </ul>
                     </div>
-                    <button
-                        type="button"
+                    <Link
+                        onClick={() => window.scroll(0, 0)}
+                        to={`${setOfferPath()}/${offerId}`}
                         className="text-white bg-sage-green hover:bg-gray-900 ease-in-out duration-500 hover:transition font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center mb-0 mt-auto absolute bottom-0">
                         Naročite
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
