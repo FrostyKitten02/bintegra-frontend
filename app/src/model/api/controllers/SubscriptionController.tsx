@@ -9,7 +9,7 @@ export class SubscriptionController extends BaseController<SubscriptionRequestDt
         super(auth, "subscription");
     }
     public subscribe(subscriptionContract: string, chosenOffer?: number, phoneId?: number): Promise<AxiosResponse<SubscriptionResponseDto>> {
-        const contract: boolean = subscriptionContract === "vezava" ? true : false;
+        const contract: boolean = subscriptionContract === "vezava";
         const req: SubscriptionRequestDto = {
             subscription: {
                 offerId: chosenOffer,
@@ -18,15 +18,7 @@ export class SubscriptionController extends BaseController<SubscriptionRequestDt
                 subscriptionContract: contract,
             }
         }
-        const reqTemp: SubscriptionRequestDto = {
-            subscription: {
-                offerId: undefined,
-                startDate: undefined,
-                phoneId: undefined,
-                subscriptionContract: undefined,
-            }
-        }
         const endpointUrl = "/subscribe"
-        return axios.post<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(endpointUrl,undefined), reqTemp, this.axiosConfig)
+        return axios.post<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(endpointUrl,undefined), req, this.axiosConfig)
     }
 }
