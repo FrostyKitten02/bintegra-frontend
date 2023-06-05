@@ -18,9 +18,12 @@ export default function LoginPage() {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        context.login(user.email ?? "", user.password ?? "");
-
-        //TODO login the user!!!!
+        context.login(user.email ?? "", user.password ?? "")
+            .then(success => {
+                if (success) {
+                    navigate(Paths.HOME === ""?"/":Paths.HOME);
+                }
+            });
         setUser({});
     }
 
