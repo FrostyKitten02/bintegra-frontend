@@ -2,56 +2,68 @@ import {Button} from "flowbite-react";
 import {useParams} from "react-router-dom";
 import {ChangeEvent, useContext, useState} from "react";
 import {PhoneShowcase} from "../components/PhoneShowcase";
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import {ChevronRightIcon} from "@heroicons/react/24/outline";
 import {OfferDto} from "../model/ResponseDtos";
 import {OffersController} from "../model/api/controllers/OffersController";
 import {IPageContext, PageContext} from "../components/PageContextProvider";
+import PlansUtil from "../Util/PlansUtil";
+import {subscribe} from "diagnostics_channel";
+import {SubscriptionController} from "../model/api/controllers/SubscriptionController";
 
 
 export function ChoosePlanPage() {
-    const { id } = useParams();
-    const [chosen, setChosen] = useState<string>();
-    const [decision, setDecision] = useState<string>();
-    const [chosenPhone, setChosenPhone] = useState<number>(-1);
-    const [chosenOffer, setChosenOffer] = useState<OfferDto[]>([]);
+    const {id} = useParams();
+    const [chosenPackage, setChosenPackage] = useState<string>();
+    const [phoneDecision, setPhonePhoneDecision] = useState<string>();
+    const [chosenPhone, setChosenPhone] = useState<number>();
+    const [chosenOffer, setChosenOffer] = useState<OfferDto>();
     const [loading, setLoading] = useState<boolean>(true);
     const context = useContext<IPageContext>(PageContext);
 
     const fetchChosenOffer = () => {
         context.api.offersApi
-            .getOfferById(id??"")
+            .getOfferById(id ?? "")
             .then((response) => {
-                setChosenOffer(response.data.offers??[]);
+                setChosenOffer(response.data.offer ?? {});
                 setLoading(false);
             });
     }
 
-    if (chosenOffer.length === 0 && loading) {
+    if (loading) {
         fetchChosenOffer();
+        console.log(chosenOffer)
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-        setChosen(prevState => (event.target.value));
+        setChosenPackage(prevState => (event.target.value));
         console.log("value" + event.target.value)
     }
 
     const handleDecision = (event: ChangeEvent<HTMLInputElement>): void => {
-        setDecision(prevState => (event.target.value));
-        if(event.target.value === "false")
-            setChosenPhone(-1);
+        setPhonePhoneDecision(prevState => (event.target.value));
+        if (event.target.value === "false")
+            setChosenPhone(undefined);
     }
 
-    const addChosenPhone = (phoneId: number):void => {
+    const addChosenPhone = (phoneId: number): void => {
         setChosenPhone(prevState => (phoneId));
         console.log("telefon, ki  ga je uporabnik  izbral: " + phoneId)
     }
 
     const handleChosenOffer = (): void => {
         //poslji na backend
-        if (chosen === undefined)
+        if (chosenPackage === undefined)
             return;
-        console.log("izbrana " + chosen)
+        context.api.subscriptionApi
+            .subscribe(chosenPackage, chosenOffer?.id, chosenPhone)
+            .then((response) => {
+
+            })
+
+
+        console.log("izbrana " + chosenPackage)
         console.log("izbran telefon " + chosenPhone)
+
         //preusmeri na zacetno stran ali profil
     }
 
@@ -62,7 +74,7 @@ export function ChoosePlanPage() {
                 <div className="relative h-full">
                     <div className="">
                         <h5 className="mb-4 title-a uppercase text-center text-xl text-gray-900">
-                            {chosenOffer[0].title}
+                            {chosenOffer?.title}
                         </h5>
                         <hr className="pb-4 gray-400 border-gray-300"/>
                         <div>
@@ -70,13 +82,13 @@ export function ChoosePlanPage() {
                                 <span className="title-a pr-3 uppercase">
                                     Osnovna cena:
                                 </span>
-                                {chosenOffer[0].basePrice}€
+                                {chosenOffer?.basePrice}€
                             </p>
                             <p className="py-3">
                                 <span className="title-a pr-3 uppercase">
                                     Kategorija:
                                 </span>
-                                {chosenOffer[0].type}
+                                {PlansUtil.getCategory(chosenOffer?.type)}
                             </p>
                             {/*
                             <p className="py-3">
@@ -103,17 +115,19 @@ export function ChoosePlanPage() {
                                                     Vezava
                                                 </div>
                                                 <div className="grid grid-cols-6">
-                                                    <ChevronRightIcon className="h-4 w-4 mr-3 col-span-1 text-gray-500" />
+                                                    <ChevronRightIcon
+                                                        className="h-4 w-4 mr-3 col-span-1 text-gray-500"/>
                                                     <span className="col-span-5">
-                                                        trajanje {chosenOffer[0].fullDurationMonths} mescev
+                                                        trajanje {chosenOffer?.fullDurationMonths} mescev
 
                                                     </span>
 
                                                 </div>
                                                 <div className="grid grid-cols-6">
-                                                    <ChevronRightIcon className="h-4 w-4 mr-3 col-span-1 text-gray-500" />
+                                                    <ChevronRightIcon
+                                                        className="h-4 w-4 mr-3 col-span-1 text-gray-500"/>
                                                     <span className="col-span-5">
-                                                        cena s popustom {chosenOffer[0].discountPrice}€ prvih {chosenOffer[0].discountDurationMonths} mescev
+                                                        cena s popustom {chosenOffer?.discountPrice}€ prvih {chosenOffer?.discountDurationMonths} mescev
                                                     </span>
 
                                                 </div>
@@ -133,13 +147,13 @@ export function ChoosePlanPage() {
                                             <div className="block p-6">
                                                 <div className="w-full title-a uppercase text-center">naročnina</div>
                                                 <div className="grid grid-cols-6">
-                                                    <ChevronRightIcon className="h-4 w-4 col-span-1 text-gray-500" />
+                                                    <ChevronRightIcon className="h-4 w-4 col-span-1 text-gray-500"/>
                                                     <span className="col-span-5">
                                                         trajanje za nedoločen čas
                                                     </span>
                                                 </div>
                                                 <div className="grid grid-cols-6">
-                                                    <ChevronRightIcon className="h-4 w-4 col-span-1 text-gray-500" />
+                                                    <ChevronRightIcon className="h-4 w-4 col-span-1 text-gray-500"/>
                                                     <span className="col-span-5">
                                                         vsak mesec se zaračuna osnovna cena v vrednosti 9.99€
                                                     </span>
@@ -150,7 +164,7 @@ export function ChoosePlanPage() {
                                 </ul>
                             </div>
                             {
-                                chosenOffer[0].type === "mobilni" ?
+                                chosenOffer?.type === "MOBILE" ?
                                     <div className="px-2 py-10">
                                         <hr/>
                                         <div className="py-4 text-center">
@@ -200,7 +214,7 @@ export function ChoosePlanPage() {
                                     : ""
                             }
                             {
-                                decision === "true" ?
+                                phoneDecision === "true" ?
                                     <PhoneShowcase setPhone={addChosenPhone}/>
                                     : ""
                             }
@@ -208,12 +222,18 @@ export function ChoosePlanPage() {
                                 <div className="w-full uppercase font-bold">
                                     izbrali ste paket
                                     <span className="text-2xl mx-4">
-                                        {id}
+                                        {chosenOffer?.title}
                                     </span>
-                                         ter telefon
-                                    <span className="text-2xl mx-4">
-                                        {chosenPhone}
-                                    </span>
+                                    {chosenPhone ?
+                                        <span>
+                                            ter telefon
+                                            <span className="text-2xl mx-4">
+                                                {chosenPhone}
+                                            </span>
+                                        </span>
+                                        : ""
+                                    }
+
                                 </div>
                                 <Button
                                     onClick={handleChosenOffer}

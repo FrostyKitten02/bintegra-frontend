@@ -5,7 +5,7 @@ export default class PlansUtil {
     public static getOfferMobileData(offer: OfferDto): string[] {
         const features: string[] = [];
 
-        if(offer.mobileData === -1)
+        if (offer.mobileData === -1)
             features.push("Neomejeno število prenosa podatkov v Sloveniji.");
         else if (offer.mobileData !== undefined && offer.mobileData !== 0)
             features.push(offer.mobileData.toString() + " GB prenosa podatkov v Sloveniji.");
@@ -23,29 +23,42 @@ export default class PlansUtil {
         return features;
     }
 
-    public static getInternetData(offer: OfferDto): string[]{
+    public static getInternetData(offer: OfferDto): string[] {
         const features: string[] = [];
 
-        if(offer.downloadSpeed === -1)
+        if (offer.downloadSpeed === -1)
             features.push("Neomejena hitrost do uporabnika - download speed.")
         else if (offer.downloadSpeed !== undefined && offer.downloadSpeed !== 0)
             features.push(offer.downloadSpeed.toString() + "Mbps hitrost do uporabnika - download speed.");
 
-        if(offer.uploadSpeed === -1)
+        if (offer.uploadSpeed === -1)
             features.push("Neomejena hitrost od uporabnika - upload speed.")
         else if (offer.uploadSpeed !== undefined && offer.uploadSpeed !== 0)
             features.push(offer.uploadSpeed.toString() + "Mbps hitrost od uporabnika - upload speed.");
 
         return features;
     }
-    public static getTelevisionData(offer: OfferDto): string[]{
+
+    public static getTelevisionData(offer: OfferDto): string[] {
         const features: string[] = [];
-        if(offer.programsNumber === -1)
+        if (offer.programsNumber === -1)
             features.push("Neomejeno število programov.")
         else if (offer.programsNumber !== undefined && offer.programsNumber !== 0)
             features.push(offer.programsNumber.toString() + "+ TV programov.");
 
         return features;
+    }
+
+    public static getCategory(category: string | undefined): string {
+        switch (category) {
+            case "MOBILE":
+                return "mobilna telefonija";
+            case "INTERNET":
+                return "internet";
+            case "TELEVSION":
+                return "televizija";
+        }
+        return "";
     }
 
     public static getOfferFeatures(offer: OfferDto): string[] {

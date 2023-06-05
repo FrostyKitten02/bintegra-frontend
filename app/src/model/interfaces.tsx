@@ -1,3 +1,5 @@
+import {OfferRequestDto} from "./RequestDtos";
+import {OfferDto} from "./ResponseDtos";
 
 export interface User {
     firstname?: string,
@@ -7,6 +9,15 @@ export interface User {
     repeatPassword?: string,
     newPassword?: string,
     terms?: boolean;
+}
+
+export interface SubscriptionDto {
+    offerId?: number,
+    startDate?: number,
+    phoneId?: number,
+    subscriptionContract?: boolean,
+    offer?: OfferDto
+
 }
 
 
