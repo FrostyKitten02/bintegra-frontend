@@ -19,6 +19,6 @@ export class SubscriptionController extends BaseController<OfferResponseDto>{
             }
         }
         const endpointUrl = "/subscribe"
-        return axios.post(this.getControllerFullUrl(endpointUrl, undefined), {})
+        return axios.post(this.getControllerFullUrl(endpointUrl, undefined), {}, this.axiosConfig)
     }
 }
