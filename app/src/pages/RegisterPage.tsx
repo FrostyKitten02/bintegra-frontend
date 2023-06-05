@@ -1,10 +1,13 @@
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useContext, useState} from "react";
 import InputWithLabel, {errorType} from "../components/InputWithLabel";
-import {User} from "../model/interfaces";
 import register_img from "../pictures/register_img.jpg";
+import {RegisterRequestDto} from "../model/RequestDtos";
+import {IPageContext, PageContext} from "../components/PageContextProvider";
 
 export default function RegisterPage() {
-    const [user, setUser] = useState<User>({});
+    const context = useContext<IPageContext>(PageContext);
+
+    const [user, setUser] = useState<RegisterRequestDto>({});
     const [passwordMissMatch, setPasswordMissmatch] = useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -15,16 +18,19 @@ export default function RegisterPage() {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(user)
         if (user.password !== user.repeatPassword) {
             //TODO show error;
-            console.log("Passwords don't match");
             setPasswordMissmatch(true);
             setUser(prevState => ({...prevState, password: "", repeatPassword: ""}));
             return;
         }
-        //TODO register the user!!!!
-        setUser({});
+
+        context.api.UserApi.register(user).then(response => {
+            //TODO test registration!! will missing data bee a problem??
+            console.log(response);
+            setUser({});
+        });
+
     }
 
 
@@ -50,13 +56,31 @@ export default function RegisterPage() {
                             Registracija
                         </h5>
                         <hr className="pb-6"/>
+
+                        <InputWithLabel
+                            handleChange={handleChange}
+                            value={user.firstName ?? ""}
+                            label="Ime"
+                            name="firstName"
+                            type="text"
+                            required
+                        />
+
+                        <InputWithLabel
+                            handleChange={handleChange}
+                            value={user.lastName ?? ""}
+                            label="Priimek"
+                            name="lastName"
+                            type="text"
+                            required
+                        />
+
                         <InputWithLabel
                             handleChange={handleChange}
                             value={user.email ?? ""}
                             label="E-mail"
                             name="email"
                             type="email"
-                            placeholder="E-mail naslov"
                             required
                         />
 
@@ -66,7 +90,6 @@ export default function RegisterPage() {
                             label="Geslo"
                             name="password"
                             type="password"
-                            placeholder="••••••••"
                             event={passwordMissMatch ? errorType : undefined}
                             message={"Gesli se ne ujemata!"}
                             required
@@ -78,11 +101,11 @@ export default function RegisterPage() {
                             label="Ponovno geslo"
                             name="repeatPassword"
                             type="password"
-                            placeholder="••••••••"
                             event={passwordMissMatch ? errorType : undefined}
                             message={"Gesli se ne ujemata!"}
                             required
                         />
+
                         <div className="flex items-start pt-10">
                             <div className="flex items-start">
                                 <div className="flex items-center h-5">

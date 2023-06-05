@@ -62,7 +62,7 @@ export default function InputWithLabel(
         label: string,
         name: string,
         type: HTMLInputTypeAttribute,
-        placeholder: string,
+        placeholder?: string,
         required?: boolean,
         event?: TextInputType
         message?: string

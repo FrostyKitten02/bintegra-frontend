@@ -56,7 +56,8 @@ export class BaseController<REQ> {
             }
         }
 
-        return BaseController.BASE_URL + this.CONTROLLER_URL + endpointUrl??"" + extraPath;
+        endpointUrl = endpointUrl??"";
+        return BaseController.BASE_URL + this.CONTROLLER_URL + endpointUrl + extraPath;
     }
 
 }
