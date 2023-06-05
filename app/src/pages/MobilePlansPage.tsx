@@ -1,7 +1,30 @@
 import PlanCard from "../components/PlanCard";
 import mobile_img from "../pictures/mobile_img.jpg";
+import {useContext, useState} from "react";
+import {OfferDto} from "../model/ResponseDtos";
+import {OffersController} from "../model/api/controllers/OffersController";
+import {uuid} from "flowbite-react/lib/esm/helpers/uuid";
+import PlansUtil from "../Util/PlansUtil";
+import {IPageContext, PageContext} from "../components/PageContextProvider";
 
 export default function MobilePlansPage() {
+    const [mobileOffers, setMobileOffers] = useState<OfferDto[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const context = useContext<IPageContext>(PageContext);
+    const fetchMobilePlans = () => {
+       context.api.offersApi
+            .getActiveOffersByType("MOBILE")
+            .then((response) => {
+                setMobileOffers(response.data.offers??[]);
+                setLoading(false);
+                console.log(response.data.offers??[])
+            });
+    }
+
+    if (loading) {
+        fetchMobilePlans();
+    }
+
     return (
         <div className="mb-32 text-gray-800 grid justify-center">
             <div className="flex justify-center flex-wrap pb-10">
@@ -21,27 +44,21 @@ export default function MobilePlansPage() {
             </div>
             <div className="flex justify-center">
                 <div className="grid mx-12 relative grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-x-16">
-                    <PlanCard
-                        offerId={1}
-                        offerType="mobilni"
-                        features={["10 GB prenosa podatkov v Sloveniji", "Neomejeni SMS-i", "Neomejene klici v Sloveniji"]}
-                        name={"Osnovni paket"}
-                        price={9.99}
-                        priceInterval="mesec"/>
-                    <PlanCard
-                        offerId={2}
-                        offerType="mobilni"
-                        features={["20 GB prenosa podatkov v Sloveniji", "Neomejeni SMS-i", "Neomejeni klici v Slovneiji", "5 GB mobilnih podatkov v EU"]}
-                        name={"Srednji paket"}
-                        price={11.99}
-                        priceInterval="mesec"/>
-                    <PlanCard
-                        offerId={3}
-                        offerType="mobilni"
-                        features={["Neomejeno število prenosa podatkov v Sloveniji", "Neomejeni SMS-i", "Neomejeni klici v Sloveniji", "10 GB mobilnih podatkov v EU"]}
-                        name={"Preminum paket"}
-                        price={15.99}
-                        priceInterval="mesec"/>
+                    {
+                        mobileOffers.map( (offer) => {
+                            return(
+                                <PlanCard
+                                    key={uuid()}
+                                    offerId={offer.id}
+                                    offerType={offer.type}
+                                    features={PlansUtil.getOfferFeatures(offer)}
+                                    name={offer.title??""}
+                                    discountPrice={offer.discountPrice??0}
+                                    price={offer.basePrice??0}
+                                    priceInterval="mesec"/>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </div>

@@ -15,6 +15,10 @@ export class OffersController extends BaseController<OfferResponseDto> {
         return axios.get<OfferResponseDto, AxiosResponse<OfferResponseDto, any>, OfferRequestDto>(this.getControllerFullUrl(endpointUrl,[type]), this.axiosConfig);
     }
 
+    public getOfferById(id: string): Promise<AxiosResponse<OfferResponseDto>> {
+        return axios.get<OfferResponseDto, AxiosResponse<OfferResponseDto, any>, OfferRequestDto>(this.getControllerFullUrl(undefined,[id]), this.axiosConfig);
+    }
+
 
 
 }

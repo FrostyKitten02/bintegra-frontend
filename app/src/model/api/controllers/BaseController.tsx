@@ -49,14 +49,14 @@ export class BaseController<REQ> {
 
     protected getControllerFullUrl(endpointUrl?: string, pathParams?: string[]): string {
         let extraPath = "";
-
+        console.log(pathParams)
         if (pathParams !== undefined) {
             for (let i in pathParams) {
                 extraPath += "/" + pathParams[i];
             }
         }
-
-        return BaseController.BASE_URL + this.CONTROLLER_URL + endpointUrl??"" + extraPath;
+        endpointUrl = endpointUrl??"";
+        return BaseController.BASE_URL + this.CONTROLLER_URL + endpointUrl + extraPath;
     }
 
 }

@@ -19,13 +19,14 @@ const Feature = ({name, disabled}: { name: string, disabled?: boolean }) => {
     )
 };
 export default function PlanCard({
+                                     discountPrice,
                                      offerType,
                                      offerId,
                                      features,
                                      name,
                                      price,
                                      priceInterval
-                                 }: { offerType?: string, offerId?: number, features: string[], name: string, price: number, priceInterval: PriceInterval }) {
+                                 }: { discountPrice?: number, offerType?: string, offerId?: number, features: string[], name: string, price: number, priceInterval: PriceInterval }) {
 
 
     console.log(offerId)
@@ -34,11 +35,11 @@ export default function PlanCard({
 
     const setOfferPath = (): string => {
         switch (offerType){
-            case "mobilni":
+            case "MOBILE":
                 return Paths.MOBILE_PLANS;
-            case "internet":
+            case "INTERNET":
                 return Paths.INTERNET_PLANS;
-            case "television":
+            case "TELEVSION":
                 return Paths.TV_PLANS;
             default: return "pathERROR"
         }
@@ -67,7 +68,9 @@ export default function PlanCard({
                             <span className="text-3xl font-semibold">€</span>
                             <span className="ml-1 text-xl text-gray-400">/{priceInterval}</span>
                         </div>
-
+                        <div className="text-xs text-center text-gray-600 pt-2">
+                            V primeru vezave velja pondbena cena 10€.
+                        </div>
                         <ul className="space-y-5 my-7">
                             {features.map((feature, index) => {
                                 return <Feature name={feature} key={uuid()}/>

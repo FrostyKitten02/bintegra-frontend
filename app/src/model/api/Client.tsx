@@ -4,7 +4,7 @@ import {OffersController} from "./controllers/OffersController";
 export class Client {
     private readonly authKey?: string;
 
-    private readonly offersApi: OffersController;
+    public readonly offersApi: OffersController;
     public readonly UserApi: UserController;
 
     constructor(authKey?: string) {

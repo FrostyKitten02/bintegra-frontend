@@ -2,16 +2,18 @@ import PlanCard from "../components/PlanCard";
 import internet_img from "../pictures/internet_img.jpg";
 import {OffersController} from "../model/api/controllers/OffersController";
 import {v4 as uuid} from "uuid";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {OfferDto} from "../model/ResponseDtos";
+import PlansUtil from "../Util/PlansUtil";
+import {IPageContext, PageContext} from "../components/PageContextProvider";
 
 export default function InternetPlansPage() {
     const [internetOffers, setInternetOffers] = useState<OfferDto[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const context = useContext<IPageContext>(PageContext);
 
     const fetchInternetPlans = () => {
-        new OffersController("authKey")
-            .getActiveOffersByType("INTERNET")
+        context.api.offersApi.getActiveOffersByType("INTERNET")
             .then((response) => {
                 setInternetOffers(response.data.offers??[]);
                 setLoading(false);
@@ -21,8 +23,6 @@ export default function InternetPlansPage() {
     if (internetOffers.length === 0 && loading) {
         fetchInternetPlans();
     }
-
-
 
 
     return (
@@ -47,14 +47,17 @@ export default function InternetPlansPage() {
                     {
                         //TODO: display better data, price may not be correct, also show discount price!!!
                         internetOffers.map((offer) => {
-                            return <PlanCard
-                                key={uuid()}
-                                offerId={-1}
-                                offerType="b"
-                                features={["Hitrosti do " + offer?.downloadSpeed + " mbps do uporabnika", "Hitrosti do " + offer?.uploadSpeed + " mbps od uporabnika"]}
-                                name={offer?.title??"N/A"}
-                                price={offer?.basePrice??0}
-                                priceInterval="mesec"/>
+                            return (
+                                <PlanCard
+                                    key={uuid()}
+                                    offerId={offer.id}
+                                    offerType={offer.type}
+                                    features={PlansUtil.getOfferFeatures(offer)}
+                                    name={offer.title??""}
+                                    discountPrice={offer.discountPrice??0}
+                                    price={offer.basePrice??0}
+                                    priceInterval="mesec"/>
+                            )
                         })
                     }
                 </div>

@@ -1,7 +1,29 @@
 import PlanCard from "../components/PlanCard";
 import television_img from "../pictures/television_img.jpg";
+import {useContext, useState} from "react";
+import {OfferDto} from "../model/ResponseDtos";
+import {OffersController} from "../model/api/controllers/OffersController";
+import {v4 as uuid} from "uuid";
+import PlansUtil from "../Util/PlansUtil";
+import {IPageContext, PageContext} from "../components/PageContextProvider";
 
 export default function TelevisionPlansPage(){
+    const [televisionOffers, setTelevisionOffers] = useState<OfferDto[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const context = useContext<IPageContext>(PageContext);
+    const fetchTelevisionPlans = () => {
+        context.api.offersApi
+            .getActiveOffersByType("TELEVSION")
+            .then((response) => {
+                setTelevisionOffers(response.data.offers??[]);
+                setLoading(false);
+                console.log(response.data.offers??[])
+            });
+    }
+
+    if (loading) {
+        fetchTelevisionPlans();
+    }
     return  (
         <div className="mb-32 text-gray-800 grid justify-center pt-12">
             <div className="flex justify-center flex-wrap pb-10">
@@ -21,21 +43,21 @@ export default function TelevisionPlansPage(){
             </div>
             <div className="flex justify-center">
                 <div className="grid mx-12 relative grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-x-16">
-                    <PlanCard
-                        features={["150+ TV programov", "Ogled nazaj do 7 dni"]}
-                        name={"Osnovni paket"}
-                        price={26.99}
-                        priceInterval="mesec"/>
-                    <PlanCard
-                        features={["180+ TV programov", "Ogled nazaj do 7 dni"]}
-                        name={"Srednji paket"}
-                        price={34.99}
-                        priceInterval="mesec"/>
-                    <PlanCard
-                        features={["230+ TV programov", "Ogled nazaj do 7 dni"]}
-                        name={"Preminum paket"}
-                        price={44.99}
-                        priceInterval="mesec"/>
+                    {
+                        televisionOffers.map( offer => {
+                            return (
+                                <PlanCard
+                                    key={uuid()}
+                                    offerId={offer.id}
+                                    offerType={offer.type}
+                                    features={PlansUtil.getOfferFeatures(offer)}
+                                    name={offer.title??""}
+                                    discountPrice={offer.discountPrice??0}
+                                    price={offer.basePrice??0}
+                                    priceInterval="mesec"/>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </div>
