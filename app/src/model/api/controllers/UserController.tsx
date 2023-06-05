@@ -1,10 +1,10 @@
 import {BaseController} from "./BaseController";
 import {UserResponseDto} from "../../ResponseDtos";
 import axios, {Axios, AxiosResponse} from "axios";
-import {UserRequestDto} from "../../RequestDtos";
+import {RegisterRequestDto, UserRequestDto} from "../../RequestDtos";
 
 
-export class UserController extends BaseController<UserResponseDto>{
+export class UserController extends BaseController<UserRequestDto>{
 
     constructor(auth?: string) {
         super(auth, "user");
@@ -19,6 +19,20 @@ export class UserController extends BaseController<UserResponseDto>{
             }
         }
         return axios.post<UserResponseDto, AxiosResponse<UserResponseDto, any>, UserRequestDto>(this.getControllerFullUrl(endpointUrl), req);
+    }
+
+
+    public register(data: RegisterRequestDto): Promise<AxiosResponse<UserResponseDto>> {
+        const endpointUrl = "/register";
+        const req: UserRequestDto = {
+            registerRequest: data
+        }
+        return axios.post<UserResponseDto, AxiosResponse<UserResponseDto, any>, UserRequestDto>(this.getControllerFullUrl(endpointUrl), req);
+    }
+
+    public getCurrentUser(): Promise<AxiosResponse<UserResponseDto>> {
+        console.log(this.axiosConfig)
+        return axios.get<UserResponseDto, AxiosResponse<UserResponseDto, any>, UserRequestDto>(this.getControllerFullUrl(), this.axiosConfig);
     }
 
 }

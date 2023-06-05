@@ -1,7 +1,9 @@
 import {createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState} from "react";
 import {Client} from "../model/api/Client";
+import {UserDto} from "../model/interfaces";
 
 const SESSION_TOKEN_STORAGE: string = "SESSION";
+const SESSION_USER_STORAGE: string = "USER";
 
 
 export interface IPageContext {
@@ -9,6 +11,7 @@ export interface IPageContext {
     logOut: () => void,
     api: Client,
     loggedIn: boolean,
+    user?: UserDto,
     setCtx?: Dispatch<SetStateAction<IPageContext>>
 }
 
@@ -16,18 +19,17 @@ export interface IPageContext {
 function initContext(): IPageContext {
     return {
         login: async function(username, password) {
-            const res = await this.api.UserApi.login(username, password)
-            console.log(res.data)
+            const res = await this.api.UserApi.login(username, password);
             if (res.data.success) {
                 const token = btoa(username + ":" + password)
                 saveUserAuthToSessionStorage(token);
                 if (this.setCtx !== undefined) {
                     this.setCtx(prevState => {return {...prevState, api: new Client(token), loggedIn: true}})
                 } else {
+                    this.user = res.data.user;
                     this.api = new Client(token);
                     this.loggedIn = true;
                 }
-                console.log("success")
                 return true;
             }
 
@@ -36,8 +38,9 @@ function initContext(): IPageContext {
         logOut: function() {
             removeAuthFromSessionStorage();
             if (this.setCtx === undefined) {
-                this.api = new Client();
+                this.user = undefined;
                 this.loggedIn = false;
+                this.api = new Client();
                 return;
             }
             this.setCtx(prevState => ({...prevState, api: new Client(), loggedIn: false}))
@@ -60,13 +63,46 @@ function removeAuthFromSessionStorage() {
     sessionStorage.removeItem(SESSION_TOKEN_STORAGE);
 }
 
+//Storing user doen't work don't know why!!!
+function storeUserInSession(userDto?: UserDto) {
+    removeUserFromSession();
+    console.log(userDto, "WTF")
+    if (userDto === undefined) {
+        return;
+    }
+    sessionStorage.setItem(SESSION_USER_STORAGE, "WTF");
+}
+
+function removeUserFromSession() {
+    sessionStorage.removeItem(SESSION_USER_STORAGE);
+}
+function getUserFromSession(): UserDto | undefined {
+    const userStr = sessionStorage.getItem(SESSION_USER_STORAGE);
+    if (userStr === undefined || userStr === null || userStr === "") {
+        return undefined;
+    }
+
+    try {
+        const userDto: UserDto | null= JSON.parse(userStr);
+        if (userDto === null || userDto === undefined) {
+            return undefined;
+        } else {
+            return userDto;
+        }
+    } catch (error) {
+        //TODO: log error
+    }
+
+    return undefined;
+}
+//___________________________________________________________
+
 export default function PageContextProvider({children}:{children: ReactNode}) {
     const [ctx, setCtx] = useState<IPageContext>(initContext());
 
     if (ctx.setCtx === undefined) {
         ctx.setCtx = setCtx;
     }
-
 
     useEffect(() => {
         if (ctx.loggedIn) {
@@ -76,11 +112,8 @@ export default function PageContextProvider({children}:{children: ReactNode}) {
         const token = sessionStorage.getItem(SESSION_TOKEN_STORAGE);
         if (token) {
             setCtx(prevState => ({...prevState, loggedIn: true, api: new Client(token)}));
-            console.log("token in storage!!")
         }
     }, [ctx])
-
-
 
     return (
         <PageContext.Provider value={ctx}>

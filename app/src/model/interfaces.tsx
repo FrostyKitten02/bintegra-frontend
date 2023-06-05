@@ -24,4 +24,13 @@ export interface SubscriptionDto {
 export interface UserDto {
     id?: number,
     email?: string,
+    male?: boolean,
+
+    firstName?: string,
+    lastName?: string,
+
+    birthYear?: number,
+    birthMonth?: number,
+    birthDay?: number,
+
 }

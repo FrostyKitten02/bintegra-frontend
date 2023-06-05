@@ -4,7 +4,7 @@ import {OfferRequestDto} from "../../RequestDtos";
 import {BaseController} from "./BaseController";
 
 
-export class OffersController extends BaseController<OfferResponseDto> {
+export class OffersController extends BaseController<OfferRequestDto> {
 
     constructor(auth?: string) {
         super(auth, "offer");

@@ -1,14 +1,28 @@
 import {PencilIcon, XMarkIcon} from "@heroicons/react/24/outline";
 import InputWithLabel from "../../components/InputWithLabel";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useContext, useEffect, useState} from "react";
 import {User} from "../../model/interfaces";
 import FormHandler from "../../Util/FormHandler";
+import {IPageContext, PageContext} from "../../components/PageContextProvider";
+import {useLoaderData} from "react-router-dom";
+import {Simulate} from "react-dom/test-utils";
+import load = Simulate.load;
+import {UserResponseDto} from "../../model/ResponseDtos";
 
 export default function UserPortalProfile() {
+    const context = useContext<IPageContext>(PageContext);
+    const loader: UserResponseDto | undefined = useLoaderData() as UserResponseDto | undefined;
+
     const [editing, setEditing] = useState<boolean>(false);
     const [user, setUser] = useState<User>({});
 
+
+    useEffect(() => {
+        setUser(loader?.user??{})
+    }, [loader]);
+
     const handleStartEditiButtonClick = () => {
+        context.api.UserApi.getCurrentUser();
         setEditing(prevState => !prevState);
     }
 
@@ -39,7 +53,8 @@ export default function UserPortalProfile() {
                                         name="firstname" type="text" placeholder={""} disabled={!editing}/>
                         <InputWithLabel handleChange={handleInputChange} value={user.lastname} label="Priimek"
                                         name="lastname" type="text" placeholder={""} disabled={!editing}/>
-                        <InputWithLabel handleChange={handleInputChange} value={user.email} label="Email" name="email"
+                        <InputWithLabel handleChange={handleInputChange} value={user.email} label="Email"
+                                        name="email"
                                         type="email" placeholder={""} disabled={!editing}/>
                         <button className="button-default w-full" onClick={handleSaveButtonClick}
                                 disabled={!editing}>Potrdi

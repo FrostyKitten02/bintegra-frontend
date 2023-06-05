@@ -19,12 +19,17 @@ import UserPortalDefaultPage from "../pages/profile/UserPortalDefaultPage";
 import UserPortalProfile from "../pages/profile/UserPortalProfile";
 import UserPortalTvOverviewPage from "../pages/profile/UserPortalTvOverviewPage";
 import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOverview";
+import {IPageContext, PageContext} from "./PageContextProvider";
+import {useContext} from "react";
 
 import {ChoosePlanPage} from "../pages/ChoosePlanPage";
 
 
 
 export default function AppRouter() {
+    const context = useContext<IPageContext>(PageContext);
+
+
     const router = createBrowserRouter([
         {
             path: "/",
@@ -62,7 +67,11 @@ export default function AppRouter() {
                         },
                         {
                             path: Paths.USER_PORTAL_PROFILE,
-                            element: <UserPortalProfile />
+                            element: <UserPortalProfile />,
+                            loader: async () => {
+                                const res = await context.api.UserApi.getCurrentUser();
+                                return res.data;
+                            }
                         },
                         {
                             path: Paths.USER_PORTAL_MOBILE,
