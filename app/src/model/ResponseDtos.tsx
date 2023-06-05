@@ -1,4 +1,4 @@
-import {UserDto} from "./interfaces";
+import {SubscriptionDto, UserDto} from "./interfaces";
 
 export interface OfferDto {
     id?: number,
@@ -42,4 +42,9 @@ export interface OfferResponseDto {
 export interface UserResponseDto {
     success?: boolean;
     user?: UserDto;
+}
+
+export interface SubscriptionResponseDto {
+    subscriptionId?: number,
+    subscriptions?: SubscriptionDto []
 }
