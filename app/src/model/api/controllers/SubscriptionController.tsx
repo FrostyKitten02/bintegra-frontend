@@ -1,5 +1,5 @@
 import {BaseController} from "./BaseController";
-import {OfferDto, OfferResponseDto, SubscriptionResponseDto} from "../../ResponseDtos";
+import {SubscriptionResponseDto} from "../../ResponseDtos";
 import axios, {AxiosResponse} from "axios";
 import {SubscriptionRequestDto} from "../../RequestDtos";
 

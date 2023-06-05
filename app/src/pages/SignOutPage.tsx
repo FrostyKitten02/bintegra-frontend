@@ -1,4 +1,3 @@
-
 import {Link} from "react-router-dom";
 import Paths from "../Paths";
 import signout_img from "../pictures/signout_img.jpg";

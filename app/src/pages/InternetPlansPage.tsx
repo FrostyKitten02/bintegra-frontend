@@ -1,6 +1,5 @@
 import PlanCard from "../components/PlanCard";
 import internet_img from "../pictures/internet_img.jpg";
-import {OffersController} from "../model/api/controllers/OffersController";
 import {v4 as uuid} from "uuid";
 import {useContext, useState} from "react";
 import {OfferDto} from "../model/ResponseDtos";

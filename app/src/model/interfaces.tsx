@@ -1,4 +1,3 @@
-import {OfferRequestDto} from "./RequestDtos";
 import {OfferDto} from "./ResponseDtos";
 
 export interface User {

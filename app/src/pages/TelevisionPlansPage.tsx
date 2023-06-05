@@ -2,7 +2,6 @@ import PlanCard from "../components/PlanCard";
 import television_img from "../pictures/television_img.jpg";
 import {useContext, useState} from "react";
 import {OfferDto} from "../model/ResponseDtos";
-import {OffersController} from "../model/api/controllers/OffersController";
 import {v4 as uuid} from "uuid";
 import PlansUtil from "../Util/PlansUtil";
 import {IPageContext, PageContext} from "../components/PageContextProvider";

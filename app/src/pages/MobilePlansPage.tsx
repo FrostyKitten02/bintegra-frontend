@@ -2,7 +2,6 @@ import PlanCard from "../components/PlanCard";
 import mobile_img from "../pictures/mobile_img.jpg";
 import {useContext, useState} from "react";
 import {OfferDto} from "../model/ResponseDtos";
-import {OffersController} from "../model/api/controllers/OffersController";
 import {uuid} from "flowbite-react/lib/esm/helpers/uuid";
 import PlansUtil from "../Util/PlansUtil";
 import {IPageContext, PageContext} from "../components/PageContextProvider";

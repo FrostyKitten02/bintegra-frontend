@@ -2,7 +2,6 @@ import {UserCircleIcon} from "@heroicons/react/24/outline";
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import Paths from "../Paths";
-import {Button} from "flowbite-react";
 
 const UserDropdownItem = ({ name, path }: { name:string, path:string }) => {
     const navigation = useNavigate();

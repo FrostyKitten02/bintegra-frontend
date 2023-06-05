@@ -1,6 +1,4 @@
 import {UserSubscriptionsDataTable} from "./UserSubscriptionsDataTable";
-
-import {UserPortalPieChart} from "./UserPortalPieChart";
 import {UserSubscriptionShowcard} from "./UserSubscriptionShowcard";
 
 

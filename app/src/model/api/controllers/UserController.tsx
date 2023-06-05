@@ -1,6 +1,6 @@
 import {BaseController} from "./BaseController";
 import {UserResponseDto} from "../../ResponseDtos";
-import axios, {Axios, AxiosResponse} from "axios";
+import axios, {AxiosResponse} from "axios";
 import {RegisterRequestDto, UserRequestDto} from "../../RequestDtos";
 
 

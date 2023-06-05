@@ -4,11 +4,8 @@ import {ChangeEvent, useContext, useState} from "react";
 import {PhoneShowcase} from "../components/PhoneShowcase";
 import {ChevronRightIcon} from "@heroicons/react/24/outline";
 import {OfferDto} from "../model/ResponseDtos";
-import {OffersController} from "../model/api/controllers/OffersController";
 import {IPageContext, PageContext} from "../components/PageContextProvider";
 import PlansUtil from "../Util/PlansUtil";
-import {subscribe} from "diagnostics_channel";
-import {SubscriptionController} from "../model/api/controllers/SubscriptionController";
 
 
 export function ChoosePlanPage() {

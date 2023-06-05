@@ -5,8 +5,6 @@ import {User} from "../../model/interfaces";
 import FormHandler from "../../Util/FormHandler";
 import {IPageContext, PageContext} from "../../components/PageContextProvider";
 import {useLoaderData} from "react-router-dom";
-import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
 import {UserResponseDto} from "../../model/ResponseDtos";
 
 export default function UserPortalProfile() {
