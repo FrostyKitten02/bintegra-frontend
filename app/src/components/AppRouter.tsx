@@ -22,6 +22,10 @@ import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOve
 
 import {ChoosePlanPage} from "../pages/ChoosePlanPage";
 
+import UserPortalConsultantCustomerSubscriptions from "../pages/profile/UserPortalConsultantCustomerSubscriptions";
+import UserPortalConsultantCustomersPage from "../pages/profile/UserPortalConsultantCustomersPage";
+
+
 
 
 export default function AppRouter() {
@@ -51,6 +55,16 @@ export default function AppRouter() {
                             path: Paths.USER_PORTAL_BASE_PATH,
                             element: <UserPortalDefaultPage />,
 
+                        },
+                        {
+                            path: Paths.USER_PORTAL_CONSULTANT_CUSTOMERS,
+                            element: <UserPortalConsultantCustomersPage />,
+                            children: [
+                                {
+                                    path: Paths.USER_PORTAL_CONSULTANT_CUSTOMER_SUBSCRIPTIONS,
+                                    element: <UserPortalConsultantCustomerSubscriptions />
+                                }
+                            ]
                         },
                         {
                             path: Paths.USER_PORTAL_PROFILE,
@@ -113,7 +127,7 @@ export default function AppRouter() {
                 {
                     path: Paths.SIGN_OUT,
                     element: <SignOutPage />
-                }
+                },
             ]
         }
     ])
