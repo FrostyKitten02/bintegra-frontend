@@ -1,4 +1,4 @@
-import {createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState} from "react";
+import {createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useRef, useState} from "react";
 import {Client} from "../model/api/Client";
 import {UserDto} from "../model/interfaces";
 
@@ -24,7 +24,7 @@ function initContext(): IPageContext {
                 const token = btoa(username + ":" + password)
                 saveUserAuthToSessionStorage(token);
                 if (this.setCtx !== undefined) {
-                    this.setCtx(prevState => {return {...prevState, api: new Client(token), loggedIn: true}})
+                    this.setCtx(prevState => {return {...prevState, api: new Client(token), loggedIn: true, user: res.data.user}})
                 } else {
                     this.user = res.data.user;
                     this.api = new Client(token);
@@ -43,13 +43,28 @@ function initContext(): IPageContext {
                 this.api = new Client();
                 return;
             }
-            this.setCtx(prevState => ({...prevState, api: new Client(), loggedIn: false}))
+            this.setCtx(prevState => ({...prevState, api: new Client(), loggedIn: false, user: undefined}))
         },
-        loggedIn: false,
-        api: new Client(),
+        loggedIn: initLoggedIn(),
+        api: initClient(),
     }
 }
 
+function initLoggedIn() {
+    const token = sessionStorage.getItem(SESSION_TOKEN_STORAGE);
+    if (token !== undefined && token !== null && token !== "") {
+        return true;
+    }
+    return false;
+}
+
+function initClient() {
+    const token = sessionStorage.getItem(SESSION_TOKEN_STORAGE);
+    if (token !== undefined && token !== null && token !== "") {
+        return new Client(token);
+    }
+    return new Client();
+}
 
 export const PageContext = createContext<IPageContext>(initContext());
 
@@ -66,7 +81,6 @@ function removeAuthFromSessionStorage() {
 //Storing user doen't work don't know why!!!
 function storeUserInSession(userDto?: UserDto) {
     removeUserFromSession();
-    console.log(userDto, "WTF")
     if (userDto === undefined) {
         return;
     }

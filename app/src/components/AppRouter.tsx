@@ -20,7 +20,7 @@ import UserPortalProfile from "../pages/profile/UserPortalProfile";
 import UserPortalTvOverviewPage from "../pages/profile/UserPortalTvOverviewPage";
 import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOverview";
 import {IPageContext, PageContext} from "./PageContextProvider";
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 
 import {ChoosePlanPage} from "../pages/ChoosePlanPage";
 
@@ -130,6 +130,7 @@ export default function AppRouter() {
         },
         ...alwaysRoutes
     ];
+    console.log(context)
 
     const router = createBrowserRouter([
         {
@@ -139,7 +140,6 @@ export default function AppRouter() {
             children: context.loggedIn ? loggedInRoutes : loggedOutRoutes
         }
     ])
-
 
     return <RouterProvider router={router} />
 }

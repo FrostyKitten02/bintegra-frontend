@@ -25,11 +25,12 @@ export interface UserDto {
     email?: string,
     male?: boolean,
 
-    firstName?: string,
-    lastName?: string,
+    firstname?: string,
+    lastname?: string,
 
     birthYear?: number,
     birthMonth?: number,
     birthDay?: number,
 
+    isConsultant?: boolean,
 }
