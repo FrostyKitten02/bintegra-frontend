@@ -50,7 +50,7 @@ export default function UserDropdown() {
             </Dropdown.Item>
             <Dropdown.Divider/>
             <Dropdown.Item
-             onClick={() => {context.logOut();navigate(Paths.SIGN_OUT)}}
+             onClick={() => {navigate(Paths.SIGN_OUT)}}
             >
                <span className="p-1">
                    Odjava
