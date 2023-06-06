@@ -1,4 +1,4 @@
-import {createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState} from "react";
+import {createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useRef, useState} from "react";
 import {Client} from "../model/api/Client";
 import {UserDto} from "../model/interfaces";
 
@@ -11,7 +11,7 @@ export interface IPageContext {
     logOut: () => void,
     api: Client,
     loggedIn: boolean,
-    user?: UserDto,
+    userCache?: UserDto,
     setCtx?: Dispatch<SetStateAction<IPageContext>>
 }
 
@@ -24,10 +24,10 @@ function initContext(): IPageContext {
                 const token = btoa(username + ":" + password)
                 saveUserAuthToSessionStorage(token);
                 if (this.setCtx !== undefined) {
-                    this.setCtx(prevState => {return {...prevState, api: new Client(token), loggedIn: true}})
+                    this.setCtx(prevState => {return {...prevState, api: new Client(token), loggedIn: true, userCache: res.data.user}})
                 } else {
-                    this.user = res.data.user;
                     this.api = new Client(token);
+                    this.userCache = res.data.user;
                     this.loggedIn = true;
                 }
                 return true;
@@ -38,18 +38,33 @@ function initContext(): IPageContext {
         logOut: function() {
             removeAuthFromSessionStorage();
             if (this.setCtx === undefined) {
-                this.user = undefined;
+                this.userCache = undefined;
                 this.loggedIn = false;
                 this.api = new Client();
                 return;
             }
-            this.setCtx(prevState => ({...prevState, api: new Client(), loggedIn: false}))
+            this.setCtx(prevState => ({...prevState, api: new Client(), loggedIn: false, userCache: undefined}))
         },
-        loggedIn: false,
-        api: new Client(),
+        loggedIn: initLoggedIn(),
+        api: initClient(),
     }
 }
 
+function initLoggedIn() {
+    const token = sessionStorage.getItem(SESSION_TOKEN_STORAGE);
+    if (token !== undefined && token !== null && token !== "") {
+        return true;
+    }
+    return false;
+}
+
+function initClient() {
+    const token = sessionStorage.getItem(SESSION_TOKEN_STORAGE);
+    if (token !== undefined && token !== null && token !== "") {
+        return new Client(token);
+    }
+    return new Client();
+}
 
 export const PageContext = createContext<IPageContext>(initContext());
 
@@ -66,7 +81,6 @@ function removeAuthFromSessionStorage() {
 //Storing user doen't work don't know why!!!
 function storeUserInSession(userDto?: UserDto) {
     removeUserFromSession();
-    console.log(userDto, "WTF")
     if (userDto === undefined) {
         return;
     }
@@ -106,6 +120,11 @@ export default function PageContextProvider({children}:{children: ReactNode}) {
 
     useEffect(() => {
         if (ctx.loggedIn) {
+            if (ctx.userCache == undefined) {
+                ctx.api.UserApi.getCurrentUser().then(res => {
+                    setCtx(prevState => ({...prevState, userCache: res.data.user}));
+                });
+            }
             return;
         }
 

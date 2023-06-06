@@ -28,11 +28,6 @@ export default function PlanCard({
                                      priceInterval
                                  }: { discountPrice?: number, offerType?: string, offerId?: number, features: string[], name: string, price: number, priceInterval: PriceInterval }) {
 
-
-    console.log(offerId)
-    console.log(typeof offerId)
-    console.log(Paths.MOBILE_PLANS + "/" + offerId)
-
     const setOfferPath = (): string => {
         switch (offerType){
             case "MOBILE":
