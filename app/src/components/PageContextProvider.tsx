@@ -11,7 +11,7 @@ export interface IPageContext {
     logOut: () => void,
     api: Client,
     loggedIn: boolean,
-    user?: UserDto,
+    userCache?: UserDto,
     setCtx?: Dispatch<SetStateAction<IPageContext>>
 }
 
@@ -24,10 +24,10 @@ function initContext(): IPageContext {
                 const token = btoa(username + ":" + password)
                 saveUserAuthToSessionStorage(token);
                 if (this.setCtx !== undefined) {
-                    this.setCtx(prevState => {return {...prevState, api: new Client(token), loggedIn: true, user: res.data.user}})
+                    this.setCtx(prevState => {return {...prevState, api: new Client(token), loggedIn: true, userCache: res.data.user}})
                 } else {
-                    this.user = res.data.user;
                     this.api = new Client(token);
+                    this.userCache = res.data.user;
                     this.loggedIn = true;
                 }
                 return true;
@@ -38,12 +38,12 @@ function initContext(): IPageContext {
         logOut: function() {
             removeAuthFromSessionStorage();
             if (this.setCtx === undefined) {
-                this.user = undefined;
+                this.userCache = undefined;
                 this.loggedIn = false;
                 this.api = new Client();
                 return;
             }
-            this.setCtx(prevState => ({...prevState, api: new Client(), loggedIn: false, user: undefined}))
+            this.setCtx(prevState => ({...prevState, api: new Client(), loggedIn: false, userCache: undefined}))
         },
         loggedIn: initLoggedIn(),
         api: initClient(),
@@ -120,6 +120,11 @@ export default function PageContextProvider({children}:{children: ReactNode}) {
 
     useEffect(() => {
         if (ctx.loggedIn) {
+            if (ctx.userCache == undefined) {
+                ctx.api.UserApi.getCurrentUser().then(res => {
+                    setCtx(prevState => ({...prevState, userCache: res.data.user}));
+                });
+            }
             return;
         }
 

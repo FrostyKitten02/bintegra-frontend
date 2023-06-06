@@ -43,10 +43,7 @@ const dashboardSvg = (
 
 export default function UserPortalSideNavigation() {
     const context = useContext<IPageContext>(PageContext);
-
     const [isOpen, setIsOpen] = useState(false);
-    console.log(context.user)
-
 
     return (
         <div className="h-full bg-gray-50">
@@ -64,7 +61,8 @@ export default function UserPortalSideNavigation() {
                    aria-label="Sidebar">
                 <div className="h-full px-3 py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
-                        {context.user?.isConsultant?
+                        {context.userCache == undefined?null:
+                            (context.userCache?
                                 <NavItem name="Stranke" path={Paths.USER_PORTAL_CONSULTANT_CUSTOMERS} icon={dashboardSvg} />
                             : (
                                 <>
@@ -75,7 +73,7 @@ export default function UserPortalSideNavigation() {
                                     <NavItem name="Moj internet" path={Paths.USER_PORTAL_INTERNET} icon={dashboardSvg}/>
                                     <NavItem name="Moja televizija" path={Paths.USER_PORTAL_TV} icon={dashboardSvg}/>
                                 </>
-                            )
+                            ))
                         }
                     </ul>
                 </div>

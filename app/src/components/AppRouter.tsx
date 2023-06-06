@@ -130,7 +130,6 @@ export default function AppRouter() {
         },
         ...alwaysRoutes
     ];
-    console.log(context)
 
     const router = createBrowserRouter([
         {
