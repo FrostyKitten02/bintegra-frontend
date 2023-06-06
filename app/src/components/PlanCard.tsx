@@ -1,6 +1,8 @@
 import {v4 as uuid} from "uuid";
 import {Link} from "react-router-dom";
 import Paths from "../Paths";
+import {useContext} from "react";
+import {IPageContext, PageContext} from "./PageContextProvider";
 
 
 export type PriceInterval = "mesec" | "leto";
@@ -27,7 +29,7 @@ export default function PlanCard({
                                      price,
                                      priceInterval
                                  }: { discountPrice?: number, offerType?: string, offerId?: number, features: string[], name: string, price: number, priceInterval: PriceInterval }) {
-
+    const context = useContext<IPageContext>(PageContext);
     const setOfferPath = (): string => {
         switch (offerType){
             case "MOBILE":
@@ -72,12 +74,21 @@ export default function PlanCard({
                             })}
                         </ul>
                     </div>
-                    <Link
-                        onClick={() => window.scroll(0, 0)}
-                        to={`${setOfferPath()}/${offerId}`}
-                        className="text-white bg-sage-green hover:bg-gray-900 ease-in-out duration-500 hover:transition font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center mb-0 mt-auto absolute bottom-0">
-                        Naročite
-                    </Link>
+                    { context.loggedIn ?
+                        <Link
+                            onClick={() => window.scroll(0, 0)}
+                            to={`${setOfferPath()}/${offerId}`}
+                            className="text-white bg-sage-green hover:bg-gray-900 ease-in-out duration-500 hover:transition font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center mb-0 mt-auto absolute bottom-0">
+                            Naročite
+                        </Link> :
+                        <Link
+                            onClick={() => window.scroll(0, 0)}
+                            to={Paths.LOGIN}
+                            className="text-white uppercase bg-sage-green hover:bg-gray-900 ease-in-out duration-500 hover:transition font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center mb-0 mt-auto absolute bottom-0">
+                            Za nakup se morate prijaviti
+                        </Link>
+                    }
+
                 </div>
             </div>
         </div>
