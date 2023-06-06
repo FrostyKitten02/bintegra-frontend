@@ -24,6 +24,10 @@ import {useContext} from "react";
 
 import {ChoosePlanPage} from "../pages/ChoosePlanPage";
 
+import UserPortalConsultantCustomerSubscriptions from "../pages/profile/UserPortalConsultantCustomerSubscriptions";
+import UserPortalConsultantCustomersPage from "../pages/profile/UserPortalConsultantCustomersPage";
+
+
 
 
 export default function AppRouter() {
@@ -57,6 +61,7 @@ export default function AppRouter() {
         },
     ]
 
+    //TODO check if user is consultant and open routes!!
     //Routes that are visible only when logged in
     const loggedInRoutes: RouteObject[] = [
         {
@@ -95,6 +100,16 @@ export default function AppRouter() {
                 {
                     path: Paths.USER_PORTAL_TV,
                     element: <UserPortalTvOverviewPage />,
+                },
+                {
+                    path: Paths.USER_PORTAL_CONSULTANT_CUSTOMERS,
+                    element: <UserPortalConsultantCustomersPage />,
+                    children: [
+                        {
+                            path: Paths.USER_PORTAL_CONSULTANT_CUSTOMER_SUBSCRIPTIONS,
+                            element: <UserPortalConsultantCustomerSubscriptions />
+                        }
+                    ]
                 },
             ],
         },
