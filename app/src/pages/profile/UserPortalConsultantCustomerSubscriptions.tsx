@@ -2,7 +2,7 @@ import {Table} from "flowbite-react";
 import React, {useState} from "react";
 
 
-export default function UserLookupPage(){
+export default function UserPortalConsultantCustomerSubscriptions(){
 const user={
     id:1,
     email: "user.email"

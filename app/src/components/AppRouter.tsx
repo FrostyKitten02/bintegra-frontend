@@ -21,8 +21,10 @@ import UserPortalTvOverviewPage from "../pages/profile/UserPortalTvOverviewPage"
 import {UserPortalInternetOverview} from "../pages/profile/UserPortalInternetOverview";
 
 import {ChoosePlanPage} from "../pages/ChoosePlanPage";
-import ConstultantPage from "../pages/ConsultantPage";
-import UserLookupPage from "../pages/UserLookupPage";
+
+import UserPortalConsultantCustomerSubscriptions from "../pages/profile/UserPortalConsultantCustomerSubscriptions";
+import UserPortalConsultantCustomersPage from "../pages/profile/UserPortalConsultantCustomersPage";
+
 
 
 
@@ -53,6 +55,16 @@ export default function AppRouter() {
                             path: Paths.USER_PORTAL_BASE_PATH,
                             element: <UserPortalDefaultPage />,
 
+                        },
+                        {
+                            path: Paths.USER_PORTAL_CONSULTANT_CUSTOMERS,
+                            element: <UserPortalConsultantCustomersPage />,
+                            children: [
+                                {
+                                    path: Paths.USER_PORTAL_CONSULTANT_CUSTOMER_SUBSCRIPTIONS,
+                                    element: <UserPortalConsultantCustomerSubscriptions />
+                                }
+                            ]
                         },
                         {
                             path: Paths.USER_PORTAL_PROFILE,
@@ -116,14 +128,6 @@ export default function AppRouter() {
                     path: Paths.SIGN_OUT,
                     element: <SignOutPage />
                 },
-                {
-                    path: Paths.ADMIN_PATH,
-                    element: <ConstultantPage />
-                },
-                {
-                    path: Paths.SELECTED_USER_PATH,
-                    element: <UserLookupPage />
-                }
             ]
         }
     ])

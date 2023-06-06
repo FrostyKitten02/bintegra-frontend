@@ -30,9 +30,6 @@ export default function NavigationBar() {
             <div className="hidden lg:block">
                 <NavItem name={"Pogosta vprašanja"} path={Paths.POGOSTA_VPRASANJA}/>
             </div>
-            <div className="hidden lg:block">
-                <NavItem name={"Cobnsulatn"} path={Paths.ADMIN_PATH}/>
-            </div>
             <div
                 className={`${!toggleMenuState ? "hidden" : "block"} w-full lg:flex lg:items-center m-0 sm:mx-12 lg:w-auto`}>
                 <div className="text-sm lg:flex-grow sm:w-full text-center sm:text-left">
