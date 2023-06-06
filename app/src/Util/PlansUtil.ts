@@ -61,6 +61,10 @@ export default class PlansUtil {
         return "";
     }
 
+    public static convertNumberToDate(number: number | undefined): string {
+        return new Date(number??0).toLocaleDateString();
+    }
+
     public static getOfferFeatures(offer: OfferDto): string[] {
         const features: string[] = [];
         switch (offer.type) {

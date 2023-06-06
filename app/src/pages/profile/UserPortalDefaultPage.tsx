@@ -1,9 +1,10 @@
 import {UserSubscriptionsDataTable} from "./UserSubscriptionsDataTable";
 import {UserSubscriptionShowcard} from "./UserSubscriptionShowcard";
+import {useContext, useState} from "react";
+import {IPageContext, PageContext} from "../../components/PageContextProvider";
 
 
 export default function UserPortalDefaultPage() {
-
 
     return (
         <div className="py-14 w-full">

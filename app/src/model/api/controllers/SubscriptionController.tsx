@@ -18,7 +18,10 @@ export class SubscriptionController extends BaseController<SubscriptionRequestDt
                 subscriptionContract: contract,
             }
         }
-        const endpointUrl = "/subscribe"
+        const endpointUrl: string = "/subscribe"
         return axios.post<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(endpointUrl,undefined), req, this.axiosConfig)
+    }
+    public getSubscriptionsByUser():Promise<AxiosResponse<SubscriptionResponseDto>>  {
+        return axios.get<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(undefined, undefined), this.axiosConfig);
     }
 }
