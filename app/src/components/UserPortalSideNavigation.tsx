@@ -62,7 +62,7 @@ export default function UserPortalSideNavigation() {
                 <div className="h-full px-3 py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
                         {context.userCache == undefined?null:
-                            (context.userCache?
+                            (context.userCache.isConsultant?
                                 <NavItem name="Stranke" path={Paths.USER_PORTAL_CONSULTANT_CUSTOMERS} icon={dashboardSvg} />
                             : (
                                 <>
