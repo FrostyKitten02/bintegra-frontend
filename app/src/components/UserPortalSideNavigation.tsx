@@ -1,6 +1,7 @@
-import {ReactNode, useState} from "react";
+import {ReactNode, useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Paths from "../Paths";
+import {IPageContext, PageContext} from "./PageContextProvider";
 
 function NavItem(
     {
@@ -41,6 +42,7 @@ const dashboardSvg = (
 );
 
 export default function UserPortalSideNavigation() {
+    const context = useContext<IPageContext>(PageContext);
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -59,13 +61,20 @@ export default function UserPortalSideNavigation() {
                    aria-label="Sidebar">
                 <div className="h-full px-3 py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
-                        <NavItem name="Pregled" path={Paths.USER_PORTAL_BASE_PATH} icon={dashboardSvg}/>
-                        <NavItem name="Profil" path={Paths.USER_PORTAL_PROFILE} icon={dashboardSvg}/>
-                        <NavItem name="Customers" path={Paths.USER_PORTAL_CONSULTANT_CUSTOMERS} icon={dashboardSvg}/>
-                        <hr />
-                        <NavItem name="Moje mobilne storitve" path={Paths.USER_PORTAL_MOBILE} icon={dashboardSvg}/>
-                        <NavItem name="Moj internet" path={Paths.USER_PORTAL_INTERNET} icon={dashboardSvg}/>
-                        <NavItem name="Moja televizija" path={Paths.USER_PORTAL_TV} icon={dashboardSvg}/>
+                        {context.userCache == undefined?null:
+                            (context.userCache?
+                                <NavItem name="Stranke" path={Paths.USER_PORTAL_CONSULTANT_CUSTOMERS} icon={dashboardSvg} />
+                            : (
+                                <>
+                                    <NavItem name="Pregled" path={Paths.USER_PORTAL_BASE_PATH} icon={dashboardSvg}/>
+                                    <NavItem name="Profil" path={Paths.USER_PORTAL_PROFILE} icon={dashboardSvg}/>
+                                    <hr />
+                                    <NavItem name="Moje mobilne storitve" path={Paths.USER_PORTAL_MOBILE} icon={dashboardSvg}/>
+                                    <NavItem name="Moj internet" path={Paths.USER_PORTAL_INTERNET} icon={dashboardSvg}/>
+                                    <NavItem name="Moja televizija" path={Paths.USER_PORTAL_TV} icon={dashboardSvg}/>
+                                </>
+                            ))
+                        }
                     </ul>
                 </div>
             </aside>

@@ -1,11 +1,10 @@
 import Paths from "../Paths";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import UserDropdown from "./UserDropdown";
 import MobileUserDropdown from "./MobileUserDropdown";
 
 
 export default function UserNavBar() {
-    const navigate = useNavigate();
     return (
         <div className="relative bg-gray-900 px-5 ">
             <div className="relative z-50 w-full h-full">
