@@ -1,8 +1,6 @@
 import {SubscriptionDto} from "../model/interfaces";
 
-
 export default class SubscriptionUtil {
-
 
     private static setCurrentPrice(discountDuration?: number | undefined, startTime?: number): boolean {
         startTime = startTime??0;
