@@ -30,8 +30,8 @@ export class UserController extends BaseController<UserRequestDto>{
         return axios.post<UserResponseDto, AxiosResponse<UserResponseDto, any>, UserRequestDto>(this.getControllerFullUrl(endpointUrl), req);
     }
 
-    public getCurrentUser(): Promise<AxiosResponse<UserResponseDto>> {
-        return axios.get<UserResponseDto, AxiosResponse<UserResponseDto, any>, UserRequestDto>(this.getControllerFullUrl(), this.axiosConfig);
+    public getCurrentUser(signal?: AbortSignal): Promise<AxiosResponse<UserResponseDto>> {
+        return axios.get<UserResponseDto, AxiosResponse<UserResponseDto, any>, UserRequestDto>(this.getControllerFullUrl(), {...this.axiosConfig, signal: signal});
     }
 
 }

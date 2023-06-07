@@ -1,18 +1,32 @@
 import {Table} from "flowbite-react";
 import React, {useContext, useEffect, useState} from "react";
-import {Link, Outlet} from "react-router-dom";
-import Paths from "../../Paths";
+import {Link, Outlet, useNavigate} from "react-router-dom";
 import {UserDto} from "../../model/interfaces";
 import {IPageContext, PageContext} from "../../components/PageContextProvider";
+import {uuid} from "flowbite-react/lib/esm/helpers/uuid";
+import Paths from "../../Paths";
+
+const UserTableRow = ({user}: { user: UserDto }) => {
+    const navigate = useNavigate();
+
+    let path: string = "";
+    if (user.id != undefined) {
+        const strId = user.id.toString();
+        console.log(strId)
+        path = Paths.USER_PORTAL_CONSULTANT_CUSTOMER_SUBSCRIPTIONS.replace(":id", strId);
+    }
+
+    console.log(path)
+
+    return (
+        <Table.Row onClick={()=>navigate(path)} className="hover:cursor-pointer">
+            <Table.Cell className="border-b">{user.firstname}</Table.Cell>
+            <Table.Cell className="border-b">{user.lastname}</Table.Cell>
+        </Table.Row>
+    )
+}
 
 export default function UserPortalConsultantCustomersPage(){
-    const user={
-        id: 1,
-        email: "user.email",
-        subscription: "narocnina",
-        price: 32,
-        category: "kategorija"
-    }
     const context = useContext<IPageContext>(PageContext);
     const [users, setUsers] = useState<UserDto[]>([]);
     const [retry, setRetry] = useState<number>(-1);
@@ -39,37 +53,23 @@ export default function UserPortalConsultantCustomersPage(){
         <div className="py-16 w-full">
             <div className="px-6 sm:px-18 pb-16">
                 <div className="pb-2 text-left title-a text-2xl uppercase">
-                    Vse uporabniške naročnine
+                    Stranke
                 </div>
                 <hr className="pb-4 md:pb-16"/>
                 <div className="hidden lg:block">
                     <Table>
                         <Table.Head className="bg-white">
-                            <Table.HeadCell className="border-b w-1/4">Uporabnik</Table.HeadCell>
-                            <Table.HeadCell className="border-b w-1/4">Naročnina</Table.HeadCell>
-                            <Table.HeadCell className="border-b w-1/4">Cena</Table.HeadCell>
-                            <Table.HeadCell className="border-b w-1/4">Kategorija</Table.HeadCell>
+                            <Table.HeadCell className="border-b w-1/4">Ime</Table.HeadCell>
+                            <Table.HeadCell className="border-b w-1/4">Priimek</Table.HeadCell>
                         </Table.Head>
                         <Table.Body className="divide-y">
-                            <Table.Row className="text-center text-gray-900">
-                                <Table.Cell className="whitespace-nowrap font-medium">
-                                    {/*TODO use customer id for path*/}
-                                    <Link
-                                        to={Paths.USER_PORTAL_CONSULTANT_CUSTOMER_SUBSCRIPTIONS.replace(":id", "1")}
-                                        className="text-blue-500 hover:text-blue-700"
-                                    >
-                                        {user.email}
-                                    </Link>
-                                </Table.Cell>
-                                <Table.Cell>{user.subscription}</Table.Cell>
-                                <Table.Cell>{user.price}</Table.Cell>
-                                <Table.Cell>{user.category}</Table.Cell>
-                            </Table.Row>
+                            {
+                                users.map((user) => <UserTableRow key={uuid()} user={user}></UserTableRow>)
+                            }
                         </Table.Body>
                     </Table>
                 </div>
             </div>
-            <Outlet />
         </div>
     )
 }

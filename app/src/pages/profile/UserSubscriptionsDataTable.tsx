@@ -4,6 +4,9 @@ import {IPageContext, PageContext} from "../../components/PageContextProvider";
 import {SubscriptionDto} from "../../model/interfaces";
 import {uuid} from "flowbite-react/lib/esm/helpers/uuid";
 import PlansUtil from "../../Util/PlansUtil";
+import SubscriptionUtil from "../../Util/SubscriptionUtil";
+
+
 
 
 export function UserSubscriptionsDataTable() {
@@ -36,18 +39,6 @@ export function UserSubscriptionsDataTable() {
             controller.abort();
         }
     },[retry])
-
-
-    const setCurrentPrice = (discountDuration?: number | undefined, startTime?: number): boolean => {
-        startTime = startTime??0;
-        discountDuration = discountDuration??0;
-        const between: Date = new Date(Date.now() - startTime);
-        const months: number = ((between.getFullYear() - 1970) * 12 - between.getMonth());
-        if(months <= discountDuration){
-            return true;
-        }
-        return false;
-    }
 
     return (
         <div className="hidden lg:block">
@@ -83,11 +74,10 @@ export function UserSubscriptionsDataTable() {
                                         {PlansUtil.getCategory(subscription.offer?.type)}
                                     </Table.Cell>
                                     <Table.Cell>
-                                        {setCurrentPrice(subscription.offer?.discountDurationMonths, subscription.startDate) ? subscription.offer?.discountPrice : subscription.offer?.basePrice}€
+                                        {SubscriptionUtil.getSubscriptionCurrentPrice(subscription)}€
                                     </Table.Cell>
                                     <Table.Cell>
-                                        {subscription.subscriptionContract}
-                                        {subscription.subscriptionContract ? "vezava" : "naročnina"}
+                                        {SubscriptionUtil.getSubscriptionContractType(subscription)}
                                     </Table.Cell>
                                     <Table.Cell>
                                         {PlansUtil.convertNumberToDate(subscription?.startDate)}

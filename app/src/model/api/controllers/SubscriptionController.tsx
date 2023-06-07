@@ -24,4 +24,9 @@ export class SubscriptionController extends BaseController<SubscriptionRequestDt
     public getSubscriptionsByUser(signal?: AbortSignal):Promise<AxiosResponse<SubscriptionResponseDto>>  {
         return axios.get<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(undefined, undefined), {...this.axiosConfig, signal: signal});
     }
+
+    public getSubscriptionByUserId(id: string, signal?: AbortSignal):Promise<AxiosResponse<SubscriptionResponseDto>>{
+        return axios.get<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(undefined, [id]), {...this.axiosConfig, signal: signal});
+    }
+
 }

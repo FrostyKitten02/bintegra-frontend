@@ -104,13 +104,11 @@ export default function AppRouter() {
                 {
                     path: Paths.USER_PORTAL_CONSULTANT_CUSTOMERS,
                     element: <UserPortalConsultantCustomersPage />,
-                    children: [
-                        {
-                            path: Paths.USER_PORTAL_CONSULTANT_CUSTOMER_SUBSCRIPTIONS,
-                            element: <UserPortalConsultantCustomerSubscriptions />
-                        }
-                    ]
                 },
+                {
+                    path: Paths.USER_PORTAL_CONSULTANT_CUSTOMER_SUBSCRIPTIONS,
+                    element: <UserPortalConsultantCustomerSubscriptions />
+                }
             ],
         },
         {

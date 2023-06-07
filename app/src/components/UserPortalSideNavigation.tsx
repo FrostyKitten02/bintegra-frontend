@@ -46,17 +46,45 @@ export default function UserPortalSideNavigation() {
     const context = useContext<IPageContext>(PageContext);
     const [isOpen, setIsOpen] = useState(false);
     const [user, setUser] = useState<UserDto | undefined>(undefined);
-
+    const [failed, setFailed] = useState<number>(-1);
 
     useEffect(() => {
-        context.api.UserApi.getCurrentUser()
+        if (failed === 0 || failed > 10) {
+            return;
+        }
+
+        const controller = new AbortController();
+
+        context.api.UserApi.getCurrentUser(controller.signal)
             .then((response) => {
-                setUser(response.data.user??{})
+                console.log(response.data.user)
+                if (context.loggedIn && (response.data.user === undefined || response.data.user === null)) {
+                    setFailed(prevState => {
+                        if (prevState === -1) {
+                            return 1;
+                        }
+                        return prevState + 1;
+                    })
+                    return;//no abort needed!
+                }
+
+                setUser(response.data.user??undefined)
+                setFailed(0);
             })
             .catch((error) => {
+                setFailed(prevState => {
+                    if (prevState === -1) {
+                        return 1;
+                    }
+                    return prevState + 1;
+                });
                 console.error(error);
             });
-    }, [])
+
+        // return () => {
+        //     controller.abort();
+        // }
+    }, [failed, context])
 
 
     return (
