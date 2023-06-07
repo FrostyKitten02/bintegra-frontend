@@ -1,6 +1,6 @@
 import {UserCircleIcon} from "@heroicons/react/24/outline";
 import {Dropdown} from "flowbite-react";
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import Paths from "../Paths";
 import {IPageContext, PageContext} from "../components/PageContextProvider";
@@ -10,52 +10,62 @@ import {IPageContext, PageContext} from "../components/PageContextProvider";
 export default function UserDropdown() {
     const navigate = useNavigate();
     const context = useContext<IPageContext>(PageContext);
+    const [toggle, setToggle] = useState<boolean>(false);
+
     return (
-        <Dropdown
-            inline
-            color="white"
-            className="w-[250px] overflow-hidden"
-            arrowIcon={false}
-            trigger="hover"
-            label={
-                <UserCircleIcon className="transition ease-in-out hover:scale-110 duration-300 h-8 w-8 text-white"/>
+        <div className="relative">
+            <button
+                onClick={() => {
+                    setToggle(prevState => !prevState);
+                }}
+                id="dropdownUserAvatarButton"
+                className="flex text-sm rounded-full"
+                type="button">
+                <UserCircleIcon className="transition text-white h-8 w-8"/>
+            </button>
+            {toggle ?
+                <div id="dropdownAvatar"
+                     className="z-10 bg-white right-0 top-[50px] absolute divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdownUserAvatarButton">
+                        { context.loggedIn ?
+                            <li>
+                                <Link
+                                    to={Paths.USER_PORTAL_BASE_PATH}
+                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    Moj portal
+                                </Link>
+                            </li> : null
+                        }
+                        { !context.loggedIn ?
+                            <>
+                                <li>
+                                    <Link
+                                        to={Paths.LOGIN}
+                                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Prijava
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to={Paths.REGISTER}
+                                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Registracija
+                                    </Link>
+                                </li>
+                            </>: null
+                        }
+
+                    </ul>
+                    { context.loggedIn ?
+                        <div className="py-2">
+                            <Link to={Paths.SIGN_OUT}
+                                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                Odjava
+                            </Link>
+                        </div> : null
+                    }
+                </div> : null
             }
-        >
-            <Dropdown.Header>
-                <span className="block p-1 text-sm">
-                    Uporabniško ime
-                </span>
-            </Dropdown.Header>
-            <Dropdown.Item
-                onClick={() => navigate(Paths.USER_PORTAL_BASE_PATH)}
-            >
-                <span className="p-1">
-                    Moj portal
-                </span>
-            </Dropdown.Item>
-            <Dropdown.Item
-                onClick={() => navigate(Paths.REGISTER)}
-            >
-                <span className="p-1">
-                    Registracija
-                </span>
-            </Dropdown.Item>
-            <Dropdown.Item
-                className=""
-                onClick={() => navigate(Paths.LOGIN)}
-            >
-                <span className="p-1">
-                    Prijava
-                </span>
-            </Dropdown.Item>
-            <Dropdown.Divider/>
-            <Dropdown.Item
-             onClick={() => {navigate(Paths.SIGN_OUT)}}
-            >
-               <span className="p-1">
-                   Odjava
-               </span>
-            </Dropdown.Item>
-        </Dropdown>
+        </div>
     )
 }
