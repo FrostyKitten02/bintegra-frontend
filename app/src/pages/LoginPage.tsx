@@ -73,7 +73,7 @@ export default function LoginPage() {
                                            type="checkbox"
                                            value=""
                                            className="w-4 h-4 checked:bg-sage-green border border-gray-300 rounded bg-gray-50 focus:ring-[0%] hover:cursor-pointer"
-                                           required/>
+                                           />
                                 </div>
                                 <label
                                     htmlFor="remember"
