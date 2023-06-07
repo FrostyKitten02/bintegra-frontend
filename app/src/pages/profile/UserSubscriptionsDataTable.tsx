@@ -17,6 +17,11 @@ export function UserSubscriptionsDataTable() {
             return;
         }
 
+        if (retry > 7) {
+            console.log("Too many retries, error getting user subs!!");
+            return
+        }
+
         const controller = new AbortController();
         context.api.subscriptionApi
             .getSubscriptionsByUser(controller.signal)
