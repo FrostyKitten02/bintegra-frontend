@@ -1,7 +1,8 @@
-import {ReactNode, useContext, useState} from "react";
+import {ReactNode, useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Paths from "../Paths";
 import {IPageContext, PageContext} from "./PageContextProvider";
+import {UserDto} from "../model/interfaces";
 
 function NavItem(
     {
@@ -44,6 +45,19 @@ const dashboardSvg = (
 export default function UserPortalSideNavigation() {
     const context = useContext<IPageContext>(PageContext);
     const [isOpen, setIsOpen] = useState(false);
+    const [user, setUser] = useState<UserDto | undefined>(undefined);
+
+
+    useEffect(() => {
+        context.api.UserApi.getCurrentUser()
+            .then((response) => {
+                setUser(response.data.user??{})
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [])
+
 
     return (
         <div className="h-full bg-gray-50">
@@ -61,8 +75,8 @@ export default function UserPortalSideNavigation() {
                    aria-label="Sidebar">
                 <div className="h-full px-3 py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
-                        {context.userCache == undefined?null:
-                            (context.userCache?
+                        {user == undefined?null:
+                            (user.isConsultant?
                                 <NavItem name="Stranke" path={Paths.USER_PORTAL_CONSULTANT_CUSTOMERS} icon={dashboardSvg} />
                             : (
                                 <>

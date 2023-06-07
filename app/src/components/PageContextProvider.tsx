@@ -11,7 +11,6 @@ export interface IPageContext {
     logOut: () => void,
     api: Client,
     loggedIn: boolean,
-    userCache?: UserDto,
     setCtx?: Dispatch<SetStateAction<IPageContext>>
 }
 
@@ -27,7 +26,6 @@ function initContext(): IPageContext {
                     this.setCtx(prevState => {return {...prevState, api: new Client(token), loggedIn: true, userCache: res.data.user}})
                 } else {
                     this.api = new Client(token);
-                    this.userCache = res.data.user;
                     this.loggedIn = true;
                 }
                 return true;
@@ -38,7 +36,6 @@ function initContext(): IPageContext {
         logOut: function() {
             removeAuthFromSessionStorage();
             if (this.setCtx === undefined) {
-                this.userCache = undefined;
                 this.loggedIn = false;
                 this.api = new Client();
                 return;
@@ -120,11 +117,6 @@ export default function PageContextProvider({children}:{children: ReactNode}) {
 
     useEffect(() => {
         if (ctx.loggedIn) {
-            if (ctx.userCache == undefined) {
-                ctx.api.UserApi.getCurrentUser().then(res => {
-                    setCtx(prevState => ({...prevState, userCache: res.data.user}));
-                });
-            }
             return;
         }
 
@@ -133,6 +125,10 @@ export default function PageContextProvider({children}:{children: ReactNode}) {
             setCtx(prevState => ({...prevState, loggedIn: true, api: new Client(token)}));
         }
     }, [ctx])
+
+    useEffect(() => {
+        console.log("client refreshed", ctx.api);
+    }, [ctx.api])
 
     return (
         <PageContext.Provider value={ctx}>

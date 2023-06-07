@@ -20,7 +20,6 @@ export class BaseController<REQ> {
     }
 
     private createAxiosConfig(): AxiosRequestConfig<REQ> {
-
         if (this.auth !== undefined) {
             return  {
                 headers: {
@@ -49,7 +48,6 @@ export class BaseController<REQ> {
 
     protected getControllerFullUrl(endpointUrl?: string, pathParams?: string[]): string {
         let extraPath = "";
-        console.log(pathParams)
         if (pathParams !== undefined) {
             for (let i in pathParams) {
                 extraPath += "/" + pathParams[i];

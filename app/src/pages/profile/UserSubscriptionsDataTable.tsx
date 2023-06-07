@@ -1,32 +1,37 @@
 import {Table} from "flowbite-react";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {IPageContext, PageContext} from "../../components/PageContextProvider";
 import {SubscriptionDto} from "../../model/interfaces";
-import React from "react";
-import {SubscriptionResponseDto} from "../../model/ResponseDtos";
 import {uuid} from "flowbite-react/lib/esm/helpers/uuid";
 import PlansUtil from "../../Util/PlansUtil";
-import {start} from "repl";
+
 
 export function UserSubscriptionsDataTable() {
     const [subscriptions, setSubscriptions] = useState<SubscriptionDto[]>();
-    const [loading, setLoading] = useState<boolean>(true);
     const context = useContext<IPageContext>(PageContext);
+    const [retry, setRetry] = useState<number>(-1);
 
-    const fetchUserSubscriptions = (): void => {
+
+    useEffect(() => {
+        if ( retry === 0) {
+            return;
+        }
+
+        const controller = new AbortController();
         context.api.subscriptionApi
-            .getSubscriptionsByUser()
+            .getSubscriptionsByUser(controller.signal)
             .then((response) => {
                 setSubscriptions(response.data.subscriptions??[])
-                console.log(response.data.subscriptions)
-                console.log(response.data)
-                setLoading(false)
+                setRetry(0)
+            }).catch((error) => {
+                setRetry(prevState => prevState + 1);
             });
-    }
 
-    if (loading) {
-        fetchUserSubscriptions();
-    }
+        return () => {
+            controller.abort();
+        }
+    },[retry])
+
 
     const setCurrentPrice = (discountDuration?: number | undefined, startTime?: number): boolean => {
         startTime = startTime??0;

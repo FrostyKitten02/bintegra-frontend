@@ -8,7 +8,7 @@ export class SubscriptionController extends BaseController<SubscriptionRequestDt
     constructor(auth?: string) {
         super(auth, "subscription");
     }
-    public subscribe(subscriptionContract: string, chosenOffer?: number, phoneId?: number): Promise<AxiosResponse<SubscriptionResponseDto>> {
+    public subscribe(subscriptionContract: string, chosenOffer?: number, phoneId?: number, signal?: AbortSignal): Promise<AxiosResponse<SubscriptionResponseDto>> {
         const contract: boolean = subscriptionContract === "vezava";
         const req: SubscriptionRequestDto = {
             subscription: {
@@ -19,9 +19,10 @@ export class SubscriptionController extends BaseController<SubscriptionRequestDt
             }
         }
         const endpointUrl: string = "/subscribe"
-        return axios.post<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(endpointUrl,undefined), req, this.axiosConfig)
+        return axios.post<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(endpointUrl,undefined), req, {...this.axiosConfig, signal: signal})
     }
-    public getSubscriptionsByUser():Promise<AxiosResponse<SubscriptionResponseDto>>  {
-        return axios.get<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(undefined, undefined), this.axiosConfig);
+    public getSubscriptionsByUser(signal?: AbortSignal):Promise<AxiosResponse<SubscriptionResponseDto>>  {
+        console.log(this.auth)
+        return axios.get<SubscriptionResponseDto, AxiosResponse<SubscriptionResponseDto, any>, SubscriptionRequestDto>(this.getControllerFullUrl(undefined, undefined), {...this.axiosConfig, signal: signal});
     }
 }

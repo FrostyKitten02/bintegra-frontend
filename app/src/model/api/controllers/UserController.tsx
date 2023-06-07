@@ -31,7 +31,6 @@ export class UserController extends BaseController<UserRequestDto>{
     }
 
     public getCurrentUser(): Promise<AxiosResponse<UserResponseDto>> {
-        console.log(this.axiosConfig)
         return axios.get<UserResponseDto, AxiosResponse<UserResponseDto, any>, UserRequestDto>(this.getControllerFullUrl(), this.axiosConfig);
     }
 
