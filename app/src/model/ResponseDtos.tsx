@@ -48,3 +48,10 @@ export interface SubscriptionResponseDto {
     subscriptionId?: number,
     subscriptions?: SubscriptionDto []
 }
+
+
+export interface ConsultantResponseDto {
+    customers?: UserDto[],
+    customerSubscriptions?: SubscriptionDto[],
+    customerId?: number
+}

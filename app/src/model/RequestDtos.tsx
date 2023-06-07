@@ -33,3 +33,7 @@ export interface RegisterRequestDto {
     birthMonth?: number;
     birthDay?: number;
 }
+
+export interface ConsultantRequestDto {
+    userId?: number;
+}

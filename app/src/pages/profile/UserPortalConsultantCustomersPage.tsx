@@ -1,7 +1,9 @@
 import {Table} from "flowbite-react";
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link, Outlet} from "react-router-dom";
 import Paths from "../../Paths";
+import {UserDto} from "../../model/interfaces";
+import {IPageContext, PageContext} from "../../components/PageContextProvider";
 
 export default function UserPortalConsultantCustomersPage(){
     const user={
@@ -11,6 +13,28 @@ export default function UserPortalConsultantCustomersPage(){
         price: 32,
         category: "kategorija"
     }
+    const context = useContext<IPageContext>(PageContext);
+    const [users, setUsers] = useState<UserDto[]>([]);
+    const [retry, setRetry] = useState<number>(-1);
+
+
+    useEffect(() => {
+        if (retry === 0 || retry > 5) {
+            return
+        }
+
+        context.api.consultantApi.getConsultantCustomers()
+            .then((response) => {
+                setUsers(response.data.customers??[])
+                setRetry(0)
+            })
+            .catch((error) => {
+                setRetry(prevState => prevState + 1)
+            })
+
+    }, [retry]);
+
+
     return (
         <div className="py-16 w-full">
             <div className="px-6 sm:px-18 pb-16">
