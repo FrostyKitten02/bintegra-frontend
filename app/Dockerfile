@@ -1,7 +1,7 @@
 FROM node:lts-alpine3.18
 WORKDIR /react-app
-COPY package.json .
 COPY package-lock.json .
+COPY package.json .
 COPY tailwind.config.js .
 COPY tsconfig.json .
 RUN npm install
