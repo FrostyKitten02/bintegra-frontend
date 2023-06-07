@@ -32,7 +32,6 @@ export function ChoosePlanPage() {
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setChosenPackage(prevState => (event.target.value));
-        console.log("value" + event.target.value)
     }
 
     const handleDecision = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -53,10 +52,6 @@ export function ChoosePlanPage() {
             .subscribe(chosenPackage, chosenOffer?.id, chosenPhone)
             .then((response) => {
             })
-
-
-        console.log("izbrana " + chosenPackage)
-        console.log("izbran telefon " + chosenPhone)
 
         //preusmeri na zacetno stran ali profil
     }

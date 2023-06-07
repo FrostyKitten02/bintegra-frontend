@@ -54,7 +54,7 @@ export default function UserPortalSideNavigation() {
                 setUser(response.data.user??{})
             })
             .catch((error) => {
-                console.log(error);
+                console.error(error);
             });
     }, [])
 

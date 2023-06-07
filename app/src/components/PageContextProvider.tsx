@@ -126,10 +126,6 @@ export default function PageContextProvider({children}:{children: ReactNode}) {
         }
     }, [ctx])
 
-    useEffect(() => {
-        console.log("client refreshed", ctx.api);
-    }, [ctx.api])
-
     return (
         <PageContext.Provider value={ctx}>
             {children}
