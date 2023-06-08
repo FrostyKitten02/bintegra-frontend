@@ -225,14 +225,17 @@ export function ChoosePlanPage() {
                                     }
 
                                 </div>
-                                <Link
-                                    to={Paths.USER_PORTAL_BASE_PATH}
+                                <button
+                                    className="bg-sage-green text-white hover:bg-gray-900 rounded-[10px] duration-500 uppercase font-bold"
+                                    style={{height: "max-content"}}
                                     onClick={handleChosenOffer}
-                                    className="bg-sage-green text-white hover:bg-gray-900 uppercase py-2 rounded-[10px] px-10 duration-500">
-                                    <span className="font-bold tracking-wider">
+                                >
+                                    <Link
+                                        to={Paths.USER_PORTAL_BASE_PATH}
+                                        className="py-2 px-10 block">
                                         potrdi izbrano
-                                    </span>
-                                </Link>
+                                    </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
