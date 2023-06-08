@@ -24,7 +24,7 @@ export default function MobilePlansPage() {
     }
 
     return (
-        <div className="mb-32 text-gray-800 grid justify-center">
+        <div className="mb-32 text-gray-800 grid justify-center pt-12">
             <div className="flex justify-center flex-wrap pb-10">
                 <div className="self-center flex justify-end flex-wrap flex-col text-center mb-12">
                     <span className="title-a text-3xl uppercase">
