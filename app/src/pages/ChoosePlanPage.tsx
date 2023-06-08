@@ -214,15 +214,15 @@ export function ChoosePlanPage() {
                                     <span className="text-2xl mx-4">
                                         {chosenOffer?.title}
                                     </span>
-                                    {chosenPhone ?
-                                        <span>
-                                            ter telefon
-                                            <span className="text-2xl mx-4">
-                                                {chosenPhone}
-                                            </span>
-                                        </span>
-                                        : ""
-                                    }
+                                    {/*{chosenPhone ?*/}
+                                    {/*    <span>*/}
+                                    {/*        ter telefon*/}
+                                    {/*        <span className="text-2xl mx-4">*/}
+                                    {/*            {chosenPhone}*/}
+                                    {/*        </span>*/}
+                                    {/*    </span>*/}
+                                    {/*    : ""*/}
+                                    {/*}*/}
 
                                 </div>
                                 <button
