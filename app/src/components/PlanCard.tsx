@@ -84,7 +84,7 @@ export default function PlanCard({
                         <Link
                             onClick={() => window.scroll(0, 0)}
                             to={Paths.LOGIN}
-                            className="text-white uppercase bg-sage-green hover:bg-gray-900 ease-in-out duration-500 hover:transition font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center mb-0 mt-auto absolute bottom-0">
+                            className="text-white w-full uppercase bg-sage-green hover:bg-gray-900 ease-in-out duration-500 hover:transition font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center mb-0 mt-auto absolute bottom-0">
                             Za nakup se morate prijaviti
                         </Link>
                     }

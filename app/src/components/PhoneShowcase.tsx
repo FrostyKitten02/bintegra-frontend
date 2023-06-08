@@ -42,6 +42,9 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                         alt="Galaxy S23+ 256GB"
                         src="https://telemach.si/upload/s23-phantom-black-front_20230202_094234_500x700.png"
                     />
+                    <span className="py-2 font-bold">
+                        Galaxy S23+ 256GB
+                    </span>
                 </label>
             </li>
             <li className="col-span-2">
@@ -59,6 +62,9 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                         alt="XIAOMI 13"
                         src="https://telemach.si/upload/xiaomi-13-front_20230407_134951_500x700.png"
                     />
+                    <span className="py-2 font-bold">
+                        XIAOMI 13
+                    </span>
                 </label>
             </li>
             <li className="col-span-2">
@@ -76,6 +82,9 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                         alt="HUAWEI Nova 9 SE"
                         src="https://telemach.si/upload/huawei_nova_9_se_blue_20220610_142752_500x700.png"
                     />
+                    <span className="py-2 font-bold">
+                        HUAWEI Nova 9 SE
+                    </span>
                 </label>
             </li>
             <li className="col-span-2">
@@ -93,6 +102,9 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                         alt="HONOR Magic4 Lite 5G"
                         src="https://telemach.si/upload/honor_magic_4_lite_5g_srebrna_20220610_142755_20221201_083727_500x700.png"
                     />
+                    <span className="py-2 font-bold">
+                        HONOR Magic4 Lite 5G
+                    </span>
                 </label>
             </li>
             <li className="col-span-2">
@@ -110,7 +122,7 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                         alt="REALME C30"
                         src="https://telemach.si/upload/realme-c30-front_20220905_140009_500x700.png"
                     />
-                    <span>
+                    <span className="py-2 font-bold">
                         REALME C30
                     </span>
                 </label>

@@ -29,9 +29,6 @@ export default function TelevisionPlansPage(){
                     <span className="title-a text-3xl uppercase">
                       Izberite paket
                     </span>
-                    <p className="text-right">
-                        besedilo
-                    </p>
                 </div>
                 <img
                     className="w-[70%] sm:w-[50%] md:w-[30%]"
