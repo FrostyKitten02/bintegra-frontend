@@ -28,12 +28,10 @@ export function ChoosePlanPage() {
 
     if (loading) {
         fetchChosenOffer();
-        console.log(chosenOffer)
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setChosenPackage(prevState => (event.target.value));
-        console.log("value" + event.target.value)
     }
 
     const handleDecision = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -44,7 +42,6 @@ export function ChoosePlanPage() {
 
     const addChosenPhone = (phoneId: number): void => {
         setChosenPhone(prevState => (phoneId));
-        console.log("telefon, ki  ga je uporabnik  izbral: " + phoneId)
     }
 
     const handleChosenOffer = (): void => {
@@ -54,12 +51,7 @@ export function ChoosePlanPage() {
         context.api.subscriptionApi
             .subscribe(chosenPackage, chosenOffer?.id, chosenPhone)
             .then((response) => {
-
             })
-
-
-        console.log("izbrana " + chosenPackage)
-        console.log("izbran telefon " + chosenPhone)
 
         //preusmeri na zacetno stran ali profil
     }

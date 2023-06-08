@@ -1,7 +1,8 @@
-import {ReactNode, useContext, useState} from "react";
+import {ReactNode, useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Paths from "../Paths";
 import {IPageContext, PageContext} from "./PageContextProvider";
+import {UserDto} from "../model/interfaces";
 
 function NavItem(
     {
@@ -44,6 +45,47 @@ const dashboardSvg = (
 export default function UserPortalSideNavigation() {
     const context = useContext<IPageContext>(PageContext);
     const [isOpen, setIsOpen] = useState(false);
+    const [user, setUser] = useState<UserDto | undefined>(undefined);
+    const [failed, setFailed] = useState<number>(-1);
+
+    useEffect(() => {
+        if (failed === 0 || failed > 10) {
+            return;
+        }
+
+        const controller = new AbortController();
+
+        context.api.UserApi.getCurrentUser(controller.signal)
+            .then((response) => {
+                console.log(response.data.user)
+                if (context.loggedIn && (response.data.user === undefined || response.data.user === null)) {
+                    setFailed(prevState => {
+                        if (prevState === -1) {
+                            return 1;
+                        }
+                        return prevState + 1;
+                    })
+                    return;//no abort needed!
+                }
+
+                setUser(response.data.user??undefined)
+                setFailed(0);
+            })
+            .catch((error) => {
+                setFailed(prevState => {
+                    if (prevState === -1) {
+                        return 1;
+                    }
+                    return prevState + 1;
+                });
+                console.error(error);
+            });
+
+        // return () => {
+        //     controller.abort();
+        // }
+    }, [failed, context])
+
 
     return (
         <div className="h-full bg-gray-50">
@@ -61,8 +103,8 @@ export default function UserPortalSideNavigation() {
                    aria-label="Sidebar">
                 <div className="h-full px-3 py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
-                        {context.userCache == undefined?null:
-                            (context.userCache.isConsultant?
+                        {user == undefined?null:
+                            (user.isConsultant?
                                 <NavItem name="Stranke" path={Paths.USER_PORTAL_CONSULTANT_CUSTOMERS} icon={dashboardSvg} />
                             : (
                                 <>

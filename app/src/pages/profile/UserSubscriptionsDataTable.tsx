@@ -1,43 +1,44 @@
 import {Table} from "flowbite-react";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {IPageContext, PageContext} from "../../components/PageContextProvider";
 import {SubscriptionDto} from "../../model/interfaces";
-import React from "react";
-import {SubscriptionResponseDto} from "../../model/ResponseDtos";
 import {uuid} from "flowbite-react/lib/esm/helpers/uuid";
 import PlansUtil from "../../Util/PlansUtil";
-import {start} from "repl";
+import SubscriptionUtil from "../../Util/SubscriptionUtil";
+
+
+
 
 export function UserSubscriptionsDataTable() {
     const [subscriptions, setSubscriptions] = useState<SubscriptionDto[]>();
-    const [loading, setLoading] = useState<boolean>(true);
     const context = useContext<IPageContext>(PageContext);
+    const [retry, setRetry] = useState<number>(-1);
 
-    const fetchUserSubscriptions = (): void => {
+
+    useEffect(() => {
+        if ( retry === 0) {
+            return;
+        }
+
+        if (retry > 7) {
+            console.log("Too many retries, error getting user subs!!");
+            return
+        }
+
+        const controller = new AbortController();
         context.api.subscriptionApi
-            .getSubscriptionsByUser()
+            .getSubscriptionsByUser(controller.signal)
             .then((response) => {
                 setSubscriptions(response.data.subscriptions??[])
-                console.log(response.data.subscriptions)
-                console.log(response.data)
-                setLoading(false)
+                setRetry(0)
+            }).catch((error) => {
+                setRetry(prevState => prevState + 1);
             });
-    }
 
-    if (loading) {
-        fetchUserSubscriptions();
-    }
-
-    const setCurrentPrice = (discountDuration?: number | undefined, startTime?: number): boolean => {
-        startTime = startTime??0;
-        discountDuration = discountDuration??0;
-        const between: Date = new Date(Date.now() - startTime);
-        const months: number = ((between.getFullYear() - 1970) * 12 - between.getMonth());
-        if(months <= discountDuration){
-            return true;
+        return () => {
+            controller.abort();
         }
-        return false;
-    }
+    },[retry])
 
     return (
         <div className="hidden lg:block">
@@ -73,11 +74,10 @@ export function UserSubscriptionsDataTable() {
                                         {PlansUtil.getCategory(subscription.offer?.type)}
                                     </Table.Cell>
                                     <Table.Cell>
-                                        {setCurrentPrice(subscription.offer?.discountDurationMonths, subscription.startDate) ? subscription.offer?.discountPrice : subscription.offer?.basePrice}€
+                                        {SubscriptionUtil.getSubscriptionCurrentPrice(subscription)}€
                                     </Table.Cell>
                                     <Table.Cell>
-                                        {subscription.subscriptionContract}
-                                        {subscription.subscriptionContract ? "vezava" : "naročnina"}
+                                        {SubscriptionUtil.getSubscriptionContractType(subscription)}
                                     </Table.Cell>
                                     <Table.Cell>
                                         {PlansUtil.convertNumberToDate(subscription?.startDate)}

@@ -16,7 +16,6 @@ export default function MobilePlansPage() {
             .then((response) => {
                 setMobileOffers(response.data.offers??[]);
                 setLoading(false);
-                console.log(response.data.offers??[])
             });
     }
 

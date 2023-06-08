@@ -1,46 +1,84 @@
 import {Table} from "flowbite-react";
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {SubscriptionDto, UserDto} from "../../model/interfaces";
+import {uuid} from "flowbite-react/lib/esm/helpers/uuid";
+import SubscriptionUtil from "../../Util/SubscriptionUtil";
+import PlansUtil from "../../Util/PlansUtil";
+import {Simulate} from "react-dom/test-utils";
+import contextMenu = Simulate.contextMenu;
+import {IPageContext, PageContext} from "../../components/PageContextProvider";
+
+
+const SubscriptionRow = ({subscription}:{subscription: SubscriptionDto}) => {
+    return(
+        <Table.Row>
+            <Table.Cell className="border-b">{subscription.offer?.title}</Table.Cell>
+            <Table.Cell className="border-b">{PlansUtil.getCategory(subscription.offer?.type)}</Table.Cell>
+            <Table.Cell className="border-b">{SubscriptionUtil.getSubscriptionCurrentPrice(subscription)}</Table.Cell>
+            <Table.Cell className="border-b">{SubscriptionUtil.getSubscriptionContractType(subscription)}</Table.Cell>
+            <Table.Cell className="border-b">{PlansUtil.convertNumberToDate(subscription?.startDate)}</Table.Cell>
+        </Table.Row>
+    )
+}
 
 
 export default function UserPortalConsultantCustomerSubscriptions(){
-const user={
-    id:1,
-    email: "user.email"
-}
-    const [isEditing, setIsEditing] = useState(false);
-    const [editedValues, setEditedValues] = useState({
-        package: "offer.title",
-        category: "offer.type",
-        price: "packageOffer.basePrice/mesec",
-        type: "mesečna narocnina / [st] vezava",
-    });
+    const {id} = useParams();
+    const context = useContext<IPageContext>(PageContext);
+    const [subscriptions, setSubscriptions] = useState<SubscriptionDto[]>([]);
+    const [user, setUser] = useState<UserDto>({});
+    const [failed, setFailed] = useState<number>(-1);
 
-    const handleEdit = () => {
-        setIsEditing(true);
-    };
 
-    const handleInputChange = (event:any, key:any) => {
-        setEditedValues({
-            ...editedValues,
-            [key]: event.target.value,
-        });
-    };
+    useEffect(() => {
+        if (failed === 0 || failed > 10 || id == undefined) {
+            return;
+        }
 
-    const handleSave = () => {
-        // Save the edited values here
-        setIsEditing(false);
-    };
+        const controller = new AbortController();
+
+        context.api.subscriptionApi.getSubscriptionByUserId(id, controller.signal)
+            .then((response) => {
+                if (context.loggedIn && (response.data.subscriptions === undefined || response.data.subscriptions === null)) {
+                    setFailed(prevState => {
+                        if (prevState === -1) {
+                            return 1;
+                        }
+                        return prevState + 1;
+                    })
+                    return;//no abort needed!
+                }
+                setSubscriptions(response.data.subscriptions??[]);
+                setUser(response.data.user??{});
+                setFailed(0);
+            })
+            .catch((error) => {
+                setFailed(prevState => {
+                    if (prevState === -1) {
+                        return 1;
+                    }
+                    return prevState + 1;
+                });
+                console.error(error);
+            });
+
+        // return () => {
+        //     controller.abort();
+        // }
+    },[failed, context, id])
+
+    useEffect(() => {
+        setFailed(-1);
+    }, [id])
+
+
+
     return(
-        < >
-
-
-            <div className="py-14 w-full">
+        <div className="py-14 w-full">
             <div className="px-4 sm:px-14 pb-16">
-                <div className="pb-2 text-right title-a text-2xl uppercase">
-                    aktivne naročnine
-                </div>
                 <div className="pb-2 text-left title-a text-2xl ">
-                    {user.email}
+                    Paketi uporabnika - {user.firstname + " " + user.lastname}
                 </div>
                 <div className="hidden lg:block">
                     <Table>
@@ -52,83 +90,21 @@ const user={
                                 Kategorija
                             </Table.HeadCell>
                             <Table.HeadCell className="border-gray-300 hover:bg-gray-100 border-b bg-white w-[200px]">
-                                Cena
+                                Trenutna cena
                             </Table.HeadCell>
                             <Table.HeadCell className="border-gray-300 hover:bg-gray-100 border-b bg-white w-[200px]">
                                 Vrsta
                             </Table.HeadCell>
-                            {isEditing && (
-                                <Table.HeadCell className="border-gray-300 hover:bg-gray-100 border-b bg-white w-[200px]"></Table.HeadCell>
-                            )}
+                            <Table.HeadCell className="border-gray-300 hover:bg-gray-100 border-b bg-white w-[200px]">
+                                Datum pričetka
+                            </Table.HeadCell>
                         </Table.Head>
                         <Table.Body className="divide-y">
-                            <Table.Row className="text-center text-gray-900">
-                                <Table.Cell className="whitespace-nowrap font-medium">
-                                    {isEditing ? (
-                                        <input
-                                            type="text"
-                                            value={editedValues.package}
-                                            onChange={(event) => handleInputChange(event, "package")}
-                                        />
-                                    ) : (
-                                        editedValues.package
-                                    )}
-                                </Table.Cell>
-                                <Table.Cell>
-                                    {isEditing ? (
-                                        <input
-                                            type="text"
-                                            value={editedValues.category}
-                                            onChange={(event) => handleInputChange(event, "category")}
-                                        />
-                                    ) : (
-                                        editedValues.category
-                                    )}
-                                </Table.Cell>
-                                <Table.Cell>
-                                    {isEditing ? (
-                                        <input
-                                            type="text"
-                                            value={editedValues.price}
-                                            onChange={(event) => handleInputChange(event, "price")}
-                                        />
-                                    ) : (
-                                        editedValues.price
-                                    )}
-                                </Table.Cell>
-                                <Table.Cell>
-                                    {isEditing ? (
-                                        <input
-                                            type="text"
-                                            value={editedValues.type}
-                                            onChange={(event) => handleInputChange(event, "type")}
-                                        />
-                                    ) : (
-                                        editedValues.type
-                                    )}
-                                </Table.Cell>
-                                {isEditing ? (
-                                    <Table.Cell>
-                                        <button className="text-blue-500 hover:text-blue-700" onClick={handleSave}>
-                                            Save
-                                        </button>
-                                    </Table.Cell>
-                                ) : (
-                                    <Table.Cell>
-                                        <button className="text-blue-500 hover:text-blue-700" onClick={handleEdit}>
-                                            Edit
-                                        </button>
-                                    </Table.Cell>
-                                )}
-                            </Table.Row>
+                            {subscriptions.map((subscription) => <SubscriptionRow subscription={subscription} key={uuid()} />)}
                         </Table.Body>
                     </Table>
                 </div>
-
-
             </div>
-
         </div>
-        </>
     )
 }

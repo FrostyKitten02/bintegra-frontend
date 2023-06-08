@@ -10,13 +10,13 @@ export class OffersController extends BaseController<OfferRequestDto> {
         super(auth, "offer");
     }
 
-    public getActiveOffersByType(type: string): Promise<AxiosResponse<OfferResponseDto>> {
+    public getActiveOffersByType(type: string, signal?: AbortSignal): Promise<AxiosResponse<OfferResponseDto>> {
         const endpointUrl = "/active";
-        return axios.get<OfferResponseDto, AxiosResponse<OfferResponseDto, any>, OfferRequestDto>(this.getControllerFullUrl(endpointUrl, [type]), this.axiosConfig);
+        return axios.get<OfferResponseDto, AxiosResponse<OfferResponseDto, any>, OfferRequestDto>(this.getControllerFullUrl(endpointUrl, [type]), {...this.axiosConfig, signal: signal});
     }
 
-    public getOfferById(id: string): Promise<AxiosResponse<OfferResponseDto>> {
-        return axios.get<OfferResponseDto, AxiosResponse<OfferResponseDto, any>, OfferRequestDto>(this.getControllerFullUrl(undefined, [id]), this.axiosConfig);
+    public getOfferById(id: string, signal?: AbortSignal): Promise<AxiosResponse<OfferResponseDto>> {
+        return axios.get<OfferResponseDto, AxiosResponse<OfferResponseDto, any>, OfferRequestDto>(this.getControllerFullUrl(undefined, [id]), {...this.axiosConfig, signal: signal});
     }
 
 }

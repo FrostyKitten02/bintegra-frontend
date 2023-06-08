@@ -16,7 +16,6 @@ export default function TelevisionPlansPage(){
             .then((response) => {
                 setTelevisionOffers(response.data.offers??[]);
                 setLoading(false);
-                console.log(response.data.offers??[])
             });
     }
 

@@ -5,7 +5,6 @@ import {useState} from "react";
 
 
 const NavItem = ({name, path}: { name: string, path: string }) => {
-    const navigate = useNavigate();
     return (
         <Link
             onClick={() => window.scroll(0, 0)}
