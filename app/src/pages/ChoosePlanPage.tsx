@@ -60,7 +60,7 @@ export function ChoosePlanPage() {
     return (
         <div className="flex justify-center py-10">
             <div
-                className=" my-4 sm:m-4 bg-white border border-gray-300 rounded-lg shadow p-4 sm:p-8">
+                className="w-3/4 lg:w-2/3  my-4 sm:m-4 bg-white border border-gray-300 rounded-lg shadow p-4 sm:p-8">
                 <div className="relative h-full">
                     <div className="">
                         <h5 className="mb-4 title-a uppercase text-center text-xl text-gray-900">
@@ -88,7 +88,7 @@ export function ChoosePlanPage() {
                                 {"opis storitve kaj vse ponuja lahko v alinejah napises "}
                             </p>*/}
                             <div className="flex justify-between mt-8">
-                                <ul className="grid w-full gap-6 md:grid-cols-2">
+                                <ul className="grid w-full gap-6 md:grid-cols-2 justify-items-center content-center">
                                     <li>
                                         <input
                                             type="radio"
@@ -161,8 +161,8 @@ export function ChoosePlanPage() {
                                             <p className="pb-4">
                                                 Želite izbrati telefon?
                                             </p>
-                                            <ul className="flex justify-center">
-                                                <li>
+                                            <ul className="flex justify-center flex-wrap md:flex-nowrap">
+                                                <li className="py-6 md:py-0">
                                                     <input
                                                         type="radio"
                                                         value="true"
@@ -172,14 +172,14 @@ export function ChoosePlanPage() {
                                                         className="hidden peer"
                                                     />
                                                     <label htmlFor="yes-radio"
-                                                           className="inline-flex mx-6 h-full items-center justify-center py-3 px-16 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:bg-gray-100 peer-checked:border-gray-900 peer-checked:text-gray-900 hover:text-gray-600 hover:bg-gray-100">
+                                                           className="inline-flex md:mx-6 h-full items-center justify-center py-3 px-16 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:bg-gray-100 peer-checked:border-gray-900 peer-checked:text-gray-900 hover:text-gray-600 hover:bg-gray-100">
                                                         <div className="block">
                                                             <div className="w-full title-a uppercase text-center">DA
                                                             </div>
                                                         </div>
                                                     </label>
                                                 </li>
-                                                <li>
+                                                <li className="py-6 md:py-0">
                                                     <input
                                                         type="radio"
                                                         value="false"
@@ -201,15 +201,15 @@ export function ChoosePlanPage() {
                                         <hr/>
                                     </div>
 
-                                    : ""
+                                    : null
                             }
                             {
                                 phoneDecision === "true" ?
                                     <PhoneShowcase setPhone={addChosenPhone}/>
-                                    : ""
+                                    : null
                             }
-                            <div className="flex flex-wrap justify-end pt-10">
-                                <div className="w-full uppercase font-bold">
+                            <div className="flex flex-wrap justify-center pt-10">
+                                <div className="w-full uppercase font-bold text-center">
                                     izbrali ste paket
                                     <span className="text-2xl mx-4">
                                         {chosenOffer?.title}
@@ -226,7 +226,7 @@ export function ChoosePlanPage() {
 
                                 </div>
                                 <button
-                                    className="bg-sage-green text-white hover:bg-gray-900 rounded-[10px] duration-500 uppercase font-bold"
+                                    className="bg-sage-green text-white hover:bg-gray-900 rounded-[10px] duration-500 uppercase font-bold w-full md:w-auto mt-4"
                                     style={{height: "max-content"}}
                                     onClick={handleChosenOffer}
                                 >

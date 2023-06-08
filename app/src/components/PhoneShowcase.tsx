@@ -6,8 +6,8 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
         setPhone(parseInt(event.target.value));
     }
     return (
-        <ul className="grid grid-cols-6 gap-6 text-center">
-            <li className="col-span-2">
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <li className="col-span-1">
                 <input
                     type="radio"
                     value="1"
@@ -27,7 +27,7 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                     </span>
                 </label>
             </li>
-            <li className="col-span-2">
+            <li className="col-span-1">
                 <input
                     type="radio"
                     value="2"
@@ -47,7 +47,7 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                     </span>
                 </label>
             </li>
-            <li className="col-span-2">
+            <li className="col-span-1">
                 <input
                     type="radio"
                     value="3"
@@ -67,7 +67,7 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                     </span>
                 </label>
             </li>
-            <li className="col-span-2">
+            <li className="col-span-1">
                 <input
                     type="radio"
                     value="5"
@@ -87,7 +87,7 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                     </span>
                 </label>
             </li>
-            <li className="col-span-2">
+            <li className="col-span-1">
                 <input
                     type="radio"
                     value="6"
@@ -107,7 +107,7 @@ export function PhoneShowcase({setPhone}: { setPhone: (phoneId: number) => void 
                     </span>
                 </label>
             </li>
-            <li className="col-span-2">
+            <li className="col-span-1">
                 <input
                     type="radio"
                     value="4"
