@@ -32,7 +32,7 @@ export default function RegisterPage() {
         context.api.UserApi.register(user).then(response => {
             //TODO test registration!! will missing data bee a problem??
             if (response.status === 204){
-                console.log("true")
+                //console.log("true")
                 navigate(Paths.LOGIN);
             }
             setUser({});

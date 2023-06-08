@@ -25,7 +25,7 @@ export default function UserPortalProfile() {
     useEffect(() => {
         context.api.UserApi.getCurrentUser()
             .then((response) => {
-                console.log(response.data)
+                //console.log(response.data)
                 setCurrentUser(response.data)
             });
         setUser(loader?.user??{})
@@ -34,7 +34,7 @@ export default function UserPortalProfile() {
     const handleStartEditiButtonClick = () => {
         context.api.UserApi.getCurrentUser()
             .then((response) => {
-                console.log(response.data)
+                //console.log(response.data)
                 setCurrentUser(response.data)
             });
         setEditing(prevState => !prevState);

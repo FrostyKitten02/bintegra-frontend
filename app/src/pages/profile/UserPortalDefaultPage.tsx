@@ -20,7 +20,7 @@ export default function UserPortalDefaultPage() {
 
         context.api.UserApi.getCurrentUser(controller.signal)
             .then((response) => {
-                console.log(response.data.user)
+                //console.log(response.data.user)
                 if (context.loggedIn && (response.data.user === undefined || response.data.user === null)) {
                     setFailed(prevState => {
                         if (prevState === -1) {
