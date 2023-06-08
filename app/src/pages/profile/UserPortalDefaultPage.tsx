@@ -41,7 +41,7 @@ export default function UserPortalDefaultPage() {
                     }
                     return prevState + 1;
                 });
-                console.error(error);
+                //console.error(error);
             });
 
         // return () => {

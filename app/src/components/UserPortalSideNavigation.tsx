@@ -78,7 +78,7 @@ export default function UserPortalSideNavigation() {
                     }
                     return prevState + 1;
                 });
-                console.error(error);
+                //console.error(error);
             });
 
         // return () => {
