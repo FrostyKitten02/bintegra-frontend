@@ -15,6 +15,6 @@ Run backend beforehand to avoid any errors.
 
 # Initialize database
 You need to fill - initialize your database with offers - navigate to init-db project repository.
-Clone the project, run npm install then node init.js. If that is not working try using postman - post to http://localhost:8080/o/sp/api/offer. Make sure you use basic authorization, test@lifera.com username and the password you set on the backend.
+Clone the project, run npm install then node init.js. If that is not working try using postman - post to http://localhost:8080/o/sp/api/offer. Make sure you use basic authorization, test@liferay.com username and the password you set on the backend.
 
 Authors: Alen Fridau, Klara Kebrič, Klara Kirbiš
