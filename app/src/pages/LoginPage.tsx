@@ -22,6 +22,7 @@ export default function LoginPage() {
             .then(success => {
                 if (success) {
                     navigate(Paths.HOME === ""?"/":Paths.HOME);
+                    navigate(0);
                 }
             });
         setUser({});
@@ -81,7 +82,7 @@ export default function LoginPage() {
                                     Zapomni si me
                                 </label>
                             </div>
-                            <a className="ml-auto text-sm text-sage-green hover:underline hover:cursor-pointer">
+                            <a className="ml-auto hidden md:block text-sm text-sage-green hover:underline hover:cursor-pointer">
                                 Pozabljeno geslo?
                             </a>
                         </div>

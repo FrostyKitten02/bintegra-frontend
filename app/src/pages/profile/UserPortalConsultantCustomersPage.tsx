@@ -20,8 +20,8 @@ const UserTableRow = ({user}: { user: UserDto }) => {
 
     return (
         <Table.Row onClick={()=>navigate(path)} className="hover:cursor-pointer">
-            <Table.Cell className="border-b">{user.firstname}</Table.Cell>
-            <Table.Cell className="border-b">{user.lastname}</Table.Cell>
+            <Table.Cell className="border-b text-center">{user.firstname}</Table.Cell>
+            <Table.Cell className="border-b text-center">{user.lastname}</Table.Cell>
         </Table.Row>
     )
 }
@@ -56,9 +56,9 @@ export default function UserPortalConsultantCustomersPage(){
                     Stranke
                 </div>
                 <hr className="pb-4 md:pb-16"/>
-                <div className="hidden lg:block">
+                <div className="block">
                     <Table>
-                        <Table.Head className="bg-white">
+                        <Table.Head className="bg-white text-center">
                             <Table.HeadCell className="border-b w-1/4">Ime</Table.HeadCell>
                             <Table.HeadCell className="border-b w-1/4">Priimek</Table.HeadCell>
                         </Table.Head>

@@ -68,13 +68,6 @@ export default function UserPortalDefaultPage() {
                         </>)}
 
             </div>
-            <div className="grid grid-cols-8 px-20">
-                <div className="col-span-6 md:col-span-3">
-                    {/*} <UserPortalPieChart naslov={"Cenovni mesečni pregled naročnin"} /> */}
-                </div>
-                <div className="col-span-6 md:col-span-5">
-                </div>
-            </div>
         </div>
     )
 }
