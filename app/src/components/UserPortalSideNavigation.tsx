@@ -110,10 +110,6 @@ export default function UserPortalSideNavigation() {
                                 <>
                                     <NavItem name="Pregled" path={Paths.USER_PORTAL_BASE_PATH} icon={dashboardSvg}/>
                                     <NavItem name="Profil" path={Paths.USER_PORTAL_PROFILE} icon={dashboardSvg}/>
-                                    <hr />
-                                    <NavItem name="Moje mobilne storitve" path={Paths.USER_PORTAL_MOBILE} icon={dashboardSvg}/>
-                                    <NavItem name="Moj internet" path={Paths.USER_PORTAL_INTERNET} icon={dashboardSvg}/>
-                                    <NavItem name="Moja televizija" path={Paths.USER_PORTAL_TV} icon={dashboardSvg}/>
                                 </>
                             ))
                         }
