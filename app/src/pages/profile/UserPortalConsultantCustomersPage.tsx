@@ -12,11 +12,11 @@ const UserTableRow = ({user}: { user: UserDto }) => {
     let path: string = "";
     if (user.id != undefined) {
         const strId = user.id.toString();
-        console.log(strId)
+        //console.log(strId)
         path = Paths.USER_PORTAL_CONSULTANT_CUSTOMER_SUBSCRIPTIONS.replace(":id", strId);
     }
 
-    console.log(path)
+    //console.log(path)
 
     return (
         <Table.Row onClick={()=>navigate(path)} className="hover:cursor-pointer">

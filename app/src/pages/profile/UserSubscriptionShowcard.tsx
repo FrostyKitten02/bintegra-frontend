@@ -17,7 +17,7 @@ export function UserSubscriptionShowcard() {
         }
 
         if (retry > 7) {
-            console.log("Too many retries, error getting user subs!!");
+            //console.log("Too many retries, error getting user subs!!");
             return
         }
 

@@ -6,6 +6,7 @@ import {AxiosRequestConfig} from "axios";
 export class BaseController<REQ> {
     protected auth?: string;
     private static readonly BASE_URL = "http://localhost:8080/o/sp/api/";
+    //private static readonly BASE_URL = "http://samopostrezniportal.hopto.org:8080/o/sp/api/";
     private readonly CONTROLLER_URL;
     protected readonly axiosConfig: AxiosRequestConfig<REQ>;
 

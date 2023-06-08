@@ -57,7 +57,7 @@ export default function UserPortalSideNavigation() {
 
         context.api.UserApi.getCurrentUser(controller.signal)
             .then((response) => {
-                console.log(response.data.user)
+                //console.log(response.data.user)
                 if (context.loggedIn && (response.data.user === undefined || response.data.user === null)) {
                     setFailed(prevState => {
                         if (prevState === -1) {
@@ -78,7 +78,7 @@ export default function UserPortalSideNavigation() {
                     }
                     return prevState + 1;
                 });
-                console.error(error);
+                //console.error(error);
             });
 
         // return () => {
