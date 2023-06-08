@@ -3,9 +3,13 @@ import InputWithLabel, {errorType} from "../components/InputWithLabel";
 import register_img from "../pictures/register_img.jpg";
 import {RegisterRequestDto} from "../model/RequestDtos";
 import {IPageContext, PageContext} from "../components/PageContextProvider";
+import {useNavigate} from "react-router-dom";
+import {unmountComponentAtNode} from "react-dom";
+import Paths from "../Paths";
 
 export default function RegisterPage() {
     const context = useContext<IPageContext>(PageContext);
+    const navigate = useNavigate();
 
     const [user, setUser] = useState<RegisterRequestDto>({});
     const [passwordMissMatch, setPasswordMissmatch] = useState(false);
@@ -27,6 +31,10 @@ export default function RegisterPage() {
 
         context.api.UserApi.register(user).then(response => {
             //TODO test registration!! will missing data bee a problem??
+            if (response.status === 204){
+                console.log("true")
+                navigate(Paths.LOGIN);
+            }
             setUser({});
         });
 

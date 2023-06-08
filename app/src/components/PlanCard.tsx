@@ -66,7 +66,7 @@ export default function PlanCard({
                             <span className="ml-1 text-xl text-gray-400">/{priceInterval}</span>
                         </div>
                         <div className="text-xs text-center text-gray-600 pt-2">
-                            V primeru vezave velja pondbena cena {discountPrice}€.
+                            V primeru vezave velja ponudbena cena {discountPrice}€.
                         </div>
                         <ul className="space-y-5 my-7">
                             {features.map((feature, index) => {

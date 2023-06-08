@@ -1,11 +1,12 @@
 import {Button} from "flowbite-react";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {ChangeEvent, useContext, useState} from "react";
 import {PhoneShowcase} from "../components/PhoneShowcase";
 import {ChevronRightIcon} from "@heroicons/react/24/outline";
 import {OfferDto} from "../model/ResponseDtos";
 import {IPageContext, PageContext} from "../components/PageContextProvider";
 import PlansUtil from "../Util/PlansUtil";
+import Paths from "../Paths";
 
 
 export function ChoosePlanPage() {
@@ -224,13 +225,14 @@ export function ChoosePlanPage() {
                                     }
 
                                 </div>
-                                <Button
+                                <Link
+                                    to={Paths.USER_PORTAL_BASE_PATH}
                                     onClick={handleChosenOffer}
-                                    className="bg-sage-green hover:bg-gray-900 uppercase py-1 px-10 duration-500">
+                                    className="bg-sage-green text-white hover:bg-gray-900 uppercase py-2 rounded-[10px] px-10 duration-500">
                                     <span className="font-bold tracking-wider">
                                         potrdi izbrano
                                     </span>
-                                </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>

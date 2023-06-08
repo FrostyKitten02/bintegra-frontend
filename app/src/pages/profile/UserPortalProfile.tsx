@@ -1,7 +1,7 @@
 import {PencilIcon, XMarkIcon} from "@heroicons/react/24/outline";
 import InputWithLabel from "../../components/InputWithLabel";
 import {ChangeEvent, useContext, useEffect, useState} from "react";
-import {User} from "../../model/interfaces";
+import {User, UserDto} from "../../model/interfaces";
 import FormHandler from "../../Util/FormHandler";
 import {IPageContext, PageContext} from "../../components/PageContextProvider";
 import {useLoaderData} from "react-router-dom";
@@ -10,17 +10,33 @@ import {UserResponseDto} from "../../model/ResponseDtos";
 export default function UserPortalProfile() {
     const context = useContext<IPageContext>(PageContext);
     const loader: UserResponseDto | undefined = useLoaderData() as UserResponseDto | undefined;
-
+    const initialState: UserResponseDto = {
+        user: {
+            email: "",
+            firstname: "",
+            lastname: ""
+        }
+    }
     const [editing, setEditing] = useState<boolean>(false);
+    const [currentUser, setCurrentUser] = useState<UserResponseDto>(initialState);
     const [user, setUser] = useState<User>({});
 
 
     useEffect(() => {
+        context.api.UserApi.getCurrentUser()
+            .then((response) => {
+                console.log(response.data)
+                setCurrentUser(response.data)
+            });
         setUser(loader?.user??{})
     }, [loader]);
 
     const handleStartEditiButtonClick = () => {
-        context.api.UserApi.getCurrentUser();
+        context.api.UserApi.getCurrentUser()
+            .then((response) => {
+                console.log(response.data)
+                setCurrentUser(response.data)
+            });
         setEditing(prevState => !prevState);
     }
 
@@ -47,11 +63,11 @@ export default function UserPortalProfile() {
                                     <PencilIcon className="h-6 w-6 text-black"/>}
                             </button>
                         </div>
-                        <InputWithLabel handleChange={handleInputChange} value={user.firstname} label="Ime"
+                        <InputWithLabel handleChange={handleInputChange} value={user.firstname} label={`${currentUser.user?.firstname}`}
                                         name="firstname" type="text" placeholder={""} disabled={!editing}/>
-                        <InputWithLabel handleChange={handleInputChange} value={user.lastname} label="Priimek"
+                        <InputWithLabel handleChange={handleInputChange} value={user.lastname} label= {`${currentUser.user?.lastname}`}
                                         name="lastname" type="text" placeholder={""} disabled={!editing}/>
-                        <InputWithLabel handleChange={handleInputChange} value={user.email} label="Email"
+                        <InputWithLabel handleChange={handleInputChange} value={user.email} label={`${currentUser.user?.email}`}
                                         name="email"
                                         type="email" placeholder={""} disabled={!editing}/>
                         <button className="button-default w-full" onClick={handleSaveButtonClick}

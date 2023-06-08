@@ -27,7 +27,11 @@ export default function UserPortalConsultantCustomerSubscriptions(){
     const {id} = useParams();
     const context = useContext<IPageContext>(PageContext);
     const [subscriptions, setSubscriptions] = useState<SubscriptionDto[]>([]);
-    const [user, setUser] = useState<UserDto>({});
+    const initialState: UserDto = {
+        firstname: "",
+        lastname: ""
+    }
+    const [user, setUser] = useState<UserDto>(initialState);
     const [failed, setFailed] = useState<number>(-1);
 
 
@@ -103,6 +107,53 @@ export default function UserPortalConsultantCustomerSubscriptions(){
                             {subscriptions.map((subscription) => <SubscriptionRow subscription={subscription} key={uuid()} />)}
                         </Table.Body>
                     </Table>
+                </div>
+                <div className="block lg:hidden">
+                    {
+                        subscriptions.map((subscription) => {
+                            return(
+                                <div
+                                    key={uuid()}
+                                    className="block lg:hidden my-4 sm:m-4 bg-white border border-gray-300 rounded-lg shadow p-4 sm:p-8">
+                                    <div className="relative h-full">
+                                        <div className="">
+                                            <h5 className="mb-4 title-a uppercase text-xl text-gray-900">
+                                                Paket: {subscription.offer?.title}
+                                            </h5>
+                                            <hr className="pb-4 gray-400 border-gray-300"/>
+                                            <ul role="list" className="space-y-5 my-7">
+                                                <li className="flex flex-wrap">
+                            <span className="title-a uppercase pr-3">
+                                Cena:
+                            </span>{SubscriptionUtil.getSubscriptionCurrentPrice(subscription)}<span>
+                                €
+                            </span>
+                                                </li>
+                                                <li className="flex flex-wrap">
+                            <span className="title-a uppercase pr-3">
+                                Kategorija:
+                            </span>
+                                                    {PlansUtil.getCategory(subscription.offer?.type)}
+                                                </li>
+                                                <li className="flex flex-wrap">
+                            <span className="title-a uppercase pr-3">
+                                Vrsta:
+                            </span>
+                                                    {SubscriptionUtil.getSubscriptionContractType(subscription)}
+                                                </li>
+                                                <li className="flex flex-wrap">
+                                            <span className="title-a uppercase pr-3">
+                                                Datum pričetka:
+                                            </span>
+                                                    {PlansUtil.convertNumberToDate(subscription.startDate)}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </div>
